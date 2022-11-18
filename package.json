@@ -1,0 +1,22 @@
+{
+  "name": "redbradge",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "node-sass": "^8.0.0",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@quasar/vite-plugin": "^1.2.3",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "sass": "^1.32.12",
+    "vite": "^3.2.3"
+  }
+}
