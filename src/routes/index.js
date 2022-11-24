@@ -4,6 +4,8 @@ import Home from '../components/Home.vue'
 
 import Students from '../components/departments/Students.vue'
 import Grades from '../components/departments/Grades.vue'
+import Subjects from '../components/departments/Subjects.vue'
+import addTeachers from '../components/departments/forChildren/postTeacher.vue'
 const routes = [
     {
         path:'/',
@@ -13,7 +15,7 @@ const routes = [
     {
         path:'/Home',
         name:'home',
-        component:Home  
+        component:Home,
     },
 
     
@@ -28,7 +30,19 @@ const routes = [
         path:'/Grades',
         name:'Grades',
         component:Grades  
+    },
+    {
+        path:'/Subjects',
+        name:'Subjects',
+        component:Subjects  
+    },
+    {
+        path:'/addTeachers',
+        name:'addTeachers',
+        component:addTeachers  
     }
+
+    
 ]
 
 

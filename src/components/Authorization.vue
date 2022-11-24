@@ -37,9 +37,9 @@
               required=""
               v-model="password"
             />
-            <button @click.prevent="Request">
+            <button @click.prevent="Request" class=" d-flex justify-content-center align-items-center">
               <span v-if="!loade">Login</span>
-              <div class="spinner-border" role="status" v-else></div>
+              <div class="spinner-border fw-lighter py-1 " style="font-sizde:10px" role="status" v-else></div>
             </button>
           </form>
 
@@ -74,11 +74,12 @@ let Request = () => {
       },
     }
   ).then((el) => {
+    console.log(el);
     if (el.data) {
       localStorage.setItem("jwt", el.data);
       router.push({ name: "home" });
     } else {
-      alert("xatio");
+      alert("xato login yoki parol");
     }
   });
 };

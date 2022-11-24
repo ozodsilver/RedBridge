@@ -40,15 +40,15 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" >Subjects</a>
+          <router-link to="/Subjects" class="nav-link" >Subjects</router-link>
         </li>
       </ul>
     </div>
   </div>
 
 
-  <div class="px-4 badge bg-danger mx-3">
-    {{info.userlar}}  {{info.users}} {{info.grades}}
+  <div class="px-4 py-2 badge bg-danger mx-3">
+    {{info.userlar}}  {{info.users}} {{info.grades}} {{info.Subjects}}
   </div>
 </nav>
     </div>
@@ -58,7 +58,7 @@
 export default {
 
 
-    props:['userlar', 'users', 'grades'],
+    props:['userlar', 'users', 'grades', 'Subjects'],
 
     setup(props){
      let info = props
