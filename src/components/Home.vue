@@ -23,7 +23,7 @@
           :key="teacher.id"
         >
           <div class="card mt-4" v-if="teachers.length >= 1">
-            <div class="card-header">About Teachers {{ index }}</div>
+            <div class="card-header">About Teachers </div>
             <div class="card-body">
               <h6 class="card-title text-muted">
                 First name:
