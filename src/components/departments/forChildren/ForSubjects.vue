@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
-    <div class="container p-4">
+    <div class="container pt-0">
       <button
         class="btn btn-dark"
         style="width: 100px; height: 50px"
@@ -38,16 +38,23 @@
               </button>
             </div>
           </div>
-
-          <router-link
-            :to="{ name: 'AddSubjects' }"
-            class="btn btn-success position-fixed"
-            style="bottom: 20px; right: 20px; width: 200px"
-            >Add Subjects <i class="fas fa-plus-circle"></i
-          ></router-link>
-        </div>
+          </div>
       </div>
     </div>
+
+    <router-link
+      :to="{ name: 'AddSubjects' }"
+      class="btn btn-success position-fixed"
+      style="bottom: 20px; right: 20px; width: 200px"
+      @click="(this.$store.state.id = id)"
+      >Add Subjects <i class="fas fa-plus-circle"></i
+    ></router-link>
+
+    <div class="spinner-border text-primary position-absolute" style="top:50%; left:50%" role="status" v-if="loade">
+ 
+</div>
+
+
   </div>
 </template>
 <script setup>
@@ -61,6 +68,7 @@ let id = route.params.id;
 let subjects = ref([]);
 const store = useStore();
 
+let loade = ref(true)
 onMounted(async () => {
   let res = await axios.get(
     `https://redbridge-school.herokuapp.com/api/Subjects/${id}`,
@@ -74,6 +82,7 @@ onMounted(async () => {
 
   res.data.forEach((el) => {
     subjects.value.push(el);
+    loade.value = false
     store.state.id = id;
   });
 });
@@ -89,6 +98,7 @@ let deleteSubject = async (id, index) => {
     }
   );
   console.log(response);
+
   subjects.value.splice(index, 1);
 };
 </script>

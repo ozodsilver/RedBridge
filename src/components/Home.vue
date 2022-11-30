@@ -18,9 +18,6 @@
         </h1>
 
 
-        <div class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
 
 
         <div
@@ -77,6 +74,12 @@
       style="bottom: 20px; right: 20px; width: 200px;"
       >Add Teachers <i class="fas fa-plus-circle"></i
     ></router-link>
+
+
+    
+    <div class="spinner-border text-primary " role="status">
+  
+</div>
   </div>
 </template>
 

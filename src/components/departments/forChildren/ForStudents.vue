@@ -43,13 +43,15 @@
       </div>
     </div>
 
-    <router-link
+ 
+  </div>
+
+  <router-link
       to="/AddSubjects"
       class="btn btn-success position-fixed"
       style="bottom: 20px; right: 20px; width: 200px"
       >Add Students <i class="fas fa-plus-circle"></i
     ></router-link>
-  </div>
 </template>
 <script setup>
 import axios from "axios";
@@ -62,7 +64,7 @@ let students = ref([]);
 
 onMounted(async () => {
   let res = await axios.get(
-    `https://redbridge-school.herokuapp.com/api/Students/${id}`,
+    `https://redbridge-school.herokuapp.com/api/Students/ByGrade/${id}`,
   
     {
       headers: {
@@ -74,10 +76,10 @@ onMounted(async () => {
 
 
   console.log(res);
-//   res.data.forEach((el) => {
-//     console.log(el);
-//     students.value.push(el);
-//   });
+  res.data.forEach((el) => {
+    console.log(el);
+    students.value.push(el);
+  });
 });
 
 let deleteStudents = async(id, index)=>{

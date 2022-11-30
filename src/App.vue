@@ -23,11 +23,13 @@ body {
 }
 
 .fade-enter-active{
-  transition: opacity 1s ease;
+  transition:1s linear;
+  filter: blur(0px);
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+  filter: blur(3px);
 }
 </style>
