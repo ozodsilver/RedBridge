@@ -43,7 +43,7 @@
   </div>
 
 
-  <div class="px-4 py-2 badge bg-danger mx-3">
+  <div class="px-4 py-2 badge shadow-lg text-dark bg-gradient  mx-3">
     {{info.userlar}}  {{info.users}} {{info.grades}} {{info.Subjects}}
   </div>
 </nav>

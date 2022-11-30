@@ -18,23 +18,23 @@
       <h3 class="m-0 pt-5 text-secondary">Classes</h3>
       <div class="row">
         <div class="col-6" v-for="(info, index) in infos" :key="info.id">
-          <div class="card mt-4 ">
-            <div class="card-header">
-              <span class="badge bg-secondary fs-5">Class</span>:
-              <span class="fs-4"> {{ info.name }} </span>
+          <div class="card mt-5 shadow-lg ">
+            <div class="card-header bg-secondary bg-gradient">
+              <span class="badge bg-secondary fs-6 shadow">Class</span> &nbsp;
+              <span class="fs-6 text-white"> {{ info.name }} </span>
             </div>
-            <div class="card-body">
+            <div class="card-body py-5">
               <div class="d-flex align-items-center gap-1 w-100">
                 <router-link
                   :to="{ name: 'ForSubjects', params: { id: info.id } }"
-                  class="btn w-50 btn-success"
+                  class="btn w-25 btn-outline-secondary"
                   >Subjects</router-link
                 >
 
 
                 <router-link
                   :to="{ name: 'ForStudents', params: { id: info.id } }"
-                  class="btn w-50 btn-success"
+                  class="btn w-25 btn-outline-secondary"
                   >Students</router-link
                 >
                 <btn
@@ -42,6 +42,7 @@
                   class="
                     btn btn-danger
                     d-flex
+                    bg-gradient
                     justify-content-center
                     align-items-center
                   "

@@ -2,13 +2,12 @@
   <div>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
     <div class="container pt-0">
-      <button
-        class="btn btn-dark"
-        style="width: 100px; height: 50px"
-        @click="this.$router.push({ name: 'Grades' })"
-      >
-        <i class="fas fa-chevron-circle-left"></i>
-      </button>
+      <i
+        class="fas fa-chevron-circle-left fa-3x mt-5"
+        @click="router.push({ name: 'Grades' })"
+        style="cursor:pointer"
+      ></i>
+
       <h2 class="my-4 text-secondary">Subjects</h2>
       <div class="row">
         <div
@@ -38,7 +37,7 @@
               </button>
             </div>
           </div>
-          </div>
+        </div>
       </div>
     </div>
 
@@ -46,15 +45,16 @@
       :to="{ name: 'AddSubjects' }"
       class="btn btn-success position-fixed"
       style="bottom: 20px; right: 20px; width: 200px"
-      @click="(this.$store.state.id = id)"
+      @click="this.$store.state.id = id"
       >Add Subjects <i class="fas fa-plus-circle"></i
     ></router-link>
 
-    <div class="spinner-border text-primary position-absolute" style="top:50%; left:50%" role="status" v-if="loade">
- 
-</div>
-
-
+    <div
+      class="spinner-border text-primary position-absolute"
+      style="top: 50%; left: 50%"
+      role="status"
+      v-if="loade"
+    ></div>
   </div>
 </template>
 <script setup>
@@ -62,13 +62,13 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
-
+let router = useRouter();
 let route = useRoute();
 let id = route.params.id;
 let subjects = ref([]);
 const store = useStore();
 
-let loade = ref(true)
+let loade = ref(true);
 onMounted(async () => {
   let res = await axios.get(
     `https://redbridge-school.herokuapp.com/api/Subjects/${id}`,
@@ -82,7 +82,7 @@ onMounted(async () => {
 
   res.data.forEach((el) => {
     subjects.value.push(el);
-    loade.value = false
+    loade.value = false;
     store.state.id = id;
   });
 });

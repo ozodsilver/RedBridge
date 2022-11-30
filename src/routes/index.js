@@ -10,6 +10,7 @@ import AddGrades from '../components/departments/forChildren/AddGrades.vue'
 import ForSubjects from '../components/departments/forChildren/ForSubjects.vue'
 import AddSubjects from '../components/departments/forChildren/AddSubjects.vue'
 import ForStudents from '../components/departments/forChildren/ForStudents.vue'
+import AddStudents from '../components/departments/forChildren/AddStudents.vue'
 const routes = [
     {
         path:'/',
@@ -59,6 +60,15 @@ const routes = [
         name:'AddSubjects',
         component:AddSubjects  
     },
+
+
+    {
+        path:'/AddStudents',
+        name:'AddStudents',
+        component:AddStudents  
+    },
+
+
 
 
 

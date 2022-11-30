@@ -41,7 +41,7 @@
 
         <div class="col-12">
           <input
-            type="text"
+            type="password"
             class="form-control-lg w-100"
             placeholder="password"
             v-model="password"

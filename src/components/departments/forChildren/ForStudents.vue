@@ -2,7 +2,7 @@
   <div>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
     <div class="container p-4">
-      <div class="my-4 text-secondary d-flex align-items-center  justify-content-start  w-25" > <button class="btn d-flex justify-content-center align-items-center btn-dark rounded-circle" style="width:50px; height: 50px;" @click="this.$router.go(-1)"><i class="fas fa-backspace fa-2x"></i></button> <h2 class="pt-3">Students</h2></div> 
+      <div class="my-4 text-dark d-flex align-items-center gap-5 justify-content-start  w-25" > <i class="fas fa-chevron-circle-left fa-3x" @click="router.go(-1)" style="cursor:pointer"></i><h2 class="pt-3"> Students</h2></div> 
       <div class="row">
         <div
           class="col-6 mt-4"
@@ -11,15 +11,15 @@
         >
           <div class="card shadow">
             <div class="card-body">
-              <p>
+              <p class="text-dark">
                 <span class="badge bg-info">Student:</span> {{ student.firstName }}
               </p>
 
-              <p>
+              <p class="text-dark">
                 <span class="badge bg-info">LastName:</span> {{ student.lastName }}
               </p>
 
-              <p>
+              <p class="text-dark">
                 <span class="badge bg-info">FatherName:</span> {{ student.fatherName }}
               </p>
             
@@ -31,8 +31,9 @@
                   justify-content-center
                   align-items-center
                   float-end
+                  position-relative
                 "
-                style="width: 50px"
+                style="width: 50px; z-index:9999"
                 @click="deleteStudents(student.id, index)"
               >
                 <i class="fas fa-trash"></i>
@@ -47,8 +48,9 @@
   </div>
 
   <router-link
-      to="/AddSubjects"
+      to="/AddStudents"
       class="btn btn-success position-fixed"
+      @click="(store.state.id = id)"
       style="bottom: 20px; right: 20px; width: 200px"
       >Add Students <i class="fas fa-plus-circle"></i
     ></router-link>
@@ -57,7 +59,10 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import {useStore} from 'vuex'
 
+let store = useStore()
+let router = useRouter()
 let route = useRoute();
 let id = route.params.id;
 let students = ref([]);
@@ -101,7 +106,7 @@ students.value.splice(index,1)
     background-size: cover;
     p, span{
         position: relative;
-        z-index: 1111;
+        z-index: 11112;
         color: white;
     }
 }
@@ -111,6 +116,6 @@ students.value.splice(index,1)
     height: 100%;
     position: absolute;
     border-radius: 10px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0);
 }
 </style>

@@ -3,7 +3,7 @@ import router from './routes/index'
 import App from './App.vue'
 
 import axios from 'axios'
-import store from './routes/store/store.js'
+import store from './store/store.js'
 
 
 
