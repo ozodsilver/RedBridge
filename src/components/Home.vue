@@ -14,8 +14,14 @@
             gap-3
           "
         >
-          Teachers empty 
+          Teachers empty
         </h1>
+
+
+        <div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
 
         <div
           class="col-6"
@@ -23,7 +29,7 @@
           :key="teacher.id"
         >
           <div class="card mt-4" v-if="teachers.length >= 1">
-            <div class="card-header">About Teachers </div>
+            <div class="card-header">About Teachers</div>
             <div class="card-body">
               <h6 class="card-title text-muted">
                 First name:
@@ -42,11 +48,6 @@
                 <i class="fas fa-user text-danger"></i> Username:
                 {{ teacher.userName }}
               </div>
-
-
-
-
-  
 
               <button
                 class="
@@ -72,8 +73,8 @@
 
     <router-link
       to="/addTeachers"
-      class="btn btn-success w-25 position-fixed"
-      style="bottom: 20px; right: 20px"
+      class="btn btn-success position-fixed"
+      style="bottom: 20px; right: 20px; width: 200px;"
       >Add Teachers <i class="fas fa-plus-circle"></i
     ></router-link>
   </div>
@@ -96,22 +97,12 @@ export default {
     let users = ref("Teachers");
     let teachers = ref([]);
 
-
-
-
-
-
     let deleteTeacher = async (userName, teacherId) => {
-
-
       let removedEl = teachers.value.findIndex((x, idx) => idx == teacherId);
 
-console.log(removedEl);
+      console.log(removedEl);
 
-teachers.value.splice(removedEl,1)
-
-
-
+      teachers.value.splice(removedEl, 1);
 
       let res = await axios.delete(
         `https://redbridge-school.herokuapp.com/api/Teachers?userName=${userName}`,
@@ -122,17 +113,7 @@ teachers.value.splice(removedEl,1)
           },
         }
       );
-
-    
-    
-   
     };
-
-
-
-
-
-
 
     onMounted(async () => {
       let teacher = await axios.get(

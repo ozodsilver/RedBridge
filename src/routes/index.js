@@ -6,6 +6,10 @@ import Students from '../components/departments/Students.vue'
 import Grades from '../components/departments/Grades.vue'
 import Subjects from '../components/departments/Subjects.vue'
 import addTeachers from '../components/departments/forChildren/postTeacher.vue'
+import AddGrades from '../components/departments/forChildren/AddGrades.vue'
+import ForSubjects from '../components/departments/forChildren/ForSubjects.vue'
+import AddSubjects from '../components/departments/forChildren/AddSubjects.vue'
+import ForStudents from '../components/departments/forChildren/ForStudents.vue'
 const routes = [
     {
         path:'/',
@@ -29,7 +33,8 @@ const routes = [
     {
         path:'/Grades',
         name:'Grades',
-        component:Grades  
+        component:Grades,
+        meta: { transition: 'bounce' },
     },
     {
         path:'/Subjects',
@@ -40,7 +45,44 @@ const routes = [
         path:'/addTeachers',
         name:'addTeachers',
         component:addTeachers  
+    },
+
+    {
+        path:'/addGrades',
+        name:'addGrades',
+        component:AddGrades  
+    },
+
+    
+    {
+        path:'/AddSubjects',
+        name:'AddSubjects',
+        component:AddSubjects  
+    },
+
+
+
+
+
+
+
+
+
+
+    {
+        path:'/ForSubjects/:id',
+        name:'ForSubjects',
+        component:ForSubjects,
+        props:true  
+    },
+
+    {
+        path:'/ForStudents/:id',
+        name:'ForStudents',
+        component:ForStudents,
+        props:true  
     }
+
 
     
 ]

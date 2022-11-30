@@ -32,16 +32,12 @@
         <li class="nav-item">
           <router-link to="/Home"  class="nav-link " style="cursor: pointer;" >Teachers</router-link>
         </li>
-        <li class="nav-item">
-          <router-link to="/Students" class="nav-link" >Students</router-link>
-        </li>
+      
         <li class="nav-item">
           <router-link to="/Grades" class="nav-link" >Grades</router-link>
         </li>
 
-        <li class="nav-item">
-          <router-link to="/Subjects" class="nav-link" >Subjects</router-link>
-        </li>
+       
       </ul>
     </div>
   </div>
