@@ -14,6 +14,37 @@
           </div>
 
 
+          <div class="col-12 overflow-auto">
+          <div v-for="subject in subjects" :key="subject.id" class="mx-0 mt-3">
+            <input
+              type="radio"
+              class="btn-check d-block"
+              name="options"
+              :id="subject.id"
+              autocomplete="off"
+              :value="subject.id"
+              v-model="picked"
+            />
+            <label
+              class="
+                btn
+                w-100
+                btn-dark
+                text-white
+                border
+                shadow
+                bg-gradient
+                m-0
+              "
+              :class="{ active: isActive }"
+              v-bind:for="subject.id"
+              >{{ subject.firstName }} {{ subject.lastName }}
+              {{ subject.fatherName }}</label
+            >
+          </div>
+        </div>
+
+
           <div class="col-12">
             <button
               class="
@@ -25,7 +56,7 @@
                 w-25
                 float-start
               "
-              @click="back"
+          
             >
               <i class="fas fa-backspace fa-2x"></i> back
             </button>
@@ -33,7 +64,7 @@
               class="btn btn-success bg-gradient w-25 float-end"
               @click="PostSubject"
             >
-              Add Grade <i class="fas fa-plus"></i>
+              Add subject <i class="fas fa-plus"></i>
             </button>
           </div>
         </div>
@@ -65,7 +96,8 @@ import axios from "axios";
 import { ref, onMounted, } from "vue";
 import { useRouter } from "vue-router";
 import {useStore} from 'vuex'
-import ForSubjects from "./ForSubjects.vue";
+
+
 let subjects = ref([]);
 let picked = ref();
 let subjectName = ref("");
@@ -76,17 +108,13 @@ let store = useStore()
 
 
 onMounted(async () => {
-  let subject = await axios.get(`https://redbridge-school.herokuapp.com/api/Subjects/${store.state.id}`, 
- {
-  headers:{
-        'Content-Type':'application/json',
-        Authorization:`Bearer ${localStorage.getItem('jwt')}`
-    }
- }
+ 
+  let subject = await axios.get(
+    "https://redbridge-school.herokuapp.com/api/Teachers"
   );
-  // subject.data.forEach((el) => {
-  //   subjects.value.push(el);
-  // });
+  subject.data.forEach((el) => {
+    subjects.value.push(el);
+  });
 
   console.log(subject);
 
@@ -99,7 +127,8 @@ let PostSubject = async () => {
     `https://redbridge-school.herokuapp.com/api/Subjects`,
     {
       name: subjectName.value,
-      grade: store.state.id
+      teacher:picked.value,
+      grade: '47a788dd-c3b6-45f3-a9eb-2e341a7ba120'
     },
     {
       headers: {
@@ -125,7 +154,7 @@ let PostSubject = async () => {
 };
 
 let back = () => {
-  router.push({ path:`/ForSubjects/${store.state.id}` });
+  // router.go(-1);
 };
 </script>
       

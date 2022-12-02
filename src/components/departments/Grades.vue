@@ -21,7 +21,7 @@
           <div class="card mt-5 shadow-lg ">
             <div class="card-header bg-secondary bg-gradient">
               <span class="badge bg-secondary fs-6 shadow">Class</span> &nbsp;
-              <span class="fs-6 text-white"> {{ info.name }} </span>
+              <span class="fs-6 text-white"> {{ info.name }}  </span>
             </div>
             <div class="card-body py-5">
               <div class="d-flex align-items-center gap-1 w-100">
