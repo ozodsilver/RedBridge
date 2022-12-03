@@ -27,7 +27,7 @@
         >
           <div class="card mt-4 border border-top-0 border-light" v-if="teachers.length >= 1">
             <div class="card-header bg-secondary text-white bg-gradient">
-              About Teachers {{teachers}}
+              About Teachers 
             </div>
             <div class="card-body">
               <h6 class="card-title text-muted">

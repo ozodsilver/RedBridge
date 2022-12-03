@@ -56,7 +56,7 @@
                 w-25
                 float-start
               "
-          
+          @click="back"
             >
               <i class="fas fa-backspace fa-2x"></i> back
             </button>
@@ -154,7 +154,7 @@ let PostSubject = async () => {
 };
 
 let back = () => {
-  // router.go(-1);
+  router.go(-1);
 };
 </script>
       
