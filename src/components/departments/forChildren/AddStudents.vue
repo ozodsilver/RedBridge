@@ -94,7 +94,7 @@
   
   
   onMounted(async () => {
-    let subject = await axios.get(`https://redbridge-school.herokuapp.com/api/Subjects/${store.state.id}`, 
+    let subject = await axios.get(`https://redbridge.algorithmic.uz/api/Subjects/${store.state.id}`, 
    {
     headers:{
           'Content-Type':'application/json',
@@ -114,7 +114,7 @@
   
   let PostStudent = async () => {
     let response = await axios.post(
-      `https://redbridge-school.herokuapp.com/api/Students`,
+      `https://redbridge.algorithmic.uz/api/Students`,
       {
         firstName: firstName.value,
         lastName:lastName.value,

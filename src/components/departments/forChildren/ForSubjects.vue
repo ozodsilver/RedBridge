@@ -71,7 +71,7 @@ const store = useStore();
 let loade = ref(true);
 onMounted(async () => {
   let res = await axios.get(
-    `https://redbridge-school.herokuapp.com/api/Subjects/${id}`,
+    `https://redbridge.algorithmic.uz/api/Subjects/${id}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ onMounted(async () => {
 
 let deleteSubject = async (id, index) => {
   let response = await axios.delete(
-    `https://redbridge-school.herokuapp.com/api/Subjects?Id=${id}`,
+    `https://redbridge.algorithmic.uz/api/Subjects?Id=${id}`,
     {
       headers: {
         "Content-Type": "application/json",

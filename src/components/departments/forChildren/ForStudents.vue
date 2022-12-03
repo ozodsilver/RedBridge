@@ -69,7 +69,7 @@ let students = ref([]);
 
 onMounted(async () => {
   let res = await axios.get(
-    `https://redbridge-school.herokuapp.com/api/Students/ByGrade/${id}`,
+    `https://redbridge.algorithmic.uz/api/Students/ByGrade/${id}`,
   
     {
       headers: {
@@ -88,7 +88,7 @@ onMounted(async () => {
 });
 
 let deleteStudents = async(id, index)=>{
-let  response = await axios.delete(`https://redbridge-school.herokuapp.com/api/Students?guid=${id}`,
+let  response = await axios.delete(`https://redbridge.algorithmic.uz/api/Students?guid=${id}`,
 {
     headers:{
         'Content-Type':'application/json',

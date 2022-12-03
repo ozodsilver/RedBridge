@@ -63,7 +63,7 @@ let loade = ref(false)
 let Request = () => {
   loade.value = true
   Axios.post(
-    "https://redbridge-school.herokuapp.com/api/Authentication",
+    "https://redbridge.algorithmic.uz/api/Authentication",
     {
       userName: email.value,
       password: password.value,
