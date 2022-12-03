@@ -128,7 +128,7 @@ let PostSubject = async () => {
     {
       name: subjectName.value,
       teacher:picked.value,
-      grade: '47a788dd-c3b6-45f3-a9eb-2e341a7ba120'
+      grade: store.state.id
     },
     {
       headers: {
