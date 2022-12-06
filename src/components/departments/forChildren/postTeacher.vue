@@ -102,7 +102,7 @@ let backOneStep = () => {
 
 let PostTeachers = async () => {
   let response = await axios.post(
-    "https://redbridge.algorithmic.uz/api/Authentication/registrate",
+    "https://rb.algorithmic.uz/api/Authentication/registrate",
     {
       firstName: firstName.value,
       lastName: lastName.value,

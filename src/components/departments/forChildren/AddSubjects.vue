@@ -110,7 +110,7 @@ let store = useStore()
 onMounted(async () => {
  
   let subject = await axios.get(
-    "https://redbridge.algorithmic.uz/api/Teachers"
+    "https://rb.algorithmic.uz/api/Teachers"
   );
   subject.data.forEach((el) => {
     subjects.value.push(el);
@@ -124,7 +124,7 @@ onMounted(async () => {
 
 let PostSubject = async () => {
   let response = await axios.post(
-    `https://redbridge.algorithmic.uz/api/Subjects`,
+    `https://rb.algorithmic.uz/api/Subjects`,
     {
       name: subjectName.value,
       teacher:picked.value,

@@ -63,7 +63,7 @@ let loade = ref(false)
 let Request = () => {
   loade.value = true
   Axios.post(
-    "https://redbridge.algorithmic.uz/api/Authentication",
+    "https://rb.algorithmic.uz/api/Authentication",
     {
       userName: email.value,
       password: password.value,

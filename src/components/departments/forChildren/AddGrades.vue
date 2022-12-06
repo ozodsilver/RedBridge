@@ -93,7 +93,7 @@ let isActive = ref(true);
 let loader = ref(false)
 onMounted(async () => {
   let teacher = await axios.get(
-    "https://redbridge.algorithmic.uz/api/Teachers"
+    "https://rb.algorithmic.uz/api/Teachers"
   );
   teacher.data.forEach((el) => {
     teachers.value.push(el);
@@ -102,7 +102,7 @@ onMounted(async () => {
 
 let PostGrade = async () => {
   let response = await axios.post(
-    "https://redbridge.algorithmic.uz/api/Grades",
+    "https://rb.algorithmic.uz/api/Grades",
     {
       name: gradeName.value,
       curator: picked.value,

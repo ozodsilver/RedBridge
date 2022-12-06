@@ -78,7 +78,7 @@ let infos = ref([]);
 onMounted(async () => {
   await axios
     .get(
-      "https://redbridge.algorithmic.uz/api/Grades",
+      "https://rb.algorithmic.uz/api/Grades",
 
       {
         headers: {
@@ -97,7 +97,7 @@ onMounted(async () => {
 });
 
 let deleteGrades = (id, index)=>{
-  axios.delete(`https://redbridge.algorithmic.uz/api/Grades?id=${id}`, 
+  axios.delete(`https://rb.algorithmic.uz/api/Grades?id=${id}`, 
   {
     headers:{
       'Content-type':'application.json',

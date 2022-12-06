@@ -119,7 +119,7 @@ let students = ref([]);
 
 onMounted(async () => {
   let res = await axios.get(
-    `https://redbridge.algorithmic.uz/api/Students/ByGrade/${id}`,
+    `https://rb.algorithmic.uz/api/Students/ByGrade/${id}`,
   
     {
       headers: {
@@ -141,7 +141,7 @@ let deleteStudents = async(id, index)=>{
 
   students.value.splice(index,1)
   
-let  response = await axios.delete(`https://redbridge.algorithmic.uz/api/Students?guid=${id}`,
+let  response = await axios.delete(`https://rb.algorithmic.uz/api/Students?guid=${id}`,
 {
     headers:{
         'Content-Type':'application/json',

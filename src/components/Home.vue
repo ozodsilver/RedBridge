@@ -109,7 +109,7 @@ export default {
       teachers.value.splice(removedEl, 1);
 
       let res = await axios.delete(
-        `https://redbridge.algorithmic.uz/api/Teachers?userName=${userName}`,
+        `https://rb.algorithmic.uz/api/Teachers?userName=${userName}`,
         {
           headers: {
             "Content-Type": "application/json-patch+json",
@@ -121,7 +121,7 @@ export default {
 
     onMounted(async () => {
       let teacher = await axios.get(
-        "https://redbridge.algorithmic.uz/api/Teachers"
+        "https://rb.algorithmic.uz/api/Teachers"
       );
       teacher.data.forEach((el) => {
         teachers.value.push(el);
