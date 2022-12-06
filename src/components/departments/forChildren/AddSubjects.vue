@@ -96,7 +96,7 @@ import axios from "axios";
 import { ref, onMounted, } from "vue";
 import { useRouter } from "vue-router";
 import {useStore} from 'vuex'
-
+import base from '../../../reusables/getInfos'
 
 let subjects = ref([]);
 let picked = ref();
@@ -110,7 +110,7 @@ let store = useStore()
 onMounted(async () => {
  
   let subject = await axios.get(
-    "https://rb.algorithmic.uz/api/Teachers"
+    `${base}Teachers`
   );
   subject.data.forEach((el) => {
     subjects.value.push(el);
@@ -124,7 +124,7 @@ onMounted(async () => {
 
 let PostSubject = async () => {
   let response = await axios.post(
-    `https://rb.algorithmic.uz/api/Subjects`,
+    `${base}Subjects`,
     {
       name: subjectName.value,
       teacher:picked.value,

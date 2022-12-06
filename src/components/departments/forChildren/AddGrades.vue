@@ -84,7 +84,7 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
-
+import base from '../../../reusables/getInfos'
 let teachers = ref([]);
 let picked = ref();
 let gradeName = ref("");
@@ -93,7 +93,7 @@ let isActive = ref(true);
 let loader = ref(false)
 onMounted(async () => {
   let teacher = await axios.get(
-    "https://rb.algorithmic.uz/api/Teachers"
+    `${base}Teachers`
   );
   teacher.data.forEach((el) => {
     teachers.value.push(el);
@@ -102,7 +102,7 @@ onMounted(async () => {
 
 let PostGrade = async () => {
   let response = await axios.post(
-    "https://rb.algorithmic.uz/api/Grades",
+    `${base}Grades`,
     {
       name: gradeName.value,
       curator: picked.value,

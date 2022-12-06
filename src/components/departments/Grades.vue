@@ -73,6 +73,9 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import Nav from "../MiniComponents/Navigation.vue";
+import base from '../../reusables/getInfos'
+
+
 let loade = ref(true);
 let empty = ref(false)
 let grades = ref("Grades");
@@ -81,7 +84,7 @@ let infos = ref([]);
 onMounted(async () => {
   await axios
     .get(
-      "https://rb.algorithmic.uz/api/Grades",
+      `${base}Grades`,
 
       {
         headers: {
@@ -105,7 +108,7 @@ onMounted(async () => {
 });
 
 let deleteGrades = (id, index)=>{
-  axios.delete(`https://rb.algorithmic.uz/api/Grades?id=${id}`, 
+  axios.delete(`${base}Grades?id=${id}`, 
   {
     headers:{
       'Content-type':'application.json',

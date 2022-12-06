@@ -80,7 +80,7 @@
   import { ref, onMounted, } from "vue";
   import { useRouter } from "vue-router";
   import {useStore} from 'vuex'
- 
+ import base from '../../../reusables/getInfos'
   let students = ref([]);
 
   let firstName = ref('')
@@ -94,7 +94,7 @@
   
   
   onMounted(async () => {
-    let subject = await axios.get(`https://rb.algorithmic.uz/api/Subjects/${store.state.id}`, 
+    let subject = await axios.get(`${base}Subjects/${store.state.id}`, 
    {
     headers:{
           'Content-Type':'application/json',
@@ -114,7 +114,7 @@
   
   let PostStudent = async () => {
     let response = await axios.post(
-      `https://rb.algorithmic.uz/api/Students`,
+      `${base}Students`,
       {
         firstName: firstName.value,
         lastName:lastName.value,

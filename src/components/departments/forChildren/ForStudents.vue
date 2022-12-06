@@ -110,6 +110,8 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import {useStore} from 'vuex'
+import base from '../../../reusables/getInfos'
+
 
 let store = useStore()
 let router = useRouter()
@@ -119,7 +121,7 @@ let students = ref([]);
 
 onMounted(async () => {
   let res = await axios.get(
-    `https://rb.algorithmic.uz/api/Students/ByGrade/${id}`,
+    `${base}Students/ByGrade/${id}`,
   
     {
       headers: {
@@ -141,7 +143,7 @@ let deleteStudents = async(id, index)=>{
 
   students.value.splice(index,1)
   
-let  response = await axios.delete(`https://rb.algorithmic.uz/api/Students?guid=${id}`,
+let  response = await axios.delete(`${base}Students?guid=${id}`,
 {
     headers:{
         'Content-Type':'application/json',

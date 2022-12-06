@@ -62,16 +62,19 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
+import base from '../../../reusables/getInfos'
 let router = useRouter();
 let route = useRoute();
 let id = route.params.id;
 let subjects = ref([]);
 const store = useStore();
 
+
+
 let loade = ref(true);
 onMounted(async () => {
   let res = await axios.get(
-    `https://rb.algorithmic.uz/api/Subjects/${id}`,
+    `${base}Subjects/${id}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -85,11 +88,16 @@ onMounted(async () => {
     loade.value = false;
     store.state.id = id;
   });
+
+if(subjects.value.length == 0){
+  loade.value = false
+}
+
 });
 
 let deleteSubject = async (id, index) => {
   let response = await axios.delete(
-    `https://rb.algorithmic.uz/api/Subjects?Id=${id}`,
+    `${base}Subjects?Id=${id}`,
     {
       headers: {
         "Content-Type": "application/json",

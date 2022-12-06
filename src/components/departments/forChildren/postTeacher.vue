@@ -89,6 +89,8 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import base from '../../../reusables/getInfos'
+
 let user = ref()
 let show = ref(false);
 let firstName = ref();
@@ -104,7 +106,7 @@ let backOneStep = () => {
 
 let PostTeachers = async () => {
   let response = await axios.post(
-    "https://rb.algorithmic.uz/api/Authentication/registrate",
+    `${base}Authentication/registrate`,
     {
       firstName: firstName.value,
       lastName: lastName.value,

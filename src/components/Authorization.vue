@@ -54,16 +54,25 @@
 </template>
 <script setup>
 import Axios from "axios";
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import { useRouter } from "vue-router";
+import base from '../reusables/getInfos'
 let router = useRouter();
 let email = ref("");
 let password = ref("");
 let loade = ref(false)
+
+
+onMounted(() => {
+  console.log(base);
+})
+
+
+
 let Request = () => {
   loade.value = true
   Axios.post(
-    "https://rb.algorithmic.uz/api/Authentication",
+    `${base}Authentication`,
     {
       userName: email.value,
       password: password.value,
