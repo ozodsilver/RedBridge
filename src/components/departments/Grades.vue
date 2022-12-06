@@ -2,7 +2,7 @@
   <div>
     <Nav :grades="grades"></Nav>
 
-
+    <h1 class="text-center mt-5" v-if="empty">The Grades section is empty</h1>
     <div 
         class="text-center d-flex justify-content-center align-items-center"
         style="height: 100vh" 
@@ -11,11 +11,13 @@
         <div class="spinner-border text-info" role="status"></div>
       </div>
 
+     
+
 
     <div class="container" v-else-if="!loade">
      
 
-      <h3 class="m-0 pt-5 text-secondary">Classes</h3>
+      <h3 class="m-0 pt-5 text-secondary" v-if="!empty">Classes</h3>
       <div class="row">
         <div class="col-6" v-for="(info, index) in infos" :key="info.id">
           <div class="card mt-5 shadow-lg ">
@@ -72,6 +74,7 @@ import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import Nav from "../MiniComponents/Navigation.vue";
 let loade = ref(true);
+let empty = ref(false)
 let grades = ref("Grades");
 let infos = ref([]);
 
@@ -94,6 +97,11 @@ onMounted(async () => {
         loade.value = false;
       });
     });
+
+   if(infos.value.length == 0){
+    loade.value = false
+    empty.value = true
+   }
 });
 
 let deleteGrades = (id, index)=>{

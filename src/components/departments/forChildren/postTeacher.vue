@@ -33,9 +33,10 @@
         <div class="col-6">
           <input
             type="text"
-            class="form-control-lg w-100"
+            class="form-control-lg  w-100"
             placeholder="Username"
             v-model="userName"
+            ref = 'user'
           />
         </div>
 
@@ -66,6 +67,7 @@
           <button
             class="btn btn-success bg-gradient w-25 float-end"
             @click="PostTeachers"
+            ref="send"
           >
             Add teacher <i class="fas fa-plus"></i>
           </button>
@@ -85,16 +87,16 @@
 
 <script setup>
 import axios from "axios";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
-
-let show = ref(false)
+let user = ref()
+let show = ref(false);
 let firstName = ref();
 let lastName = ref();
 let fatherName = ref();
 let userName = ref();
 let password = ref();
-
+let send = ref();
 let router = useRouter();
 let backOneStep = () => {
   router.go(-1);
@@ -119,24 +121,35 @@ let PostTeachers = async () => {
   );
 
   if (response.data) {
-    show.value = true
-
-
-    firstName.value = ''
-    lastName.value = ''
-    fatherName.value = ''
-    userName.value = ''
-    password.value = ''
-
-
+    show.value = true;
+    firstName.value = "";
+    lastName.value = "";
+    fatherName.value = "";
+    userName.value = "";
+    password.value = "";
 
     setTimeout(() => {
-        show.value = false
+      show.value = false;
     }, 3000);
   }
 
   console.log(response);
 };
+
+watch(userName, () => {
+  if (userName.value == "admin") {
+    send.value.setAttribute("disabled", "");
+    send.value.setAttribute("class", "btn btn-danger text-white bg-gradient w-25 float-end");
+    send.value.innerHTML = 'addition is prohibited !'
+user.value.setAttribute('class', 'border border-danger form-control-lg  w-100')
+
+  } else {
+    send.value.removeAttribute("disabled", "");
+    send.value.setAttribute("class", "btn btn-success text-white text-dark bg-gradient w-25 float-end");
+    send.value.innerHTML = 'Add Teacher'
+    user.value.setAttribute('class', 'form-control-lg  w-100')
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -156,5 +169,9 @@ let PostTeachers = async () => {
   100% {
     transform: scale(1);
   }
+}
+
+.btn {
+  transition: 0.1s;
 }
 </style>
