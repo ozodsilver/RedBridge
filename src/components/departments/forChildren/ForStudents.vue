@@ -6,8 +6,7 @@
       <div class="row">
         <div
           class="col-12 mt-4"
-          v-for="(student, index) in students"
-          :key="student.id"
+         
         >
           <!-- <div class="card shadow">
             <div class="card-body">
@@ -41,114 +40,54 @@
             </div>
           </div> -->
 
-          <table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Father Name</th>
-      <th>Position</th>
-      <th>Actions</th>
+          <table class="table align-middle table-striped table-hover table-dark rounded bg-gradient mb-0 bg-white">
+  <thead class="bg-light rounded">
+    <tr class="rounded border-0">
+      <th class="rounded-5">First Name</th>
+      <th class="rounded-5">Last Name</th>
+      <th class="rounded-5">Father Name</th>
+      <th class="rounded-5">Status</th>
+      <th class="rounded-5 text-center">Delete</th>
+      
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
+    <tr class="border-0"  v-for="(student, index) in students"
+          :key="student.id">
+      <td class="rounded-5">
         <div class="d-flex align-items-center">
-          <img
-              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-              alt=""
-              style="width: 45px; height: 45px"
-              class="rounded-circle"
-              />
+          <i class="fas fa-user-circle fa-2x text-secondary"></i>
           <div class="ms-3">
-            <p class="fw-bold mb-1">John Doe</p>
-            <p class="text-muted mb-0">john.doe@gmail.com</p>
+            <p class="fw-bold mb-1">Name: {{student.firstName}}</p>
+            
           </div>
         </div>
       </td>
-      <td>
-        <p class="fw-normal mb-1">Software engineer</p>
-        <p class="text-muted mb-0">IT department</p>
+      <td class="rounded-5">
+        <p class="fw-normal mb-1">{{student.lastName}} </p>
+       
       </td>
-      <td>
+
+      <td class="rounded-5">
+        <p class="fw-normal mb-1">{{student.fatherName}} </p>
+       
+      </td>
+
+
+
+
+      <td class=" rounded-5">
         <span class="badge badge-success rounded-pill d-inline">Active</span>
       </td>
-      <td>Senior</td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Edit
-        </button>
+    
+      <td class=" rounded-5 text-center">
+        <i class="fas fa-trash-alt  p-2 bg-light text-danger rounded-2 shadow" style="cursor:pointer" @click="deleteStudents(student.id, index)"></i>
       </td>
+    
+     
     </tr>
-    <tr>
-      <td>
-        <div class="d-flex align-items-center">
-          <img
-              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-              class="rounded-circle"
-              alt=""
-              style="width: 45px; height: 45px"
-              />
-          <div class="ms-3">
-            <p class="fw-bold mb-1">Alex Ray</p>
-            <p class="text-muted mb-0">alex.ray@gmail.com</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">Consultant</p>
-        <p class="text-muted mb-0">Finance</p>
-      </td>
-      <td>
-        <span class="badge badge-primary rounded-pill d-inline"
-              >Onboarding</span
-          >
-      </td>
-      <td>Junior</td>
-      <td>
-        <button
-                type="button"
-                class="btn btn-link btn-rounded btn-sm fw-bold"
-                data-mdb-ripple-color="dark"
-                >
-          Edit
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="d-flex align-items-center">
-          <img
-              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-              class="rounded-circle"
-              alt=""
-              style="width: 45px; height: 45px"
-              />
-          <div class="ms-3">
-            <p class="fw-bold mb-1">Kate Hunington</p>
-            <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">Designer</p>
-        <p class="text-muted mb-0">UI/UX</p>
-      </td>
-      <td>
-        <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
-      </td>
-      <td>Senior</td>
-      <td>
-        <button
-                type="button"
-                class="btn btn-link btn-rounded btn-sm fw-bold"
-                data-mdb-ripple-color="dark"
-                >
-          Edit
-        </button>
-      </td>
-    </tr>
+  
+ 
   </tbody>
 </table>
         </div>
@@ -199,6 +138,9 @@ onMounted(async () => {
 });
 
 let deleteStudents = async(id, index)=>{
+
+  students.value.splice(index,1)
+  
 let  response = await axios.delete(`https://redbridge.algorithmic.uz/api/Students?guid=${id}`,
 {
     headers:{
@@ -207,7 +149,7 @@ let  response = await axios.delete(`https://redbridge.algorithmic.uz/api/Student
     }
 })
 console.log(response);
-students.value.splice(index,1)
+
 
 }
 </script>
