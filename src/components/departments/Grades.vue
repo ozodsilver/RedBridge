@@ -27,18 +27,20 @@
             </div>
             <div class="card-body py-5">
               <div class="d-flex align-items-center gap-1 w-100">
+               <div class="w-100 d-flex gap-1">
                 <router-link
                   :to="{ name: 'ForSubjects', params: { id: info.id } }"
-                  class="btn w-25 btn-outline-secondary"
+                  class="btn w-50 btn-outline-secondary"
                   >Subjects</router-link
                 >
 
 
                 <router-link
                   :to="{ name: 'ForStudents', params: { id: info.id } }"
-                  class="btn w-25 btn-outline-secondary"
+                  class="btn w-50 btn-outline-secondary"
                   >Students</router-link
                 >
+               </div>
                 <btn
                   
                   class="
