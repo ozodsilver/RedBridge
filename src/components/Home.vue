@@ -88,6 +88,7 @@
 import axios from "axios";
 import Nav from "../components/MiniComponents/Navigation.vue";
 import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
 export default {
   components: {
     Nav,
@@ -98,6 +99,7 @@ export default {
   },
 
   setup() {
+    let store = useStore()
     let users = ref("Teachers");
     let teachers = ref([]);
 
@@ -105,6 +107,7 @@ export default {
       let removedEl = teachers.value.findIndex((x, idx) => idx == teacherId);
 
       console.log(removedEl);
+      
 
       teachers.value.splice(removedEl, 1);
 
@@ -126,9 +129,11 @@ export default {
       teacher.data.forEach((el) => {
         teachers.value.push(el);
       });
+
+      console.log(store.state);
     });
 
-    return { users, deleteTeacher, teachers };
+    return { users, deleteTeacher, teachers, store };
   },
 };
 </script>

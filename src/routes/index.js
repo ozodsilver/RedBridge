@@ -11,6 +11,8 @@ import ForSubjects from '../components/departments/forChildren/ForSubjects.vue'
 import AddSubjects from '../components/departments/forChildren/AddSubjects.vue'
 import ForStudents from '../components/departments/forChildren/ForStudents.vue'
 import AddStudents from '../components/departments/forChildren/AddStudents.vue'
+
+import store from '../store/store'
 const routes = [
     {
         path:'/',
@@ -24,7 +26,6 @@ const routes = [
     },
 
     
- 
 
     {
         path:'/Students',
@@ -71,14 +72,6 @@ const routes = [
 
 
 
-
-
-
-
-
-
-
-
     {
         path:'/ForSubjects/:id',
         name:'ForSubjects',
@@ -92,16 +85,25 @@ const routes = [
         component:ForStudents,
         props:true  
     }
-
-
-    
+ 
 ]
-
-
 
 const router = createRouter({
     routes,
     history: createWebHashHistory(),
 })
+
+router.beforeEach(async (to, from )=>{
+// console.log('to',to);
+// console.log(store.state);
+// console.log('from:', from);
+if((to.name !== 'auth') && store.state.isAuthenticated == false){
+    return {name:'auth'}
+}
+
+})
+
+
+
 
 export default router;

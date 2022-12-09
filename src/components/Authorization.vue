@@ -56,11 +56,14 @@
 import Axios from "axios";
 import { ref,onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 import base from '../reusables/getInfos'
+let store = useStore()
 let router = useRouter();
 let email = ref("");
 let password = ref("");
 let loade = ref(false)
+
 
 
 onMounted(() => {
@@ -85,6 +88,7 @@ let Request = () => {
   ).then((el) => {
     console.log(el);
     if (el.data) {
+store.state.isAuthenticated = true
       localStorage.setItem("jwt", el.data);
       router.push({ name: "home" });
     } else {
