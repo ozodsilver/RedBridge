@@ -112,7 +112,7 @@ export default {
       teachers.value.splice(removedEl, 1);
 
       let res = await axios.delete(
-        `https://rb.algorithmic.uz/api/Teachers?userName=${userName}`,
+        `${base}Teachers?userName=${userName}`,
         {
           headers: {
             "Content-Type": "application/json-patch+json",
@@ -124,7 +124,7 @@ export default {
 
     onMounted(async () => {
       let teacher = await axios.get(
-        "https://rb.algorithmic.uz/api/Teachers"
+        `${base}Teachers`
       );
       teacher.data.forEach((el) => {
         teachers.value.push(el);
