@@ -39,7 +39,7 @@
             />
             <button @click.prevent="Request" class=" d-flex justify-content-center align-items-center">
               <span v-if="!loade">Login</span>
-              <div class="spinner-border fw-lighter py-1 " style="font-sizde:10px" role="status" v-else></div>
+              <div class="spinner-border fw-lighter py-1 " style="font-sizde:10px" v-if = 'loade'></div>
             </button>
           </form>
 
@@ -67,7 +67,7 @@ let loade = ref(false)
 
 
 onMounted(() => {
-  console.log(base);
+
 })
 
 
@@ -87,14 +87,17 @@ let Request = () => {
     }
   ).then((el) => {
     console.log(el);
+  
     if (el.data) {
 store.state.isAuthenticated = true
       localStorage.setItem("jwt", el.data);
       router.push({ name: "home" });
-    } else {
-      alert("xato login yoki parol");
     }
-  });
+  }).catch(err =>{
+    loade.value = false
+    alert("xato login yoki parol");
+ 
+  })
 };
 </script>
 <style lang="scss">

@@ -94,16 +94,11 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from )=>{
-// console.log('to',to);
-// console.log(store.state);
-// console.log('from:', from);
+
 if((to.name !== 'auth') && store.state.isAuthenticated == false){
     return {name:'auth'}
 }
 
 })
-
-
-
 
 export default router;
