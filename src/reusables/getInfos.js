@@ -1,4 +1,4 @@
 
-let  base = 'http://192.168.0.36:5123/api/'
+let  base = 'http://localhost:5123/api/'
 
 export default base;
