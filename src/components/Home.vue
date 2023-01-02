@@ -89,6 +89,7 @@ import axios from "axios";
 import Nav from "../components/MiniComponents/Navigation.vue";
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
+import base from '../reusables/getInfos'
 export default {
   components: {
     Nav,
