@@ -45,7 +45,7 @@
       :to="{ name: 'AddSubjects' }"
       class="btn btn-success position-fixed"
       style="bottom: 20px; right: 20px; width: 200px"
-      @click="this.$store.state.id = id"
+      @click="addId"
       >Add Subjects <i class="fas fa-plus-circle"></i
     ></router-link>
 
@@ -69,7 +69,9 @@ let id = route.params.id;
 let subjects = ref([]);
 const store = useStore();
 
-
+let addId = ()=>{
+ store.state.id = id
+}
 
 let loade = ref(true);
 onMounted(async () => {
