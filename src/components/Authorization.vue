@@ -45,7 +45,7 @@
 
           <img alt="" class="w-25 m-auto d-block" />
           <h4 class="text-center mt-3 animation">
-            <span id="dilkhush">Red Bridge</span> Admin Panel
+            <span id="dilkhush">RedBridge</span> Admin Panel
           </h4>
         </div>
       </div>
