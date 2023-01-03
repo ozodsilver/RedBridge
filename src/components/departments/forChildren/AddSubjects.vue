@@ -118,7 +118,7 @@ onMounted(async () => {
 
   console.log(subject);
 
-  console.log(store.state.id);
+  console.log("guid" +  "  " + store.state.id);
 
 });
 
