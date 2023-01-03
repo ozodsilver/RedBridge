@@ -96,7 +96,7 @@ import axios from "axios";
 import { ref, onMounted, } from "vue";
 import { useRouter } from "vue-router";
 import {useStore} from 'vuex'
-import base from '../../../reusables/getInfos'
+import base from '../../../reusables/getInfos.js'
 
 let subjects = ref([]);
 let picked = ref();
