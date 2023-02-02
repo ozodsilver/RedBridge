@@ -11,9 +11,11 @@
 
     <div class="container">
       <div class="row">
-        <label for="search">Search</label>
-        <input type="text" class="form-control p-4 mt-3" id="search" placeholder="Search by name">
-        <div class="col-4" v-for="info in infos" :key="info.id">
+      
+        <input type="text" class="form-control p-3 mt-5 border-0" id="search" placeholder="Search by name" v-model="input" @input="publishedBooksMessage">
+        <div class="col-4" v-for="info in findInfo" :key="info.id">
+
+         
           <router-link
             :to="{ name: 'forParent', params: { id: info.id } }"
             class="btn btn shadow-3 w-100 text-white mt-5"
@@ -36,7 +38,7 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive, computed } from "vue";
 import base from '../../src/reusables/getInfos'
 import navigation from "../components/MiniComponents/Navigation.vue";
 import { useStore } from "vuex";
@@ -45,6 +47,7 @@ let parents = ref("parents");
 let show = ref(true)
 let infos = reactive([])
 let store = useStore()
+let input = ref('')
 
 
 onMounted(async() => {
@@ -52,6 +55,8 @@ onMounted(async() => {
     headers:{
       Authorization: `Bearer ${localStorage.getItem('jwt')}`
     }
+
+ 
   })
 
   console.log(request.data);
@@ -62,6 +67,24 @@ onMounted(async() => {
 infos.push(res)
 show.value = false
   })
+})
+
+
+// setTimeout(() => {
+//   function filteredList(){
+//   return infos.filter((list)=>{
+//     list.toLowerCase().includes(input.value.toLowerCase())
+//   })
+// }
+// }, 1000);
+
+let findInfo = computed(()=>{
+
+  return infos.filter((list)=>{
+    return list.userName.includes(input.value)
+  })
+
+
 })
 
 
