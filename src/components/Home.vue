@@ -4,22 +4,6 @@
 
     <div class="container py-5">
       <div class="row">
-        <h1
-          v-if="teachers.length == 0"
-          class="
-            text-center
-            d-flex
-            align-items-center
-            justify-content-center
-            gap-3
-            position-relative
-           
-          "
-       style="margin-top:50%"
-        >
-        Loading...
-        </h1>
-
         <div
           class="col-6"
           v-for="(teacher, index) in teachers"

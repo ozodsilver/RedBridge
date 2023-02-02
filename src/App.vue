@@ -3,12 +3,17 @@ import Authorization from "./components/Authorization.vue";
 </script>
 
 <template>
-  <div>
+  <div id = 'App'>
     <router-view v-slot="{ Component }">
   <transition name="fade">
     <component :is="Component" />
   </transition>
 </router-view>
+  </div>
+
+
+  <div style="height:100vh" class="d-flex align-items-center " id="text">
+    <h1 class="text-center">The application cannot be accessed from a device of this size</h1>
   </div>
 </template>
 
@@ -37,6 +42,35 @@ body {
 .fade-leave-to {
   opacity: 0;
   filter: blur(3px);
+}
+
+
+.router-link-exact-active{
+  box-shadow: 0 10px 10px rgb(204, 205, 205);
+  background: #A5ACB7;
+  color: white;
+  
+}
+
+
+
+@media ( max-width:800px ) {
+  #App{
+    display: none !important ;
+  }
+
+  #text{
+    display: block !important;
+  }
+}
+
+
+@media ( min-width:900px ) {
+ 
+
+  #text{
+    display: none !important;
+  }
 }
 
 
