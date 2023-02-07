@@ -12,7 +12,7 @@
     <div class="container">
       <div class="row">
       
-        <input type="text" class="form-control p-4 mt-5 border-0" id="search" placeholder="Search by name" v-model="input" @input="publishedBooksMessage">
+        <input type="text" class="form-control p-4 mt-5 border-0" id="search"  data-key = 'search'  placeholder="Search by name" v-model="input" @input="publishedBooksMessage">
         <div class="col-4" v-for="info in findInfo" :key="info.id">
 
          
@@ -60,10 +60,21 @@ onMounted(async() => {
  
   })
 
-  console.log(request.data);
+  request.data.sort((a,b)=>{
+    if(a.userName < b.userName){
+return -1
+    }
+
+    if(a.userName > b.userName){
+      return 1
+    }
+    return 0
+  });
   if(request.data.length == 0){
     show.value = false
   }
+  
+  
   request.data.forEach((res)=>{
 infos.push(res)
 show.value = false
@@ -97,4 +108,8 @@ store.state.parentId = pid
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a{
+  text-transform: capitalize !important;
+}
+</style>

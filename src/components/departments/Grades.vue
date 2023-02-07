@@ -97,6 +97,18 @@ onMounted(async () => {
     )
     .then((res) => {
       console.log(res);
+
+res.data.sort((a,b)=>{
+    if(a.name < b.name){
+return -1
+    }
+
+    if(a.name > b.name){
+      return 1
+    }
+    return 0
+  })
+
       res.data.forEach((el) => {
         infos.value.push(el);
         loade.value = false;

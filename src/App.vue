@@ -75,9 +75,21 @@ body {
 
 
 input[data-key = 'search']{
-  background: url('https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png')  20% 50% no-repeat center;
+  background: white url('https://cdn0.iconfinder.com/data/icons/ikonate/48/search-256.png');
+  background-size: contain;
+  background-position: 98% ;
+      background-size: 31px 31px;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  transition: 0.5s;
+  
 }
 
+input[data-key = 'search']:focus{
+  transform: translateY(-10px);
+  box-shadow: 10px 15px 10px #c5c5c6!important;
+  outline: 1px rgba(98, 34, 202, 0.348) solid
+}
 
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');  
