@@ -3,15 +3,17 @@
     <Nav :userlar="users"></Nav>
 
     <div class="container py-5">
+
+      <input type="text" class="form-control p-4 border-0 shadow " placeholder="Search byName Teacher">
       <div class="row">
         <div
           class="col-6"
           v-for="(teacher, index) in teachers"
           :key="teacher.id"
         >
-          <div class="card mt-4 border border-top-0 border-light" v-if="teachers.length >= 1">
-            <div class="card-header bg-secondary text-white bg-gradient">
-              About Teachers 
+          <div class="card mt-4 border border-top-0 border-light  " v-if="teachers.length >= 1" >
+            <div class="card-header bg-secondary text-white bg-gradient" >
+              About Teacher 
             </div>
             <div class="card-body">
               <h6 class="card-title text-muted">
@@ -127,12 +129,21 @@ export default {
 <style lang="scss">
 .card{
   transition: 0.1s linear;
+border-left: 7px inset  rgba(229, 235, 232, 0.915) !important;
+
+
+.card-header{
+  border-top-left-radius: 0px !important;
+}
+
 &:hover{
   transform: scale(1.01) translateX(-8px) translateY(4px);
   position: relative;
   z-index: 333;
-  box-shadow: 10px -10px 5px rgb(206, 204, 204);
+  box-shadow: 10px -10px 5px rgb(204, 206, 205);
 }
+
+
 }
 
 

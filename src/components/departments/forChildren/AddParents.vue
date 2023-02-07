@@ -67,6 +67,9 @@ let createUser = () => {
       
      }, 10);
 
+     userName.value = ''
+     password.value = ''
+
      setTimeout(() => {
       loade.value = false
      }, 2000);

@@ -74,6 +74,11 @@ body {
 }
 
 
+input[data-key = 'search']{
+  background: url('https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png')  20% 50% no-repeat center;
+}
+
+
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');  
 </style>
