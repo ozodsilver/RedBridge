@@ -81,11 +81,14 @@
                 </td>
 
                 <td class="rounded-5">
-              <div class="d-flex">
-                  <input type="datetime-local">
+              <div class="d-flex position-relative">
+                <div class="badge position-absolute h-25 bg-secondary" style="top:10px">
+{{ student }}
+                </div>
+                  <input type="date">
                 <button class=" btn-success w-25">send</button>
               </div>
-                  
+                  f
                 </td>
 
                 <td class="rounded-5 text-center">
@@ -141,6 +144,10 @@ onMounted(async () => {
     console.log(el);
     students.value.push(el);
   });
+
+
+
+
 });
 
 let deleteStudents = async (id, index) => {

@@ -111,5 +111,10 @@ store.state.parentId = pid
 <style lang="scss" scoped>
 a{
   text-transform: capitalize !important;
+  transition: 0.4s;
+  &:hover{
+    color:"#3CA579" !important;
+    background: rgb(106, 106, 106) !important;
+  }
 }
 </style>
