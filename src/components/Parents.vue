@@ -18,7 +18,7 @@
          
           <router-link
             :to="{ name: 'forParent', params: { id: info.id } }"
-            class="btn btn shadow-3 w-100 text-white mt-5"
+            class="btn btn shadow-3 w-100 rounded-pill text-white mt-5"
             style="background: #a5acb7"
             data-mdb-ripple-color="secondary"
             @click="addUserName(info.userName, info.id)"
@@ -30,7 +30,7 @@
 
     <router-link
       to="/AddParents"
-      class="btn btn-success position-fixed"
+      class="btn btn-success rounded-pill position-fixed"
       style="bottom: 20px; right: 20px; width: 200px"
       >Add parent <i class="fas fa-plus-circle"></i
     ></router-link>

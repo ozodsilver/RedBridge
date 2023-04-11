@@ -42,17 +42,25 @@
               <div class="spinner-border fw-lighter py-1 " style="font-sizde:10px" v-if = 'loade'></div>
             </button>
           </form>
-
+       
           <img alt="" class="w-25 m-auto d-block" />
-          <h4 class="text-center mt-3 animation">
+          <h4 class="text-center mt-3 animation" @click="info">
             <span id="dilkhush">Red Bridge</span> Admin Panel
           </h4>
         </div>
       </div>
     </div>
   </div>
+
+
+
 </template>
+
+
+
+
 <script setup>
+
 import Axios from "axios";
 import { ref,onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -91,12 +99,16 @@ let Request = () => {
     if (el.data) {
 store.state.isAuthenticated = true
       localStorage.setItem("jwt", el.data);
-      router.push({ name: "home" });
+      router.push({ name: "classes" });
+    }else{
+   
     }
   }).catch(err =>{
     loade.value = false
-    alert("xato login yoki parol");
+    alert("xato login yoki parol" + err.message);
  
+  }).finally(()=>{
+  loade.value = false
   })
 };
 </script>

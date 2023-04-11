@@ -17,6 +17,8 @@ import AddParents from "../components/departments/forChildren/AddParents.vue";
 import forParent from "../components/departments/forChildren/forParent.vue";
 import AddStudentForParent from "../components/departments/forChildren/AddStudentForParent.vue";
 import SelectStudent from "../components/departments/forChildren/SelectStudent.vue";
+import classes from '../components/departments/classes.vue'
+
 
 import store from "../store/store";
 const routes = [
@@ -24,6 +26,12 @@ const routes = [
     path: "/",
     name: "auth",
     component: Authorization,
+  },
+
+  {
+path:'/classes',
+name:'classes',
+component: classes
   },
   {
     path: "/Home",

@@ -11,11 +11,7 @@
         v-model="homeInput"
       />
       <div class="row">
-        <div
-          class="col-6"
-          v-for="(teacher, index) in findInfo"
-          :key="teacher.id"
-        >
+        <div class="col-6" v-for="(teacher, index) in findInfo" :key="teacher.id">
           <div
             class="card mt-4 border border-top-0 border-light"
             v-if="teachers.length >= 1"
@@ -29,9 +25,7 @@
                 <span class="fs-6 text-dark">{{ teacher.firstName }}</span>
               </h6>
               <h6 class="card-title text-muted">
-                Last name:<span class="fs-6 text-dark"
-                  >{{ teacher.lastName }}
-                </span>
+                Last name:<span class="fs-6 text-dark">{{ teacher.lastName }} </span>
               </h6>
               <h6 class="card-title text-muted">
                 Father name:
@@ -140,9 +134,7 @@ export default {
     let findInfo = computed(() => {
       console.log(teachers.value);
       return teachers.value.filter((list) => {
-        return list.userName
-          .toUpperCase()
-          .includes(homeInput.value.toUpperCase());
+        return list.userName.toUpperCase().includes(homeInput.value.toUpperCase());
       });
     });
 
@@ -154,8 +146,8 @@ export default {
 <style lang="scss">
 .card {
   transition: 0.1s linear;
-  border-left: 4px solid #AAB0BA !important;
- border-right: 4px solid #AAB0BA !important;
+  border-left: 4px solid #aab0ba !important;
+  border-right: 4px solid #aab0ba !important;
   .card-header {
     border-top-left-radius: 0px !important;
     border-top-right-radius: 0px !important;

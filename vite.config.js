@@ -7,8 +7,14 @@ export default defineConfig({
   plugins: [
     vue({
      
+     
     }),
 
-    
-  ]
+   
+  ],
+
+  "compilerOptions": {
+    // ...
+    "types": ["naive-ui/volar"]
+  }
 })

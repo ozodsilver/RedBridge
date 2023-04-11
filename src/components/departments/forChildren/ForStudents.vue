@@ -59,11 +59,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                class="border-0"
-                v-for="(student, index) in students"
-                :key="student.id"
-              >
+              <tr class="border-0" v-for="(student, index) in students" :key="student.id">
                 <td class="rounded-5">
                   <div class="d-flex align-items-center">
                     <i class="fas fa-user-circle fa-2x text-secondary"></i>
@@ -81,13 +77,18 @@
                 </td>
 
                 <td class="rounded-5">
-              <div class="d-flex position-relative">
-                <div class="badge position-absolute h-25 bg-secondary" style="top:10px">
-{{ student }}
-                </div>
-                  <input type="date">
-                <button class=" btn-success w-25">send</button>
-              </div>
+                  <div class="d-flex position-relative">
+                    <div
+                      class="badge position-absolute h-25 bg-secondary"
+                      style="top: 10px"
+                    >
+                      {{ new Date(student.activeDate).toDateString() }}
+                    </div>
+                    <input type="date" v-model="Time" />
+                    <button @click="updateTime(student.id)" class="btn-success w-25">
+                      send
+                    </button>
+                  </div>
                   f
                 </td>
 
@@ -126,7 +127,7 @@ let router = useRouter();
 let route = useRoute();
 let id = route.params.id;
 let students = ref([]);
-
+let Time = ref("");
 onMounted(async () => {
   let res = await axios.get(
     `${base}Students/ByGrade/${id}`,
@@ -144,10 +145,6 @@ onMounted(async () => {
     console.log(el);
     students.value.push(el);
   });
-
-
-
-
 });
 
 let deleteStudents = async (id, index) => {
@@ -160,6 +157,28 @@ let deleteStudents = async (id, index) => {
     },
   });
   console.log(response);
+};
+
+let updateTime = async (studentId) => {
+
+  try {
+    axios
+      .patch(`${base}Students?studentId=${studentId}&date=${new Date(Time.value).toISOString()}`, {}, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        alert('time changed')
+        Time.value = ''
+      }).finally((e)=>{
+console.log('e');
+      });
+  } catch (error) {
+    console.log(error);
+  }
 };
 </script>
 <style lang="scss" scoped>
