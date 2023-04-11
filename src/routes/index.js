@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createMemoryHistory  } from "vue-router";
 import Authorization from "../components/Authorization.vue";
 import Home from "../components/Home.vue";
 
@@ -127,7 +127,7 @@ component: classes
 
 const router = createRouter({
   routes,
-  history: createWebHashHistory(),
+  history: createMemoryHistory(),
 });
 
 router.beforeEach(async (to, from) => {

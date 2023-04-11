@@ -50,6 +50,7 @@
                 class="float-end"
                 colors="primary:#e83a30,secondary:#16c79e"
                 @click="deleteTeacher(teacher.userName, index)"
+          
               >
               </lord-icon>
             </div>
