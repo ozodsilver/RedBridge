@@ -4,12 +4,12 @@
     <div class="container">
       <div class="row mt-4">
         <div class="col-3" v-for="info in infos" :key="info.id">
-          <button  class="btn rounded-pill text-white" style="background: rgb(165,172,183) !important;
-background: linear-gradient(90deg, rgba(165,172,183,1) 0%, rgba(251,255,254,0.9192051820728291) 74%); !important">{{ info.name }}</button>
-
-
+          <!-- <routerLink
+            :to="{ name: 'insideClasses', params: { id: info.id } }"
+            class="btn btn-dark mt-4 rounded-pill shadow"
+            >{{ info.name }}</routerLink
+          > -->
         </div>
-
       </div>
     </div>
   </div>
@@ -20,10 +20,9 @@ import Navigation from "../MiniComponents/Navigation.vue";
 import axios from "axios";
 import { ref, reactive, onMounted } from "vue";
 import base from "../../reusables/getInfos.js";
-import {useRouter, useRoute} from 'vue-router';
+import { useRouter, useRoute } from "vue-router";
 
-
-let route = useRoute()
+let route = useRoute();
 let infos = reactive([]);
 
 onMounted(async () => {
@@ -32,13 +31,11 @@ onMounted(async () => {
   infos.push(...result.data);
 
   console.log(infos);
-
-
 });
 </script>
 
 <style lang="scss" scoped>
-$kulrang: #A5ACB7;
+$kulrang: #a5acb7;
 button {
   background: $kulrang !important;
 }

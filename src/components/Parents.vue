@@ -2,20 +2,22 @@
   <div>
     <navigation :parents="parents"></navigation>
 
-<div v-show="show" >
-  <div class="spinner spinner-border text-danger m-auto d-block mt-5">
-
-</div>
-
-</div>
+    <div v-show="show">
+      <div class="spinner spinner-border text-danger m-auto d-block mt-5"></div>
+    </div>
 
     <div class="container">
       <div class="row">
-      
-        <input type="text" class="form-control p-4 mt-5 border-0" id="search"  data-key = 'search'  placeholder="Search by name" v-model="input" @input="publishedBooksMessage">
+        <input
+          type="text"
+          class="form-control p-4 mt-5 border-0"
+          id="search"
+          data-key="search"
+          placeholder="Search by name"
+          v-model="input"
+          @input="publishedBooksMessage"
+        />
         <div class="col-4" v-for="info in findInfo" :key="info.id">
-
-         
           <router-link
             :to="{ name: 'forParent', params: { id: info.id } }"
             class="btn btn shadow-3 w-100 rounded-pill text-white mt-5"
@@ -38,49 +40,44 @@
 </template>
 
 <script setup>
-import axios from 'axios'
+import axios from "axios";
 import { ref, onMounted, reactive, computed } from "vue";
-import base from '../../src/reusables/getInfos'
+import base from "../../src/reusables/getInfos";
 import navigation from "../components/MiniComponents/Navigation.vue";
 import { useStore } from "vuex";
 
 let parents = ref("parents");
-let show = ref(true)
-let infos = reactive([])
-let store = useStore()
-let input = ref('')
+let show = ref(true);
+let infos = reactive([]);
+let store = useStore();
+let input = ref("");
 
-
-onMounted(async() => {
+onMounted(async () => {
   let request = await axios.get(`${base}Parents/getParents`, {
-    headers:{
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`
-    }
-
- 
-  })
-
-  request.data.sort((a,b)=>{
-    if(a.userName < b.userName){
-return -1
-    }
-
-    if(a.userName > b.userName){
-      return 1
-    }
-    return 0
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
   });
-  if(request.data.length == 0){
-    show.value = false
-  }
-  
-  
-  request.data.forEach((res)=>{
-infos.push(res)
-show.value = false
-  })
-})
 
+  request.data.sort((a, b) => {
+    if (a.userName < b.userName) {
+      return -1;
+    }
+
+    if (a.userName > b.userName) {
+      return 1;
+    }
+    return 0;
+  });
+  if (request.data.length == 0) {
+    show.value = false;
+  }
+
+  request.data.forEach((res) => {
+    infos.push(res);
+    show.value = false;
+  });
+});
 
 // setTimeout(() => {
 //   function filteredList(){
@@ -90,30 +87,24 @@ show.value = false
 // }
 // }, 1000);
 
-let findInfo = computed(()=>{
+let findInfo = computed(() => {
+  return infos.filter((list) => {
+    return list.userName.toUpperCase().includes(input.value.toUpperCase());
+  });
+});
 
-  return infos.filter((list)=>{
-    return list.userName.toUpperCase().includes(input.value.toUpperCase())
-  })
-
-
-})
-
-
-let addUserName = (name,pid)=>{
-store.state.userName = name
-store.state.parentId = pid
-}
-
+let addUserName = (name, pid) => {
+  store.state.userName = name;
+  store.state.parentId = pid;
+};
 </script>
 
-
 <style lang="scss" scoped>
-a{
+a {
   text-transform: capitalize !important;
   transition: 0.4s;
-  &:hover{
-    color:"#3CA579" !important;
+  &:hover {
+    color: "#3CA579" !important;
     background: rgb(106, 106, 106) !important;
   }
 }

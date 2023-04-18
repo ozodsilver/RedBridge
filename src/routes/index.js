@@ -1,4 +1,4 @@
-import { createRouter, createMemoryHistory  } from "vue-router";
+import { createRouter, createMemoryHistory, createMemoryHistory } from "vue-router";
 import Authorization from "../components/Authorization.vue";
 import Home from "../components/Home.vue";
 
@@ -17,7 +17,8 @@ import AddParents from "../components/departments/forChildren/AddParents.vue";
 import forParent from "../components/departments/forChildren/forParent.vue";
 import AddStudentForParent from "../components/departments/forChildren/AddStudentForParent.vue";
 import SelectStudent from "../components/departments/forChildren/SelectStudent.vue";
-import classes from '../components/departments/classes.vue'
+import classes from "../components/departments/classes.vue";
+import insideClass from "../components/departments/forChildren/insideClasses.vue"
 
 
 import store from "../store/store";
@@ -29,9 +30,14 @@ const routes = [
   },
 
   {
-path:'/classes',
-name:'classes',
-component: classes
+    path: "/classes",
+    name: "classes",
+    component: classes,
+  },
+  {
+    path: "/insideClasses/:id",
+    name: "insideClasses",
+   component:insideClass
   },
   {
     path: "/Home",
@@ -121,7 +127,7 @@ component: classes
     path: "/SelectStudent/:id",
     name: "SelectStudent",
     component: SelectStudent,
-    props:true
+    props: true,
   },
 ];
 

@@ -99,7 +99,7 @@ let Request = () => {
     if (el.data) {
 store.state.isAuthenticated = true
       localStorage.setItem("jwt", el.data);
-      router.push({ name: "classes" });
+      router.push({ name: "home" });
     }else{
    
     }
@@ -153,8 +153,8 @@ store.state.isAuthenticated = true
   width: 450px;
   height: 500px;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(43, 48, 47, 0.246);
+border-radius: 20px;
+  box-shadow: 0px 0px 45px rgba(150, 156, 155, 0.246);
   position: relative;
   z-index: 22222222;
 }
@@ -213,7 +213,7 @@ button:hover {
   background: #faf9ff;
   border-radius: 60% / 10%;
   transform: translateY(-150px);
-  box-shadow: 0 0 4px rgba(176, 173, 173, 0.493);
+  box-shadow: 0 0 4px rgba(184, 212, 209, 0.493);
   transition: 0.8s ease-in-out;
 }
 .login label {

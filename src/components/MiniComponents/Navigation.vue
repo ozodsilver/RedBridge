@@ -57,7 +57,7 @@
 
             <button
               class="btn nav-item shadow-none bg-gradient"
-              style="width:10%"
+              style="width:20%"
               @click="logOut"
             >
               <i class="fas fa-right-from-bracket" style="transform: rotate(180deg)"></i>
@@ -82,6 +82,7 @@ let info = defineProps(["userlar", "users", "grades", "parents", "classess"]);
 
 let router = useRouter()
 let logOut = ()=>{
+  localStorage.clear()
   router.push({name:'auth'})
 }
 
