@@ -1,4 +1,4 @@
-import { createRouter, createMemoryHistory, createMemoryHistory } from "vue-router";
+import { createRouter, createMemoryHistory, createWebHistory } from "vue-router";
 import Authorization from "../components/Authorization.vue";
 import Home from "../components/Home.vue";
 
@@ -133,7 +133,7 @@ const routes = [
 
 const router = createRouter({
   routes,
-  history: createMemoryHistory(),
+  history: createWebHistory(),
 });
 
 router.beforeEach(async (to, from) => {
