@@ -1,24 +1,20 @@
 <script setup>
 import Authorization from "./components/Authorization.vue";
 
-import {ref, onMounted, onUpdated} from  'vue'
-
+import { ref, onMounted, onUpdated } from "vue";
 </script>
-
 <template>
-
   <div id="App">
     <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
+      <transition name="fade" >
         <component :is="Component" />
       </transition>
     </router-view>
 
-
-
+  
   </div>
 
-  <div style="height: 100vh" class="d-flex align-items-center" id="text" >
+  <div style="height: 100vh" class="d-flex align-items-center" id="text">
     <h1 class="text-center">
       The application cannot be accessed from a device of this size
     </h1>
@@ -41,7 +37,7 @@ body {
 }
 
 .fade-enter-active {
-  transition:all 0.5s linear;
+  transition: all 0.5s linear;
 
   transform: scale(1);
   filter: blur(0px);
@@ -51,9 +47,7 @@ body {
 .fade-leave-to {
   opacity: 0;
   filter: blur(3px);
-
 }
-
 
 .router-link-exact-active {
   box-shadow: 0 10px 10px rgb(204, 205, 205);

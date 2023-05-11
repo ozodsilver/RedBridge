@@ -4,11 +4,11 @@
     <div class="container">
       <div class="row mt-4">
         <div class="col-3" v-for="info in infos" :key="info.id">
-          <!-- <routerLink
+          <routerLink
             :to="{ name: 'insideClasses', params: { id: info.id } }"
-            class="btn btn-dark mt-4 rounded-pill shadow"
+            class="btn btn-dark opacity-50 mt-4 rounded shadow"
             >{{ info.name }}</routerLink
-          > -->
+          >
         </div>
       </div>
     </div>

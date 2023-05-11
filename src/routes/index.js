@@ -59,8 +59,8 @@ const routes = [
   {
     path: "/Grades",
     name: "Grades",
-    component: Grades,
-    meta: { transition: "bounce" },
+    component: Grades
+  
   },
   {
     path: "/Subjects",
@@ -101,21 +101,21 @@ const routes = [
     path: "/ForSubjects/:id",
     name: "ForSubjects",
     component: ForSubjects,
-    props: true,
+
   },
 
   {
     path: "/ForStudents/:id",
     name: "ForStudents",
     component: ForStudents,
-    props: true,
+  
   },
 
   {
     path: "/forParent/:id",
     name: "forParent",
     component: forParent,
-    props: true,
+
   },
 
   {
@@ -127,7 +127,7 @@ const routes = [
     path: "/SelectStudent/:id",
     name: "SelectStudent",
     component: SelectStudent,
-    props: true,
+ 
   },
 ];
 

@@ -3,11 +3,12 @@
     <!-- <h1>{{this.$route.params.id}}</h1> -->
     <div class="container p-4">
       <div
+      @click="backOneStep"
         class="my-4 text-dark d-flex align-items-center gap-5 justify-content-start w-25"
       >
         <i
           class="fas fa-chevron-circle-left fa-3x"
-          @click="router.go(-1)"
+        
           style="cursor: pointer"
         ></i>
         <h2 class="pt-3">Students</h2>
@@ -108,7 +109,7 @@
   </div>
 
   <router-link
-    to="/AddStudents"
+    :to="{name:'AddStudents'}"
     class="btn btn-success position-fixed"
     @click="store.state.id = id"
     style="bottom: 20px; right: 20px; width: 200px"
@@ -120,7 +121,7 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
-import base from "../../../reusables/getInfos";
+import base from "../../../reusables/getInfos.js";
 
 let store = useStore();
 let router = useRouter();
@@ -158,6 +159,10 @@ let deleteStudents = async (id, index) => {
   });
   console.log(response);
 };
+
+let backOneStep = ()=>{
+  router.push('/Home')
+}
 
 let updateTime = async (studentId) => {
 
