@@ -84,7 +84,7 @@
                 aria-modal="true"
               >
                 <template #footer>
-                  <lineChart  :scores="scores"></lineChart>
+                
                 </template>
               </n-card>
             </n-modal>
@@ -96,7 +96,6 @@
 </template>
 
 <script setup>
-import lineChart from "../forChildren/lineChart.vue";
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";

@@ -37,12 +37,19 @@
               required=""
               v-model="password"
             />
-            <button @click.prevent="Request" class=" d-flex justify-content-center align-items-center">
+            <button
+              @click.prevent="Request"
+              class="d-flex justify-content-center align-items-center"
+            >
               <span v-if="!loade">Login</span>
-              <div class="spinner-border fw-lighter py-1 " style="font-sizde:10px" v-if = 'loade'></div>
+              <div
+                class="spinner-border fw-lighter py-1"
+                style="font-sizde: 10px"
+                v-if="loade"
+              ></div>
             </button>
           </form>
-       
+
           <img alt="" class="w-25 m-auto d-block" />
           <h4 class="text-center mt-3 animation" @click="info">
             <span id="dilkhush">Red Bridge</span> Admin Panel
@@ -51,37 +58,24 @@
       </div>
     </div>
   </div>
-
-
-
 </template>
 
-
-
-
 <script setup>
-
 import Axios from "axios";
-import { ref,onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import base from '../reusables/getInfos'
-let store = useStore()
+import base from "../reusables/getInfos.js";
+let store = useStore();
 let router = useRouter();
 let email = ref("");
 let password = ref("");
-let loade = ref(false)
+let loade = ref(false);
 
-
-
-onMounted(() => {
-
-})
-
-
+onMounted(() => {});
 
 let Request = () => {
-  loade.value = true
+  loade.value = true;
   Axios.post(
     `${base}Authentication`,
     {
@@ -93,23 +87,24 @@ let Request = () => {
         "Content-Type": "application/json",
       },
     }
-  ).then((el) => {
-    console.log(el);
-  
-    if (el.data) {
-store.state.isAuthenticated = true
-      localStorage.setItem("jwt", el.data);
-      router.push({ name: "home" });
-    }else{
-   
-    }
-  }).catch(err =>{
-    loade.value = false
-    alert("xato login yoki parol" + err.message);
- 
-  }).finally(()=>{
-  loade.value = false
-  })
+  )
+    .then((el) => {
+      console.log(el);
+
+      if (el.data) {
+        store.state.isAuthenticated = true;
+        localStorage.setItem("jwt", el.data);
+        router.push({ name: "home" });
+      } else {
+      }
+    })
+    .catch((err) => {
+      loade.value = false;
+      alert("xato login yoki parol" + err.message);
+    })
+    .finally(() => {
+      loade.value = false;
+    });
 };
 </script>
 <style lang="scss">
@@ -153,7 +148,7 @@ store.state.isAuthenticated = true
   width: 450px;
   height: 500px;
   overflow: hidden;
-border-radius: 20px;
+  border-radius: 20px;
   box-shadow: 0px 0px 45px rgba(150, 156, 155, 0.246);
   position: relative;
   z-index: 22222222;
