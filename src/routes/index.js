@@ -136,10 +136,10 @@ const router = createRouter({
   history: createWebHistory(),
 });
 
-router.beforeEach(async (to, from) => {
-  if (to.name !== "auth" && store.state.isAuthenticated == false) {
-    return { name: "auth" };
-  }
-});
+// router.beforeEach(async (to, from) => {
+//   if (to.name !== "auth" && store.state.isAuthenticated == false) {
+//     return { name: "auth" };
+//   }
+// });
 
 export default router;
