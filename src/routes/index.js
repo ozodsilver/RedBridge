@@ -5,6 +5,7 @@ import Home from "../components/Home.vue";
 import Students from "../components/departments/Students.vue";
 import Grades from "../components/departments/Grades.vue";
 import Parents from "../components/Parents.vue";
+import History from '../components/History/History.vue'
 
 import Subjects from "../components/departments/Subjects.vue";
 import addTeachers from "../components/departments/forChildren/postTeacher.vue";
@@ -19,6 +20,8 @@ import AddStudentForParent from "../components/departments/forChildren/AddStuden
 import SelectStudent from "../components/departments/forChildren/SelectStudent.vue";
 import classes from "../components/departments/classes.vue";
 import insideClass from "../components/departments/forChildren/insideClasses.vue"
+import insideHistory from "../components/History/components/insideHistory.vue"
+import historyTable from '../components/History/components/historyTable.vue'
 
 
 import store from "../store/store";
@@ -50,6 +53,26 @@ const routes = [
     name: "parents",
     component: Parents,
   },
+
+
+  {
+    path: "/History",
+    name: "history",
+    component: History,
+  },
+
+  {
+    path: "/History/:id",
+    name: "insideHistory",
+    component: insideHistory,
+  },
+
+  {
+    path: "/History/:id/table",
+    name: "historyTable",
+    component: historyTable,
+  },
+
 
   {
     path: "/Students",

@@ -24,11 +24,11 @@
           </a>
           <!-- Left links -->
           <ul class="navbar-nav d-flex  me-auto w-100 gap-3 mb-2 mb-lg-0">
-            <div class="w-100 d-flex align-items-center">
+            <div class="w-100 d-flex gap-3 align-items-center">
               <li class="nav-item">
                 <router-link
                   to="/classes"
-                  class="nav-link px-3 rounded-1"
+                  class="nav-link px-4 rounded-1"
                   style="cursor: pointer"
                   id="link1"
                   >Classes</router-link
@@ -51,6 +51,11 @@
               <li class="nav-item">
                 <router-link to="/Parents" class="nav-link rounded-3"
                   >Parents</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link to="/History" class="nav-link rounded-3"
+                  >History</router-link
                 >
               </li>
             </div>
