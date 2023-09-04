@@ -44,7 +44,7 @@ let grades = ref("Grades");
 let infos = ref([]);
 
 onMounted(async () => {
-  await axios
+  let response = await axios
     .get(
       `${base}Grades`,
 
@@ -55,25 +55,14 @@ onMounted(async () => {
         },
       }
     )
-    .then((res) => {
-      console.log(res);
+   
 
-      res.data.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1
-        }
-
-        if (a.name > b.name) {
-          return 1
-        }
-        return 0
-      })
-
-      res.data.forEach((el) => {
+    response.data.forEach((el) => {
         infos.value.push(el);
         loade.value = false;
       });
-    });
+
+
 
   if (infos.value.length == 0) {
     loade.value = false

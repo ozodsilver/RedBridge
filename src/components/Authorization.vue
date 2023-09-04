@@ -1,20 +1,6 @@
 <template>
   <div id="Auth">
-    <!-- <div class="w-25 m-auto border rounde3 p-5" id="form">
-    <h3>Red Bradge</h3>
-    <div class="form-outline mt-4">
-  <input type="text" id="form12" class="form-control form-control-lg  bg-white" />
-  <label class="form-label" for="form12">Login</label>
-</div>
 
-
-<div class="form-outline mt-3">
-  <input type="text" id="form12" class="form-control form-control-lg  bg-white" />
-  <label class="form-label" for="form12">Password</label>
-</div>
-
-<button type="button" class="btn btn-primary w-50 float-end my-4">Log In</button>
-</div> -->
 
     <div id="login">
       <div class="main">
@@ -94,7 +80,7 @@ let Request = () => {
       if (el.data) {
         store.state.isAuthenticated = true;
         localStorage.setItem("jwt", el.data);
-        router.push({ name: "home" });
+        router.push('/Dashboard/');
       } else {
       }
     })

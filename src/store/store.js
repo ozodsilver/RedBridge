@@ -4,6 +4,7 @@ const store = createStore({
     state:{
         isAuthenticated:false,
         info:null,
+        showFullSidebar:false
     },
 
 

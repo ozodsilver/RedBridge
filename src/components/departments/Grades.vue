@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nav :grades="grades"></Nav>
+   
 
     <h1 class="text-center mt-5" v-if="empty">The Grades section is empty</h1>
     <div 

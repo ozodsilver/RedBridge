@@ -5,7 +5,7 @@ import Home from "../components/Home.vue";
 import Students from "../components/departments/Students.vue";
 import Grades from "../components/departments/Grades.vue";
 import Parents from "../components/Parents.vue";
-import History from '../components/History/History.vue'
+
 
 import Subjects from "../components/departments/Subjects.vue";
 import addTeachers from "../components/departments/forChildren/postTeacher.vue";
@@ -24,134 +24,145 @@ import insideHistory from "../components/History/components/insideHistory.vue"
 import historyTable from '../components/History/components/historyTable.vue'
 
 
+
 import store from "../store/store";
 const routes = [
   {
     path: "/",
     name: "auth",
     component: Authorization,
+   
+  },
+  {
+    path: "/Dashboard",
+    name: "dashboard",
+    component: ()=>import('../components/Dashboard/Dashboard.vue'),
+    children:[
+      {
+        path: "/classes",
+        name: "classes",
+        component: classes,
+      },
+      {
+        path: "/insideClasses/:id",
+        name: "insideClasses",
+       component:insideClass
+      },
+      {
+        path: "",
+        name: "home",
+        component: Home,
+      },
+    
+      {
+        path: "/Parents",
+        name: "parents",
+        component: Parents,
+      },
+    
+    
+      {
+        path: "/History",
+        name: "history",
+        component: ()=> import('../components/History/History.vue'),
+      },
+    
+      {
+        path: "/History/:id",
+        name: "insideHistory",
+        component: insideHistory,
+      },
+    
+      {
+        path: "/History/:id/table",
+        name: "historyTable",
+        component: historyTable,
+      },
+    
+    
+      {
+        path: "/Students",
+        name: "Students",
+        component: Students,
+      },
+      {
+        path: "/Grades",
+        name: "Grades",
+        component: Grades
+      
+      },
+      {
+        path: "/Subjects",
+        name: "Subjects",
+        component: Subjects,
+      },
+      {
+        path: "/addTeachers",
+        name: "addTeachers",
+        component: addTeachers,
+      },
+    
+      {
+        path: "/addGrades",
+        name: "addGrades",
+        component: AddGrades,
+      },
+    
+      {
+        path: "/AddSubjects",
+        name: "AddSubjects",
+        component: AddSubjects,
+      },
+    
+      {
+        path: "/AddStudents",
+        name: "AddStudents",
+        component: AddStudents,
+      },
+    
+      {
+        path: "/AddParents",
+        name: "AddParents",
+        component: AddParents,
+      },
+    
+      {
+        path: "/ForSubjects/:id",
+        name: "ForSubjects",
+        component: ForSubjects,
+    
+      },
+    
+      {
+        path: "/ForStudents/:id",
+        name: "ForStudents",
+        component: ForStudents,
+      
+      },
+    
+      {
+        path: "/forParent/:id",
+        name: "forParent",
+        component: forParent,
+    
+      },
+    
+      {
+        path: "/AddStudentForParent",
+        name: "AddStudentForParent",
+        component: AddStudentForParent,
+      },
+      {
+        path: "/SelectStudent/:id",
+        name: "SelectStudent",
+        component: SelectStudent,
+     
+      },
+    ]
+   
   },
 
-  {
-    path: "/classes",
-    name: "classes",
-    component: classes,
-  },
-  {
-    path: "/insideClasses/:id",
-    name: "insideClasses",
-   component:insideClass
-  },
-  {
-    path: "/Home",
-    name: "home",
-    component: Home,
-  },
-
-  {
-    path: "/Parents",
-    name: "parents",
-    component: Parents,
-  },
-
-
-  {
-    path: "/History",
-    name: "history",
-    component: History,
-  },
-
-  {
-    path: "/History/:id",
-    name: "insideHistory",
-    component: insideHistory,
-  },
-
-  {
-    path: "/History/:id/table",
-    name: "historyTable",
-    component: historyTable,
-  },
-
-
-  {
-    path: "/Students",
-    name: "Students",
-    component: Students,
-  },
-  {
-    path: "/Grades",
-    name: "Grades",
-    component: Grades
   
-  },
-  {
-    path: "/Subjects",
-    name: "Subjects",
-    component: Subjects,
-  },
-  {
-    path: "/addTeachers",
-    name: "addTeachers",
-    component: addTeachers,
-  },
-
-  {
-    path: "/addGrades",
-    name: "addGrades",
-    component: AddGrades,
-  },
-
-  {
-    path: "/AddSubjects",
-    name: "AddSubjects",
-    component: AddSubjects,
-  },
-
-  {
-    path: "/AddStudents",
-    name: "AddStudents",
-    component: AddStudents,
-  },
-
-  {
-    path: "/AddParents",
-    name: "AddParents",
-    component: AddParents,
-  },
-
-  {
-    path: "/ForSubjects/:id",
-    name: "ForSubjects",
-    component: ForSubjects,
-
-  },
-
-  {
-    path: "/ForStudents/:id",
-    name: "ForStudents",
-    component: ForStudents,
-  
-  },
-
-  {
-    path: "/forParent/:id",
-    name: "forParent",
-    component: forParent,
-
-  },
-
-  {
-    path: "/AddStudentForParent",
-    name: "AddStudentForParent",
-    component: AddStudentForParent,
-  },
-  {
-    path: "/SelectStudent/:id",
-    name: "SelectStudent",
-    component: SelectStudent,
- 
-  },
 ];
 
 const router = createRouter({

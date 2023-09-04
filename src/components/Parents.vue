@@ -1,12 +1,16 @@
 <template>
   <div>
-    <navigation :parents="parents"></navigation>
+  
 
     <div v-show="show">
       <div class="spinner spinner-border text-danger m-auto d-block mt-5"></div>
     </div>
 
-    <div class="container">
+    <div class="row">
+
+
+<div class="col-12">
+  <div class="container">
       <div class="row">
         <input
           type="text"
@@ -29,6 +33,10 @@
         </div>
       </div>
     </div>
+</div>
+    </div>
+
+    
 
     <router-link
       to="/AddParents"

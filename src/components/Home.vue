@@ -1,8 +1,10 @@
 <template>
-  <div id="home">
-    <Nav :userlar="users"></Nav>
+  <div id="home" > 
+    <div class="row" >
 
-    <div class="container py-5">
+
+<div class="col-12">
+  <div class="container py-5">
       <input
         type="text"
         class="form-control p-4 border-0 shadow-sm"
@@ -58,6 +60,10 @@
         </div>
       </div>
     </div>
+</div>
+    </div>
+
+
 
     <router-link
       to="/addTeachers"

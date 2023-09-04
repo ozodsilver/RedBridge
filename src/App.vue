@@ -5,6 +5,7 @@ import { ref, onMounted, onUpdated } from "vue";
 </script>
 <template>
   <div id="App">
+
     <router-view v-slot="{ Component }">
       <transition name="fade" >
         <component :is="Component" />
@@ -28,7 +29,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   font-family: "Quicksand", sans-serif;
-
   cursor: url("./assets/double-click.png") 4 12, auto;
 }
 
@@ -50,9 +50,26 @@ body {
 }
 
 .router-link-exact-active {
-  box-shadow: 0 10px 10px rgb(204, 205, 205);
-  background: #a5acb7;
-  color: white;
+  box-shadow: -4px 10px 10px rgb(204, 205, 205);
+  background: #9EA3AE;
+border-radius: 10px !important;
+  color: white !important;
+  display: flex;
+gap: 10px;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+//   &:before{
+// content: '';
+// width: 100px;
+// height: 90px;
+// background-color: #EDEDED;
+// position: absolute;
+// right: -90px;
+// border-radius: 200px;
+
+//   }
 }
 
 @media (max-width: 800px) {

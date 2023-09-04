@@ -1,82 +1,191 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <!-- Container wrapper -->
-      <div class="container-fluid">
-        <!-- Toggle button -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-mdb-toggle="collapse"
-          data-mdb-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+  <div  style="min-height: 100%; width: 80%; margin: auto;">
+    <div class="sidebar_header p-2 d-flex gap-2 align-items-center" :class="{'flex-column gap-3':store.state.showFullSidebar}">
+      <img src="@/assets/logo.svg" alt="" class="w-50 d-block" :class="{'custom_width':store.state.showFullSidebar}" />
+      <i
+        class="fas fa-down-left-and-up-right-to-center text-secondary ms-1"
+         
+        style="cursor: pointer"
+        @click="store.state.showFullSidebar = !store.state.showFullSidebar"
+      ></i>
+    </div>
+
+    <div
+      class="d-flex flex-column  justify-content-between ms-1 align-items-center"
+      style="min-height: 80vh; width: 100%;"
+    >
+      <div :class="{'w-75':store.state.showFullSidebar, 'w-100':!store.state.showFullSidebar}">
+
+        <n-tooltip trigger="hover" placement = 'right-start' v-if="store.state.showFullSidebar">
+    <template #trigger>
+      <router-link
+          to="/classes"
+          class="nav-link mt-4  d-flex gap-3 align-items-center rounded-1"
+          :class="{
+            'mt-4 d-block justify-content-center': store.state.showFullSidebar,
+          }"
+          
+          style="cursor: pointer; padding: 12px"
+          id="link1"
         >
-          <i class="fas fa-bars"></i>
-        </button>
+          <i class="far fa-address-card"></i>
+          <span v-if="!store.state.showFullSidebar">Classes</span></router-link
+        >
+    </template>
+  <div >
+    Student performance
+  </div>
+  </n-tooltip>
 
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Navbar brand -->
-          <a class="navbar-brand mt-2 mt-lg-0" href="#">
-            <img src="../../assets/logo.svg " height="60" alt="MDB Logo" loading="lazy" />
-          </a>
-          <!-- Left links -->
-          <ul class="navbar-nav d-flex  me-auto w-100 gap-3 mb-2 mb-lg-0">
-            <div class="w-100 d-flex gap-3 align-items-center">
-              <li class="nav-item">
-                <router-link
-                  to="/classes"
-                  class="nav-link px-4 rounded-1"
-                  style="cursor: pointer"
-                  id="link1"
-                  >Classes</router-link
-                >
-              </li>
 
-              <li class="nav-item">
-                <router-link
-                  to="/Home"
-                  class="nav-link px-3 rounded-1"
-                  style="cursor: pointer"
-                  >Teachers</router-link
-                >
-              </li>
+  <router-link
+  v-if="!store.state.showFullSidebar"
+          to="/classes"
+          class="nav-link mt-4  d-flex gap-3 align-items-center rounded-1"
+          :class="{
+            'mt-4 d-block justify-content-center': store.state.showFullSidebar,
+          }"
+          
+          style="cursor: pointer; padding: 12px"
+          id="link1"
+        >
+          <i class="far fa-address-card"></i>
+          <span v-if="!store.state.showFullSidebar"> Performance</span></router-link
+        >
 
-              <li class="nav-item">
-                <router-link to="/Grades" class="nav-link rounded-1">Grades</router-link>
-              </li>
 
-              <li class="nav-item">
-                <router-link to="/Parents" class="nav-link rounded-3"
-                  >Parents</router-link
-                >
-              </li>
-              <li class="nav-item">
-                <router-link to="/History" class="nav-link rounded-3"
-                  >History</router-link
-                >
-              </li>
-            </div>
 
-            <button
-              class="btn nav-item shadow-none bg-gradient"
-              style="width:20%"
-              @click="logOut"
-            >
-              <i class="fas fa-right-from-bracket" style="transform: rotate(180deg)"></i>
-              log out
-            </button>
-          </ul>
-        </div>
+        <!-- Teachers -->
+
+        <n-tooltip trigger="hover" v-if="store.state.showFullSidebar" placement = 'right-start'>
+    <template #trigger>
+      <router-link
+          to="/Dashboard/"
+          class="nav-link px-3 mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{
+            'mt-4 d-block justify-content-center': store.state.showFullSidebar,
+          }"
+          style="cursor: pointer; padding: 12px"
+        >
+          <i class="fas fa-users"></i>
+          <span v-if="!store.state.showFullSidebar">Teachers</span></router-link>
+    </template>
+  Teachers
+  </n-tooltip>
+
+        <router-link
+        v-if="!store.state.showFullSidebar"
+          to="/Dashboard/"
+          class="nav-link px-3 mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{
+            'mt-4 d-block justify-content-center': store.state.showFullSidebar,
+          }"
+          style="cursor: pointer; padding: 12px"
+        >
+          <i class="fas fa-users"></i>
+          <span v-if="!store.state.showFullSidebar">Teachers</span></router-link>
+       
+
+
+<!-- Grades -->
+
+<n-tooltip trigger="hover" placement = 'right-start'  v-if="store.state.showFullSidebar">
+    <template #trigger>
+      <router-link
+          to="/Grades"
+          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
+          style="cursor: pointer; padding: 12px"
+          ><i class="fas fa-chalkboard-user"></i>
+          <span v-if="!store.state.showFullSidebar">Grades</span>
+        </router-link>
+    </template>
+    Grades
+  </n-tooltip>
+
+        <router-link
+        v-if="!store.state.showFullSidebar"
+          to="/Grades"
+          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
+          style="cursor: pointer; padding: 12px"
+          ><i class="fas fa-chalkboard-user"></i>
+          <span v-if="!store.state.showFullSidebar">Grades</span>
+        </router-link>
+
+        <!-- Parents -->
+
+        <n-tooltip trigger="hover" placement = 'right-start'  v-if="store.state.showFullSidebar">
+    <template #trigger>
+     
+      <router-link
+          to="/Parents"
+          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
+          style="cursor: pointer; padding: 12px"
+          ><i class="fas fa-user-group"></i>
+          <span v-if="!store.state.showFullSidebar">Parents</span></router-link
+        >
+    </template>
+    Parents
+  </n-tooltip>
+
+        <router-link
+        v-if="!store.state.showFullSidebar"
+          to="/Parents"
+          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
+          style="cursor: pointer; padding: 12px"
+          ><i class="fas fa-user-group"></i>
+          <span v-if="!store.state.showFullSidebar">Parents</span></router-link
+        >
+
+
+
+
+        <n-tooltip trigger="hover" placement = 'right-start'  v-if="store.state.showFullSidebar">
+    <template #trigger>
+    
+      <router-link
+          to="/History"
+          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
+          style="cursor: pointer; padding: 12px"
+          ><i class="fas fa-clock-rotate-left"></i>
+          <span v-if="!store.state.showFullSidebar">History</span></router-link
+        >
+    </template>
+    History
+  </n-tooltip>
+
+
+
+
+
+        <router-link
+        v-if="!store.state.showFullSidebar"
+          to="/History"
+          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
+          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
+          style="cursor: pointer; padding: 12px"
+          ><i class="fas fa-clock-rotate-left"></i>
+          <span v-if="!store.state.showFullSidebar">History</span></router-link
+        >
       </div>
 
-      <div class="px-4 py-3 badge shadow-lg text-dark bg-gradient mx-3">
-        {{ info.userlar }} {{ info.users }} {{ info.grades }} {{ info.parents }}
-        {{ info.classess }}
-      </div>
-    </nav>
+      <button
+        class="justify-content-start d-flex gap-3 align-items-center text-start bg-transparent text-black w-100 shadow-none px-2 "
+        @click="logOut"
+      :class="{'justify-content-center':store.state.showFullSidebar}"
+      >
+        <i
+          class="fas fa-right-from-bracket"
+          style="transform: rotate(180deg)"
+          :class="{' d-block text-center justify-content-center':store.state.showFullSidebar}"
+        ></i>
+        <span v-if="!store.state.showFullSidebar"> Log out</span>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -85,12 +194,15 @@ import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 let info = defineProps(["userlar", "users", "grades", "parents", "classess"]);
 
-let router = useRouter()
-let logOut = ()=>{
-  localStorage.clear()
-  router.push({name:'auth'})
-}
 
+
+import store from "@/store/store.js";
+
+let router = useRouter();
+let logOut = () => {
+  localStorage.clear();
+  router.push({ name: "auth" });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -101,4 +213,14 @@ let logOut = ()=>{
   background-size: cover;
   background-position: 200px;
 }
+
+
+
+.custom_width{
+width: 90px !important;
+display: block;
+margin-left: 9px;
+
+}
 </style>
+
