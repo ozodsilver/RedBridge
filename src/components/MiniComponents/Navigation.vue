@@ -2,25 +2,20 @@
   <div  style="min-height: 100%; width: 80%; margin: auto;">
     <div class="sidebar_header p-2 d-flex gap-2 align-items-center" :class="{'flex-column gap-3':store.state.showFullSidebar}">
       <img src="@/assets/logo.svg" alt="" class="w-50 d-block" :class="{'custom_width':store.state.showFullSidebar}" />
-      <i
-        class="fas fa-down-left-and-up-right-to-center text-secondary ms-1"
-         
-        style="cursor: pointer"
-        @click="store.state.showFullSidebar = !store.state.showFullSidebar"
-      ></i>
+    
     </div>
 
     <div
-      class="d-flex flex-column  justify-content-between ms-1 align-items-center"
+      class="d-flex flex-column  justify-content-between  align-items-center"
       style="min-height: 80vh; width: 100%;"
     >
-      <div :class="{'w-75':store.state.showFullSidebar, 'w-100':!store.state.showFullSidebar}">
+      <div :class="{'w-75 text-white':store.state.showFullSidebar, 'w-100':!store.state.showFullSidebar}">
 
         <n-tooltip trigger="hover" placement = 'right-start' v-if="store.state.showFullSidebar">
     <template #trigger>
       <router-link
           to="/classes"
-          class="nav-link mt-4  d-flex gap-3 align-items-center rounded-1"
+          class="nav-link mt-4  d-flex  gap-3 align-items-center rounded-1"
           :class="{
             'mt-4 d-block justify-content-center': store.state.showFullSidebar,
           }"
@@ -37,21 +32,6 @@
   </div>
   </n-tooltip>
 
-
-  <router-link
-  v-if="!store.state.showFullSidebar"
-          to="/classes"
-          class="nav-link mt-4  d-flex gap-3 align-items-center rounded-1"
-          :class="{
-            'mt-4 d-block justify-content-center': store.state.showFullSidebar,
-          }"
-          
-          style="cursor: pointer; padding: 12px"
-          id="link1"
-        >
-          <i class="far fa-address-card"></i>
-          <span v-if="!store.state.showFullSidebar"> Performance</span></router-link
-        >
 
 
 
@@ -73,17 +53,7 @@
   Teachers
   </n-tooltip>
 
-        <router-link
-        v-if="!store.state.showFullSidebar"
-          to="/Dashboard/"
-          class="nav-link px-3 mt-2 d-flex gap-3 align-items-center rounded-1"
-          :class="{
-            'mt-4 d-block justify-content-center': store.state.showFullSidebar,
-          }"
-          style="cursor: pointer; padding: 12px"
-        >
-          <i class="fas fa-users"></i>
-          <span v-if="!store.state.showFullSidebar">Teachers</span></router-link>
+      
        
 
 
@@ -103,15 +73,7 @@
     Grades
   </n-tooltip>
 
-        <router-link
-        v-if="!store.state.showFullSidebar"
-          to="/Grades"
-          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
-          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
-          style="cursor: pointer; padding: 12px"
-          ><i class="fas fa-chalkboard-user"></i>
-          <span v-if="!store.state.showFullSidebar">Grades</span>
-        </router-link>
+      
 
         <!-- Parents -->
 
@@ -130,18 +92,6 @@
     Parents
   </n-tooltip>
 
-        <router-link
-        v-if="!store.state.showFullSidebar"
-          to="/Parents"
-          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
-          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
-          style="cursor: pointer; padding: 12px"
-          ><i class="fas fa-user-group"></i>
-          <span v-if="!store.state.showFullSidebar">Parents</span></router-link
-        >
-
-
-
 
         <n-tooltip trigger="hover" placement = 'right-start'  v-if="store.state.showFullSidebar">
     <template #trigger>
@@ -159,22 +109,10 @@
   </n-tooltip>
 
 
-
-
-
-        <router-link
-        v-if="!store.state.showFullSidebar"
-          to="/History"
-          class="nav-link mt-2 d-flex gap-3 align-items-center rounded-1"
-          :class="{'mt-4 d-block justify-content-center':store.state.showFullSidebar}"
-          style="cursor: pointer; padding: 12px"
-          ><i class="fas fa-clock-rotate-left"></i>
-          <span v-if="!store.state.showFullSidebar">History</span></router-link
-        >
       </div>
 
       <button
-        class="justify-content-start d-flex gap-3 align-items-center text-start bg-transparent text-black w-100 shadow-none px-2 "
+        class="justify-content-start d-flex text-white gap-3 align-items-center text-start bg-transparent text-black w-100 shadow-none px-2 "
         @click="logOut"
       :class="{'justify-content-center':store.state.showFullSidebar}"
       >

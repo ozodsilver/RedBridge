@@ -5,14 +5,11 @@ import { ref, onMounted, onUpdated } from "vue";
 </script>
 <template>
   <div id="App">
-
     <router-view v-slot="{ Component }">
-      <transition name="fade" >
+      <transition name="fade">
         <component :is="Component" />
       </transition>
     </router-view>
-
-  
   </div>
 
   <div style="height: 100vh" class="d-flex align-items-center" id="text">
@@ -24,10 +21,9 @@ import { ref, onMounted, onUpdated } from "vue";
 
 <style lang="scss">
 body {
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23FFFFFF' stroke-width='3.3' stroke-opacity='0.18' %3E%3Ccircle fill='%23FFFFFF' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23fefefe' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23fcfcfc' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23fbfbfb' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23fafafa' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23f9f9f9' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23f7f7f7' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23f6f6f6' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23f5f5f5' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23f3f3f3' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23f2f2f2' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23f1f1f1' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23efefef' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23eeeeee' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23ededed' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23ececec' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23eaeaea' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23E9E9E9' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
-  background-attachment: fixed;
-  background-size: cover;
+  background: rgb(75, 83, 120);
+  background: rgb(75,83,120);
+background: radial-gradient(circle, rgba(75,83,120,1) 0%, rgba(50,55,83,0.9556197478991597) 100%);
   font-family: "Quicksand", sans-serif;
   cursor: url("./assets/double-click.png") 4 12, auto;
 }
@@ -50,26 +46,20 @@ body {
 }
 
 .router-link-exact-active {
-  box-shadow: -4px 10px 10px rgb(204, 205, 205);
-  background: #9EA3AE;
-border-radius: 10px !important;
+  background: #495076;
+  border-radius: 15px !important;
   color: white !important;
   display: flex;
-gap: 10px;
+  gap: 10px;
   align-items: center;
-  padding: 10px;
+  width: 50px;
+  height: 50px;
+  left: 10px;
+outline: none;
   position: relative;
   overflow: hidden;
-//   &:before{
-// content: '';
-// width: 100px;
-// height: 90px;
-// background-color: #EDEDED;
-// position: absolute;
-// right: -90px;
-// border-radius: 200px;
-
-//   }
+  box-shadow: inset 0 0 30px #454c5aa2, inset 10px 5px #495076;
+  border: inset 3px #61636e62;
 }
 
 @media (max-width: 800px) {
@@ -104,6 +94,13 @@ input[data-key="search"]:focus {
   box-shadow: 10px 15px 10px #c5c5c6 !important;
   outline: 1px rgba(98, 34, 202, 0.348) solid;
 }
+
+
+.glass{
+        background: rgb(75,83,120);
+background: radial-gradient(circle, rgba(75,83,120,1) 0%, rgba(50,55,83,0.9556197478991597) 100%);
+border-right: 1px solid rgb(67, 67, 82);
+    }
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
 </style>

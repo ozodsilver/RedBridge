@@ -1,7 +1,7 @@
 <template>
         
     <div class="row" style="min-height: 100vh !important;">
-<div class=" shadow  glass p-0 " style="transition:all 0.1s" :class="{'col-1':store.state.showFullSidebar, 'col-2':!store.state.showFullSidebar}">
+<div class=" p-0 " style="transition:all 0.1s; border-right: 2px solid rgba(51, 51, 90, 0.4);" :class="{'col-1':store.state.showFullSidebar, }">
     <Navigation></Navigation>
 </div>
 
@@ -38,12 +38,6 @@
     
 <style lang="scss" scoped>
     
-    .glass{
-        backdrop-filter: blur(19px) saturate(180%);
-    -webkit-backdrop-filter: blur(19px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.36);
-   
-
-    }
+    
 
 </style>

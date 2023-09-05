@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nav class="m-auto   align-items-center shadow p-2 px-5" style="width: 100%;  justify-content: space-between; display: flex;">
-      <input type="text" class="bg-white shadow  form-control border-0 outline-none p-3 w-50 m-0 " placeholder="search by class name">
+    <nav class="m-auto glass  align-items-center  p-2 px-5" style="width: 100%;  justify-content: space-between; display: flex;">
+      <input type="text" class="bg-white shadow  form-control border-0 outline-none p-3 w-25 rounded-5 m-0 " placeholder="search by class name">
          <p class="lead mt-2 p-2 badge bg-secondary"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p>
     </nav>
   
@@ -57,4 +57,12 @@ onMounted(async () => {
 button {
   background: #a5acb7 !important;
 }
+
+.glass{
+        backdrop-filter: blur(19px) saturate(180%);
+    -webkit-backdrop-filter: blur(19px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.36);
+   
+
+    }
 </style>
