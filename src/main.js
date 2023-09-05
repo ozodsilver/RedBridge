@@ -10,6 +10,7 @@ import Navigation from "./components/MiniComponents/Navigation.vue";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 
+import '@/assets/style.css'
 
 
 window.base = base;

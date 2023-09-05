@@ -1,11 +1,11 @@
 <template>
         
     <div class="row" style="min-height: 100vh !important;">
-<div class=" p-0 " style="transition:all 0.1s; border-right: 2px solid rgba(51, 51, 90, 0.4);" :class="{'col-1':store.state.showFullSidebar, }">
-    <Navigation></Navigation>
+<div class=" p-0 overflow-hidden col-1 sidebar " style="transition:all 0.1s;" >
+    <Navigation ></Navigation>
 </div>
 
-<div class="col-10 p-0 "  style="overflow: auto; max-height: 100vh;" :class="{'col-11':store.state.showFullSidebar}">
+<div class="col-11 p-0 "  style="overflow: auto; max-height: 100vh;" >
  
     <RouterView v-slot="{ Component }">
   <template v-if="Component">
@@ -38,6 +38,12 @@
     
 <style lang="scss" scoped>
     
-    
+    .sidebar{
+
+      background: rgb(75,83,120);
+background: radial-gradient(circle, rgba(75,83,120,1) 0%, rgba(50,55,83,0.9556197478991597) 100%);
+
+  
+    }
 
 </style>

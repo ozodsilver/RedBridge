@@ -21,11 +21,12 @@ import { ref, onMounted, onUpdated } from "vue";
 
 <style lang="scss">
 body {
-  background: rgb(75, 83, 120);
-  background: rgb(75,83,120);
-background: radial-gradient(circle, rgba(75,83,120,1) 0%, rgba(50,55,83,0.9556197478991597) 100%);
   font-family: "Quicksand", sans-serif;
   cursor: url("./assets/double-click.png") 4 12, auto;
+}
+
+*{
+  box-sizing: border-box !important ;
 }
 
 ::-webkit-scrollbar {
@@ -49,17 +50,24 @@ background: radial-gradient(circle, rgba(75,83,120,1) 0%, rgba(50,55,83,0.955619
   background: #495076;
   border-radius: 15px !important;
   color: white !important;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  left: 10px;
-outline: none;
-  position: relative;
-  overflow: hidden;
-  box-shadow: inset 0 0 30px #454c5aa2, inset 10px 5px #495076;
-  border: inset 3px #61636e62;
+
+  text-align: center;
+  // overflow: hidden;
+  // box-shadow: inset 0 0 30px #454c5aa2, inset 10px 5px #495076;
+  // border: inset 1px #61636e62;
+transition: all 1s !important;
+  &:before{
+    content: '';
+position: absolute;
+transition: all 1s !important;
+width: 35px;
+height: 25px;
+background-color: rgb(255, 255, 255);
+
+right: -40%;
+transform: rotate(40deg);
+
+  }
 }
 
 @media (max-width: 800px) {
@@ -95,12 +103,15 @@ input[data-key="search"]:focus {
   outline: 1px rgba(98, 34, 202, 0.348) solid;
 }
 
-
-.glass{
-        background: rgb(75,83,120);
-background: radial-gradient(circle, rgba(75,83,120,1) 0%, rgba(50,55,83,0.9556197478991597) 100%);
-border-right: 1px solid rgb(67, 67, 82);
-    }
+.glass {
+  background: rgb(75, 83, 120);
+  background: radial-gradient(
+    circle,
+    rgba(75, 83, 120, 1) 0%,
+    rgba(50, 55, 83, 0.9556197478991597) 100%
+  );
+  border-right: 1px solid rgb(67, 67, 82);
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
 </style>

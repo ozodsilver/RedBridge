@@ -1,8 +1,11 @@
 <template>
   <div>
-    <nav class="m-auto glass  align-items-center  p-2 px-5" style="width: 100%;  justify-content: space-between; display: flex;">
-      <input type="text" class="bg-white shadow  form-control border-0 outline-none p-3 w-25 rounded-5 m-0 " placeholder="search by class name">
-         <p class="lead mt-2 p-2 badge bg-secondary"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p>
+    <nav class="m-auto glass  align-items-center   px-5" style="width: 100%;  justify-content: space-between; display: flex;">
+      <div class="flex items-center shadow relative top-4">
+        <i class="fa fa-search text-slate-400 absolute top-3 left-2 z-20"></i>
+        <input type="text" class="shadow  form-control position-relative border-0 outline-none p-[20px] ps-5   m-0 " placeholder="search by class name" >
+      </div>
+         <p class="lead mt-2 p-2 badge "> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p>
     </nav>
   
     <div class="container">
