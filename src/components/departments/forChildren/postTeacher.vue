@@ -14,7 +14,7 @@
           >
             <i class="fas fa-backspace fa-2x"></i> back
           </button>
-    <div class="container py-3 ">
+    <div class="container py-3 px-5 ">
     
 
       <h1 class="mt-6  text-2xl text-[#495076]">Add a teacher</h1>

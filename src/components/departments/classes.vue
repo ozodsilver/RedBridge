@@ -11,7 +11,7 @@
          <p class="lead  p-2 badge m-0 badge bg-white text-dark"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p>
     </nav>
   
-    <div class="container">
+    <div class="container px-5">
       <div class="row mt-8">
         <div class="col-4" v-for="info in findInfo" :key="info.id">
           <routerLink
