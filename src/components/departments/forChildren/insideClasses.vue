@@ -1,20 +1,20 @@
 <template>
-  <div class="container-fluid">
-    <button class="btn btn-success rounded-pill w-25 my-5" @click="this.$router.go(-1)">
+  <div class="px-[30px]">
+    <button class="btn glass text-white gap-3 flex items-center justify-center p-2.5 px-5 rounded-lg  my-4" @click="this.$router.go(-1)">
       <i class="far fa-circle-left"></i> back
     </button>
 
     <table class="table table-striped table-hover mt-4">
       <tr class="fw-bolder">
         <th scope="col">#</th>
-        <th scope="col" v-for="subject in subjects" :key="subject.id">
+        <th scope="col" v-for="subject in subjects" :key="subject.id" class="text-dark capitalize">
           {{ subject.name }}
         </th>
       </tr>
 
       <tbody>
         <tr v-for="student in students" :key="student.id">
-          <td>
+          <td class="capitalize">
             {{ student.firstName }}
           </td>
 

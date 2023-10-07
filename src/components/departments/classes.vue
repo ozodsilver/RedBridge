@@ -1,21 +1,24 @@
 <template>
   <div>
-    <nav class="m-auto glass  align-items-center   px-5" style="width: 100%;  justify-content: space-between; display: flex;">
+    <nav class="m-auto glass  align-items-center py-2  px-5" style="width: 100%;  justify-content: space-between; display: flex;">
       <div class="flex items-center shadow relative top-4">
-        <i class="fa fa-search text-slate-400 absolute top-3 left-2 z-20"></i>
-        <input type="text" class="shadow  form-control position-relative border-0 outline-none p-[20px] ps-5   m-0 " placeholder="search by class name" >
+       
+        <span class="p-input-icon-left absolute ">
+ 
+    <input v-model="homeInput" placeholder="Search by name" class="rounded w-[250px] p-2 transition-all shadow outline-none  focus:scale-105  "   />
+</span>
       </div>
-         <p class="lead mt-2 p-2 badge "> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p>
+         <p class="lead  p-2 badge m-0 badge bg-white text-dark"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p>
     </nav>
   
     <div class="container">
-      <div class="row mt-4">
-        <div class="col-3" v-for="info in infos" :key="info.id">
+      <div class="row mt-8">
+        <div class="col-4" v-for="info in findInfo" :key="info.id">
           <routerLink
             :to="{ name: 'insideClasses', params: { id: info.id } }"
-            class="btn  mt-4 rounded text-white shadow"
-            style="background-color:#9EA3AE ;"
-            >{{ info.name }}</routerLink
+            class="btn bg-white capitalize text-start text-base w-3/4 py-4  transition-all hover:scale-110 mt-4 rounded text-dark shadow"
+           style="border-top: 10px solid #6B7290; border-left: 1px dashed #6B7290; border-right: 1px dashed #6B7290; border-bottom: 1px dashed #6B7290;"
+            >Class : <span class="badge bg-[#495074] text-white">{{ info.name }}</span></routerLink
           >
         </div>
       </div>
@@ -29,9 +32,9 @@
 </template>
 
 <script setup>
-
+import InputText from 'primevue/inputtext';
 import axios from "axios";
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, computed } from "vue";
 import base from "../../reusables/getInfos.js";
 import { useRouter, useRoute } from "vue-router";
 
@@ -44,15 +47,25 @@ const props = defineProps(
 
 
 let route = useRoute();
-let infos = reactive([]);
+let infos = ref([]);
+const homeInput = ref('')
 const loading = ref(true)
 
 onMounted(async () => {
   let result = await axios.get(`${base}Admin/Journal/Classes`);
   console.log(result.data);
-  infos.push(...result.data);
+  infos.value.push(...result.data);
   loading.value = false
+
 });
+
+let findInfo = computed(() => {
+
+return infos.value.filter((list) => {
+  return list.name.toUpperCase().includes(homeInput.value.toUpperCase());
+});
+});
+
 </script>
 
 <style lang="scss" scoped>
@@ -61,11 +74,9 @@ button {
   background: #a5acb7 !important;
 }
 
-.glass{
-        backdrop-filter: blur(19px) saturate(180%);
-    -webkit-backdrop-filter: blur(19px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.36);
-   
+::placeholder
+{
+font-size: 14px;
+}
 
-    }
 </style>

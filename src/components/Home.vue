@@ -1,24 +1,32 @@
 <template>
   <div id="home" > 
-    <div class="row" >
+    <nav class="m-auto glass  align-items-center py-2  px-5" style="width: 100%;  justify-content: space-between; display: flex;">
+      <div class="flex items-center shadow relative top-4">
+       
+        <span class="p-input-icon-left absolute ">
+   
+    <input v-model="homeInput" placeholder="Search by username" class="rounded w-[250px] p-2 transition-all shadow outline-none  focus:scale-105  "   />
+</span>
+      </div>
+ <p class="lead text-dark p-2 text-[12px] badge bg-white  ">Teachers</p>
+         <!-- <p class="lead  p-2 badge m-0"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p> -->
+    </nav>
+  
+    <div class="row mt-6" >
 
 
 <div class="col-12">
-  <div class="container py-5">
-      <input
-        type="text"
-        class="form-control p-4 border-0 shadow-sm"
-        placeholder="Search byName Teacher"
-        data-key="search"
-        v-model="homeInput"
-      />
+  <div class="container">
+  
+
+ 
       <div class="row">
         <div class="col-6" v-for="(teacher, index) in findInfo" :key="teacher.id">
           <div
             class="card mt-4 border border-top-0 border-light"
             v-if="teachers.length >= 1"
           >
-            <div class="card-header bg-secondary text-white bg-gradient">
+            <div class="card-header glass text-white ">
               About Teacher
             </div>
             <div class="card-body">
@@ -37,7 +45,7 @@
                 <lord-icon
                   src="https://cdn.lordicon.com/ajkxzzfb.json"
                   trigger="hover"
-                  colors="primary:#30e8bd,secondary:#30e8bd"
+                  colors="primary:#495076,secondary:#495076"
                   style="width: 30px; height: 30px"
                 >
                 </lord-icon>
@@ -48,7 +56,7 @@
               <lord-icon
                 src="https://cdn.lordicon.com/tntmaygd.json"
                 trigger="hover"
-                style="width: 40px; height: 40px; cursor: pointer"
+                style="width: 30px; height: 30px; cursor: pointer"
                 class="float-end"
                 colors="primary:#e83a30,secondary:#16c79e"
                 @click="deleteTeacher(teacher.userName, index)"
@@ -153,11 +161,12 @@ export default {
 <style lang="scss">
 .card {
   transition: 0.1s linear;
-  border-left: 4px solid #aab0ba !important;
-  border-right: 4px solid #aab0ba !important;
+  border-left: 4px solid #495076 !important;
+  border-right: 4px solid #495076 !important;
+  border-bottom: 1px solid #495076 !important;
   .card-header {
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
+    border-top-left-radius: 4px !important;
+    border-top-right-radius: 4px !important;
   }
 
   &:hover {
@@ -184,5 +193,11 @@ export default {
   100% {
     transform: scale(1);
   }
+}
+
+
+::placeholder
+{
+font-size: 14px;
 }
 </style>

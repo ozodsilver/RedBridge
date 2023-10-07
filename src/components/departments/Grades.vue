@@ -1,6 +1,17 @@
 <template>
   <div>
+    <nav class="m-auto glass  align-items-center py-2  px-5" style="width: 100%;  justify-content: space-between; display: flex;">
+      <div class="flex items-center shadow relative top-4">
+       
+        <span class="p-input-icon-left absolute ">
    
+    <input v-model="homeInput" placeholder="Search by username" class="rounded w-[250px] p-2 transition-all shadow outline-none  focus:scale-105  "   />
+</span>
+      </div>
+ <p class="lead text-dark p-2 text-[12px] badge bg-white  ">Teachers</p>
+         <!-- <p class="lead  p-2 badge m-0"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p> -->
+    </nav>
+  
 
     <h1 class="text-center mt-5" v-if="empty">The Grades section is empty</h1>
     <div 
@@ -16,13 +27,11 @@
 
     <div class="container" v-else-if="!loade">
      
-
-      <h3 class="m-0 pt-5 text-secondary" v-if="!empty">Classes</h3>
       <div class="row">
         <div class="col-6" v-for="(info, index) in infos" :key="info.id">
           <div class="card mt-5 shadow-lg ">
-            <div class="card-header bg-secondary bg-gradient">
-              <span class="badge bg-secondary fs-6 shadow">Class</span> &nbsp;
+            <div class="card-header glass ">
+              <span class="badge bg-white text-dark fs-6 shadow">Class</span> &nbsp;
               <span class="fs-6 text-white"> {{ info.name }}  </span>
             </div>
             <div class="card-body py-5">
@@ -63,9 +72,9 @@
 
     <router-link
       to="/addGrades"
-      class="btn btn-success position-fixed"
-      style="bottom: 20px; right: 20px; width: 200px; "
-      >Add Grades <i class="fas fa-plus-circle"></i
+      class="btn glass  text-white position-fixed"
+      style="bottom: 20px; right: 20px; width: 200px; border-top: 2px dotted #DE576E;  border-left: 2px dotted #DE576E; border-right: 2px dotted #DE576E;"
+      >Add Grades <i class="fas fa-plus-circle text-white text-[25px] absolute top-[5px] transition-all right-6 "></i
     ></router-link>
   </div>
 </template>

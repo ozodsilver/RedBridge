@@ -93,7 +93,8 @@
     </div>
 
     <button
-      class="justify-content-center d-flex text-white gap-3 align-items-center text-start bg-transparent text-black w-100 shadow-none px-2"
+      class="justify-content-center d-flex text-white gap-3 align-items-center text-start bg-transparent  w-100 shadow-none px-2"
+      style="outline: none; border: none;"
       @click="logOut"
     >
       <i
@@ -134,7 +135,7 @@ a {
   overflow: hidden !important;
 
   &:hover {
-    color: rgb(190, 178, 178) !important;
+    color: rgb(174, 165, 185) !important;
   }
 }
 </style>

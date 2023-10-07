@@ -1,18 +1,30 @@
 <template>
 
-
+<button
+            class="
+              btn glass
+              d-flex
+              align-items-center
+              gap-3
+           text-white
+            m-4
+       
+            "
+   
+            @click="back"
+          >
+            <i class="fas fa-backspace fa-2x"></i> back
+          </button>
 <transition name="fade">
   <div>
-    <div class="container py-5">
-      <h1 class="mt-5">Add Grades</h1>
-      <div class="row">
+    <div class="container ">
+      <h1 class="mt-5 text-2xl text-dark">Add Grades</h1>
+      <div class="row mt-4">
         <div class="col-12">
-          <input
-            type="text"
-            class="form-control-lg w-100"
-            placeholder="Grade Name"
-            v-model="gradeName"
-          />
+          <div class="relative">
+    <input type="text" v-model="gradeName" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm  text-dark  rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+    <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Grade Name</label>
+</div>
         </div>
 
         <div class="col-12 overflow-auto">
@@ -45,23 +57,11 @@
           </div>
         </div>
 
-        <div class="col-12">
-          <button
-            class="
-              btn btn-dark
-              d-flex
-              align-items-center
-              gap-3
-              bg-gradient
-              w-25
-              float-start
-            "
-            @click="back"
-          >
-            <i class="fas fa-backspace fa-2x"></i> back
-          </button>
+        <div class="col-12 mt-6">
+       
           <button
             class="btn btn-success bg-gradient w-25 float-end"
+            :disabled = 'disabled'
             @click="PostGrade"
           >
             Add Grade <i class="fas fa-plus"></i>
@@ -82,11 +82,11 @@
   
   <script setup>
 import axios from "axios";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import base from '../../../reusables/getInfos'
 let teachers = ref([]);
-let picked = ref();
+let picked = ref(null);
 let gradeName = ref("");
 let router = useRouter();
 let isActive = ref(true);
@@ -134,6 +134,15 @@ setTimeout(() => {
 let back = () => {
   router.push({ name: "Grades" });
 };
+
+const disabled = ref(false)
+watchEffect(()=>{
+if(gradeName.value == "" || picked.value == null){
+  disabled.value = true
+}else{
+disabled.value = false
+}
+})
 </script>
   
   <style lang="scss" scoped>

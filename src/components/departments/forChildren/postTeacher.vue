@@ -1,78 +1,93 @@
 <template>
   <div>
-    <div class="container py-5">
-      <h1 class="mt-5">Add teachers</h1>
-      <div class="row">
-        <div class="col-6">
-          <input
-            type="text"
-            class="form-control-lg w-100"
-            placeholder="Firstname"
-            v-model="firstName"
-          />
-        </div>
-
-        <div class="col-6">
-          <input
-            type="text"
-            class="form-control-lg w-100"
-            placeholder="Lastname"
-            v-model="lastName"
-          />
-        </div>
-
-        <div class="col-6">
-          <input
-            type="text"
-            class="form-control-lg w-100"
-            placeholder="Fathername"
-            v-model="fatherName"
-          />
-        </div>
-
-        <div class="col-6">
-          <input
-            type="text"
-            class="form-control-lg  w-100"
-            placeholder="Username"
-            v-model="userName"
-            ref = 'user'
-          />
-        </div>
-
-        <div class="col-12">
-          <input
-            type="password"
-            class="form-control-lg w-100"
-            placeholder="password"
-            v-model="password"
-          />
-        </div>
-
-        <div class="col-12">
-          <button
+    <button
             class="
               btn btn-dark
               d-flex
               align-items-center
               gap-3
               bg-gradient
-              w-25
-              float-start
+              rounded-lg
+              m-4
             "
             @click="backOneStep()"
           >
             <i class="fas fa-backspace fa-2x"></i> back
           </button>
-          <button
-            class="btn btn-success bg-gradient w-25 float-end"
-            @click="PostTeachers"
-            ref="send"
-          >
-            Add teacher <i class="fas fa-plus"></i>
-          </button>
+    <div class="container py-3 ">
+    
+
+      <h1 class="mt-6  text-2xl text-[#495076]">Add a teacher</h1>
+      <form @submit.prevent="PostTeachers">
+      <div class="row  mt-4">
+
+  <div class="col-6">
+          <input
+            type="text"
+            class="form-control-lg border outline-none w-100 "
+            placeholder="Firstname"
+            v-model="firstName"
+            required
+            autocomplete="off"
+          />
         </div>
+
+        <div class="col-6">
+          <input
+            type="text"
+            class="form-control-lg border outline-none w-100"
+            placeholder="Lastname"
+            v-model="lastName"
+            required
+          />
+        </div>
+
+        <div class="col-6">
+          <input
+            type="text"
+            class="form-control-lg border outline-none w-100 mt-4"
+            placeholder="Fathername"
+            v-model="fatherName"
+            required
+          />
+        </div>
+
+        <div class="col-6">
+          <input
+            type="text"
+            class="form-control-lg border outline-none mt-4 w-100"
+            placeholder="Username"
+            v-model="userName"
+            ref = 'user'
+            required
+          />
+        </div>
+
+        <div class="col-12">
+          <input
+            type="password"
+            class="form-control-lg border outline-none mt-4 w-100"
+            placeholder="password"
+            v-model="password"
+            required
+          />
+        </div>
+
+        <div class="col-12 mt-6">
+        
+        <button
+        type="submit"
+          class="btn text-white bg-gradient w-25 float-end"
+      
+          ref="send"
+        >
+          Add teacher <i class="fas fa-plus"></i>
+        </button>
       </div>
+
+     
+      </div>
+    </form>
     </div>
 
     <Transition name="bounce">
@@ -83,15 +98,22 @@
       </div>
     </Transition>
   </div>
+
+
+
+  <div class="relative">
+<img src="@/assets/teachers/pngwing.com.png" class="w-[400px] block mx-auto relative top-[80px]" alt="">    
+
+  </div>
 </template>
 
 <script setup>
 import axios from "axios";
 import { ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import base from '../../../reusables/getInfos'
+import base from "../../../reusables/getInfos";
 
-let user = ref()
+let user = ref();
 let show = ref(false);
 let firstName = ref();
 let lastName = ref();
@@ -137,21 +159,6 @@ let PostTeachers = async () => {
 
   console.log(response);
 };
-
-watch(userName, () => {
-  if (userName.value == "admin") {
-    send.value.setAttribute("disabled", "");
-    send.value.setAttribute("class", "btn btn-danger text-white bg-gradient w-25 float-end");
-    send.value.innerHTML = 'addition is prohibited !'
-user.value.setAttribute('class', 'border border-danger form-control-lg  w-100')
-
-  } else {
-    send.value.removeAttribute("disabled", "");
-    send.value.setAttribute("class", "btn btn-success text-white text-dark bg-gradient w-25 float-end");
-    send.value.innerHTML = 'Add Teacher'
-    user.value.setAttribute('class', 'form-control-lg  w-100')
-  }
-});
 </script>
 
 <style lang="scss" scoped>
@@ -175,5 +182,8 @@ user.value.setAttribute('class', 'border border-danger form-control-lg  w-100')
 
 .btn {
   transition: 0.1s;
+  background: #495076;
 }
+
+
 </style>

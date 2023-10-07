@@ -93,7 +93,7 @@ let Request = () => {
     });
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 #Auth {
   display: flex;
   justify-content: center;

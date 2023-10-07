@@ -23,6 +23,7 @@ import { ref, onMounted, onUpdated } from "vue";
 body {
   font-family: "Quicksand", sans-serif;
   cursor: url("./assets/double-click.png") 4 12, auto;
+  background: rgba(9, 89, 109, 0.048);
 }
 
 *{
@@ -49,7 +50,7 @@ body {
 .router-link-exact-active {
   background: #495076;
   border-radius: 15px !important;
-  color: white !important;
+  color: rgb(34, 163, 135) !important;
 
   text-align: center;
   // overflow: hidden;
@@ -62,9 +63,8 @@ position: absolute;
 transition: all 1s !important;
 width: 35px;
 height: 25px;
-background-color: rgb(255, 255, 255);
-
-right: -40%;
+background-color: #F3F7F8;
+right: -35px;
 transform: rotate(40deg);
 
   }
@@ -86,31 +86,16 @@ transform: rotate(40deg);
   }
 }
 
-input[data-key="search"] {
-  background: white
-    url("https://cdn0.iconfinder.com/data/icons/ikonate/48/search-256.png");
-  background-size: contain;
-  background-position: 98%;
-  background-size: 31px 31px;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  transition: 0.5s;
-}
 
-input[data-key="search"]:focus {
-  transform: translateY(-10px);
-  box-shadow: 10px 15px 10px #c5c5c6 !important;
-  outline: 1px rgba(98, 34, 202, 0.348) solid;
-}
 
 .glass {
-  background: rgb(75, 83, 120);
+  background: rgba(75, 83, 120,0.4);
   background: radial-gradient(
     circle,
-    rgba(75, 83, 120, 1) 0%,
+    rgba(75, 83, 120, 0.8) 0%,
     rgba(50, 55, 83, 0.9556197478991597) 100%
   );
-  border-right: 1px solid rgb(67, 67, 82);
+
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");

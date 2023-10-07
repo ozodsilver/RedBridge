@@ -1,52 +1,13 @@
 <template>
+
+<Toast />
+
   <div>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
     <div class="container p-4">
-      <div
-      @click="backOneStep"
-        class="my-4 text-dark d-flex align-items-center gap-5 justify-content-start w-25"
-      >
-        <i
-          class="fas fa-chevron-circle-left fa-3x"
-        
-          style="cursor: pointer"
-        ></i>
-        <h2 class="pt-3">Students</h2>
-      </div>
+      <h2 class="pt-3 text-2xl text-dark">Students</h2>
       <div class="row">
         <div class="col-12 mt-4">
-          <!-- <div class="card shadow">
-            <div class="card-body">
-              <p class="text-dark">
-                <span class="badge bg-info">Student:</span> {{ student.firstName }}
-              </p>
-
-              <p class="text-dark">
-                <span class="badge bg-info">LastName:</span> {{ student.lastName }}
-              </p>
-
-              <p class="text-dark">
-                <span class="badge bg-info">FatherName:</span> {{ student.fatherName }}
-              </p>
-            
-              <button
-                class="
-                  btn btn-danger
-                  bg-gradient
-                  d-flex
-                  justify-content-center
-                  align-items-center
-                  float-end
-                  position-relative
-                "
-                style="width: 50px; z-index:9999"
-                @click="deleteStudents(student.id, index)"
-              >
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-          </div> -->
-
           <table
             class="table align-middle table-striped table-hover table-dark rounded bg-gradient mb-0 bg-white"
           >
@@ -60,7 +21,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-0" v-for="(student, index) in students" :key="student.id">
+              <tr class="border-0 " v-for="(student, index) in students" :key="student.id">
                 <td class="rounded-5">
                   <div class="d-flex align-items-center">
                     <i class="fas fa-user-circle fa-2x text-secondary"></i>
@@ -83,14 +44,14 @@
                       class="badge position-absolute h-25 bg-secondary"
                       style="top: 10px"
                     >
-                      {{ new Date(student.activeDate).toDateString() }}
+                    
                     </div>
-                    <input type="date" v-model="Time" />
-                    <button @click="updateTime(student.id)" class="btn-success w-25">
+                    <VueDatePicker v-model="student.activeDate" placeholder="Start Typing ..." text-input auto-apply  format = 'MM.dd.YYY' :enable-time-picker="false" />
+                    <button @click="updateTime(student.id, student.activeDate)" class=" glass rounded-lg ml-1  w-25">
                       send
                     </button>
                   </div>
-                  f
+                  
                 </td>
 
                 <td class="rounded-5 text-center">
@@ -115,13 +76,27 @@
     style="bottom: 20px; right: 20px; width: 200px"
     >Add Students <i class="fas fa-plus-circle"></i
   ></router-link>
+
+
+
+
 </template>
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
+import Toast from 'primevue/toast';
+
 import base from "../../../reusables/getInfos.js";
+
+
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
+
+
+
 
 let store = useStore();
 let router = useRouter();
@@ -164,20 +139,18 @@ let backOneStep = ()=>{
   router.push('/Home')
 }
 
-let updateTime = async (studentId) => {
+let updateTime = async (studentId,activeDate) => {
 
   try {
     axios
-      .patch(`${base}Students?studentId=${studentId}&date=${new Date(Time.value).toISOString()}`, {}, {
+      .patch(`${base}Students?studentId=${studentId}&date=${new Date(activeDate).toJSON()}`, {}, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
       })
       .then((res) => {
-        console.log(res);
-        alert('time changed')
-        Time.value = ''
+        toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', life: 30000 });
       }).finally((e)=>{
 console.log('e');
       });
@@ -205,4 +178,10 @@ console.log('e');
   border-radius: 10px;
   background: rgba(0, 0, 0, 0);
 }
+
+
+:global(.p-toast){
+background: red !important;
+}
+
 </style>
