@@ -1,6 +1,7 @@
 <template>
   <div>
   
+    <h1 class="text-2xl mt-4 ml-6">Parents</h1>
 
     <div v-show="show">
       <div class="spinner spinner-border text-danger m-auto d-block mt-5"></div>
@@ -10,26 +11,45 @@
 
 
 <div class="col-12">
-  <div class="container">
+  <div class="container px-5">
       <div class="row">
         <input
           type="text"
-          class="form-control p-4 mt-5 border-0"
+          class="form-control  mt-5 border-0"
           id="search"
           data-key="search"
           placeholder="Search by name"
           v-model="input"
           @input="publishedBooksMessage"
         />
-        <div class="col-4" v-for="info in findInfo" :key="info.id">
-          <router-link
+        <div class="col-4 mt-3" v-for="info in findInfo" :key="info.id">
+
+          <n-result
+    
+    :title="info.userName"
+    description="care for the child, care for the future."
+    class="border rounded"
+  >
+
+  <template #icon>
+  
+      <img src="@/assets/parents/pngwing.com.png" alt="" class="w-2/4 opacity-60">
+    
+  </template>
+    <template #footer>
+      <router-link
             :to="{ name: 'forParent', params: { id: info.id } }"
-            class="btn btn shadow-3 w-100 rounded-pill text-white mt-5"
+            class="btn btn shadow-3 w-75 mb-4  text-white mt-3"
             style="background: #a5acb7"
             data-mdb-ripple-color="secondary"
             @click="addUserName(info.userName, info.id)"
             >{{ info.userName }}</router-link
           >
+    </template>
+  </n-result>
+
+
+        
         </div>
       </div>
     </div>
@@ -40,7 +60,7 @@
 
     <router-link
       to="/AddParents"
-      class="btn btn-success rounded-pill position-fixed"
+      class="btn glass text-white rounded-pill position-fixed"
       style="bottom: 20px; right: 20px; width: 200px"
       >Add parent <i class="fas fa-plus-circle"></i
     ></router-link>

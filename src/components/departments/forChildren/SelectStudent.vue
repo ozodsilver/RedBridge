@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container px-5">
       <div class="row">
-        <h2 class="my-5">Students</h2>
-        <div class="container">
+        <h2 class="my-5 text-xl">Students</h2>
+        <div class="container" v-if="!noInfos">
           <div class="row">
             <div class="col-12 overflow-auto">
               <div v-for="user in users" :key="user.id" class="mx-0 mt-3">
                 <input
                   type="radio"
-                  class="btn-check d-block"
+                  class="btn-check  d-block"
                   name="options"
                   :id="user.id"
                   autocomplete="off"
@@ -38,6 +38,7 @@
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
                           caution
+                          <i class="fas fa-triangle-exclamation text-amber-300"></i>
                         </h5>
                         <button
                           type="button"
@@ -53,14 +54,14 @@
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-danger"
+                          class="btn bg-red-700 text-white hover:bg-red-800"
                           data-mdb-dismiss="modal"
                         >
                           no
                         </button>
                         <button
                           type="button"
-                          class="btn btn-success"
+                          class="btn bg-green-500 text-white hover:bg-green-600"
                           data-mdb-dismiss="modal"
                           @click="addStudent(picked)"
                         >
@@ -82,16 +83,23 @@
           </div>
 
           <button
-            class="btn btn-success w-50 btn-gradient float-end"
+            class="btn btn-success w-25 mt-6 glass text-white  float-end"
             @click="replaceModal()"
             disabled
             ref="butn"
             data-mdb-toggle="modal"
             data-mdb-target="#exampleModal"
           >
-            Add <i class="fa fa-add"></i>
+            Add student<i class="fa fa-add"></i>
           </button>
         </div>
+
+        <n-result status="error" title="Attention"  v-else>
+    <template #footer>
+      <n-button type = 'error' class="text-dark">no data found !</n-button>
+    </template>
+  </n-result>
+
       </div>
     </div>
 
@@ -115,6 +123,7 @@ let showModal = ref(false);
 let fill = ref(false);
 let butn = ref();
 let sedeCheck = ref(false)
+const noInfos = ref(false)
 
 
 onMounted(() => {
@@ -130,7 +139,12 @@ onMounted(() => {
       }
     )
     .then((el) => {
-      console.log(el);
+      if(el.data.length == 0){
+noInfos.value = true
+      }else{
+        noInfos.value = false
+      }
+     
       el.data.forEach((res) => {
         users.value.push(res);
       });

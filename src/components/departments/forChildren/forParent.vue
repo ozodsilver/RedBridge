@@ -1,9 +1,9 @@
 <template>
   <div>
    
-    <div class="container">
+    <div class="container px-5">
       <div class="d-flex justify-content-between w-100 align-items-center">
-        <button class="btn btn-dark w-25 m-0" @click="backOneStep">
+        <button class="btn glass text-white m-0" @click="backOneStep">
           back <i class="fa fa-angle-left"></i>
         </button>
         <h2 class="my-5 text-end">children belonging to this person</h2>
@@ -25,7 +25,7 @@
               </tr>
             </thead>
             <tbody>
-              <div class="spinner spinner-border text-danger  position-absolute" style="left:50%" v-show = 'load'>
+              <div class="spinner spinner-border text-danger  position-absolute" style="left:50%; top: 50%;" v-show = 'load'>
 
               </div>
               <tr v-for="(student, index) in Student" :key="student.id">
@@ -37,7 +37,7 @@
                 <td>{{ student.totalScore }}</td>
                 <td>
                   <button
-                    class="btn btn-danger p-0 w-25 d-block m-auto"
+                    class="btn btn-danger p-2 w-25 d-block m-auto"
                     @click="deleteStudent(student.id, index)"
                   >
                     <i class="fa fa-trash"></i>
@@ -52,8 +52,8 @@
 
     <router-link
       to="/AddStudentForParent"
-      class="btn btn-success position-fixed"
-      style="bottom: 20px; right: 20px; width: 200px"
+      class="btn glass text-white position-fixed"
+      style="bottom: 20px; right: 20px; width: 280px"
       >Add student for this parent <i class="fas fa-plus-circle"></i
     ></router-link>
   </div>

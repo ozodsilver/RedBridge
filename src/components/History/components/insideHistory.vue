@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Navigation></Navigation>
+       
 
         <div class="row mt-5">
 <div class="col-4"  v-for="info in infos " :key="info.id">

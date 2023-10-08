@@ -10,10 +10,10 @@
 
 
 
-    <div class="container" v-else-if="!loade">
+    <div class="container px-5" v-else-if="!loade">
 
 
-      <h3 class="m-0 pt-5 text-secondary" v-if="!empty">Classes</h3>
+      <h3 class="m-0 pt-5 text-secondary text-2xl" v-if="!empty">Classes</h3>
       <div class="row">
         <div class="col-4" v-for="(info, index) in infos" :key="info.id">
           <router-link :to="{ name: 'insideHistory', params: { id: info.id } }" class="card mt-5 shadow-lg ">

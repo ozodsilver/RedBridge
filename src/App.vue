@@ -98,5 +98,30 @@ transform: rotate(40deg);
 
 }
 
+.p-toast{
+background-color: rgba(57, 168, 107, 0.651) !important;
+ border-radius: 8px;
+ color: white;
+ 
+}
+
+
+.p-toast-message-content {
+    display: flex;
+   justify-content: space-around;
+    align-items: center; 
+    gap: 20px;
+    padding: 10px;
+}
+
+.p-toast-icon-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    right: 20px;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
 </style>

@@ -1,20 +1,20 @@
 <template>
     <transition name="fade">
       <div>
-        <div class="container py-5">
-          <h1 class="mt-5">Add Students</h1>
-          <div class="row">
+        <div class="container px-5">
+          <h1 class="mt-5 text-2xl">Add Students</h1>
+          <div class="row mt-6">
             <div class="col-12">
               <input
                 type="text"
-                class="form-control-lg w-100"
+                class="form-control-lg w-100 outline-none"
                 placeholder="First Name"
                 v-model="firstName"
               />
 
               <input
                 type="text"
-                class="form-control-lg w-100"
+                class="form-control-lg w-100 mt-4 outline-none"
                 placeholder="last Name"
                 v-model="lastName"
               />
@@ -22,22 +22,22 @@
 
               <input
                 type="text"
-                class="form-control-lg w-100"
+                class="form-control-lg w-100 mt-4 outline-none"
                 placeholder="father Name"
                 v-model="fatherName"
               />
             </div>
   
   
-            <div class="col-12">
+            <div class="col-12 mt-4">
               <button
                 class="
-                  btn btn-dark
+                  btn glass text-white
                   d-flex
                   align-items-center
                   gap-3
-                  bg-gradient
-                  w-25
+            
+                 
                   float-start
                 "
                 @click="back"
@@ -45,7 +45,7 @@
                 <i class="fas fa-backspace fa-2x"></i> back
               </button>
               <button
-                class="btn btn-success bg-gradient w-25 float-end"
+                class="btn glass text-white w-25 float-end"
                 @click="PostStudent"
               >
                 Add Student <i class="fas fa-plus"></i>
@@ -65,7 +65,7 @@
         justify-content-center
         align-items-center
         m-auto
-        w-50
+        
         p-4
       "
       v-if="loader"
