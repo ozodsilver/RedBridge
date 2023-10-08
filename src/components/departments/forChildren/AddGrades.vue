@@ -5,7 +5,7 @@
               btn glass
               d-flex
               align-items-center
-              gap-3
+              gap-2
            text-white
             m-4
        
@@ -13,11 +13,12 @@
    
             @click="back"
           >
-            <i class="fas fa-backspace fa-2x"></i> back
+            <i class="fas fa-backspace "></i>
+             back
           </button>
 <transition name="fade">
   <div>
-    <div class="container ">
+    <div class="container px-24">
       <h1 class="mt-5 text-2xl text-dark">Add Grades</h1>
       <div class="row mt-4">
         <div class="col-12">
@@ -147,7 +148,7 @@ disabled.value = false
   
   <style lang="scss" scoped>
 .active {
-  background: rgb(112, 176, 255);
+  background: rgb(70, 107, 151);
 }
 
 

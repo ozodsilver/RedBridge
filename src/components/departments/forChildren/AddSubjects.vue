@@ -1,13 +1,29 @@
 <template>
+
+
+<button
+              class="
+                btn btn-dark
+                d-flex
+                align-items-center
+                gap-3
+               glass
+           m-4
+              "
+          @click="back"
+            >
+              <i class="fas fa-backspace "></i> back
+            </button>
+
   <transition name="fade">
     <div>
-      <div class="container py-5">
-        <h1 class="mt-5">Add Subjects</h1>
+      <div class="container px-5 py-2">
+        <h1 class="mt-1 mb-3 text-2xl">Add Subjects</h1>
         <div class="row">
           <div class="col-12">
             <input
               type="text"
-              class="form-control-lg w-100"
+              class="form-control-lg w-100 outline-none"
               placeholder="Subject Name"
               v-model="subjectName"
             />
@@ -46,24 +62,13 @@
 
 
           <div class="col-12">
+  
             <button
-              class="
-                btn btn-dark
-                d-flex
-                align-items-center
-                gap-3
-                bg-gradient
-                w-25
-                float-start
-              "
-          @click="back"
-            >
-              <i class="fas fa-backspace fa-2x"></i> back
-            </button>
-            <button
-              class="btn btn-success bg-gradient w-25 float-end"
+              class="btn glass text-white mt-2 w-25 float-end"
               @click="PostSubject"
+              :disabled="disabled"
             >
+          
               Add subject <i class="fas fa-plus"></i>
             </button>
           </div>
@@ -93,32 +98,28 @@
       
       <script setup>
 import axios from "axios";
-import { ref, onMounted, } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 import {useStore} from 'vuex'
 import base from '../../../reusables/getInfos.js'
 
 let subjects = ref([]);
-let picked = ref();
+let picked = ref(null);
 let subjectName = ref("");
 let router = useRouter();
 let isActive = ref(true);
 let loader = ref(false);
 let store = useStore()
 
+const disabled = ref(true)
 
 onMounted(async () => {
- 
   let subject = await axios.get(
     `${base}Teachers`
   );
   subject.data.forEach((el) => {
     subjects.value.push(el);
   });
-
-  console.log(subject);
-
-  console.log("guid" +  "  " + store.state.id);
 
 });
 
@@ -156,11 +157,23 @@ let PostSubject = async () => {
 let back = () => {
   router.go(-1);
 };
+
+
+watchEffect(()=>{
+
+if(subjectName.value == '' || picked.value == null ){
+  disabled.value = true
+}else{
+disabled.value = false
+}
+
+})
+
 </script>
       
       <style lang="scss" scoped>
 .active {
-  background: rgb(112, 176, 255);
+  background: rgb(61, 95, 136);
 }
 
 ::-webkit-scrollbar {

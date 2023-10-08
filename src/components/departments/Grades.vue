@@ -22,10 +22,8 @@
         <div class="spinner-border text-info" role="status"></div>
       </div>
 
-     
 
-
-    <div class="container" v-else-if="!loade">
+    <div class="container px-5 mb-2" v-else-if="!loade">
      
       <div class="row">
         <div class="col-6" v-for="(info, index) in infos" :key="info.id">
@@ -73,7 +71,7 @@
     <router-link
       to="/addGrades"
       class="btn glass  text-white position-fixed"
-      style="bottom: 20px; right: 20px; width: 200px; border-top: 2px dotted #DE576E;  border-left: 2px dotted #DE576E; border-right: 2px dotted #DE576E;"
+      style="bottom: 20px; right: 20px; width: 200px; border-top: 2px dotted #DE576E;  border-left: 2px dotted #DE576E; border-right: 2px dotted #DE576E; z-index: 333333333333;"
       >Add Grades <i class="fas fa-plus-circle text-white text-[25px] absolute top-[5px] transition-all right-6 "></i
     ></router-link>
   </div>

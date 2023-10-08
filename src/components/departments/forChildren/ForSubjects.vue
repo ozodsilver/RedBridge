@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
-    <div class="container pt-0">
+    <div class="container px-5 mb-2 pt-0">
       <i
-        class="fas fa-chevron-circle-left fa-3x mt-5"
+        class="fas fa-chevron-circle-left fa-2x mt-5"
         @click="router.push({ name: 'Grades' })"
         style="cursor:pointer"
       ></i>
@@ -16,7 +16,7 @@
           :key="subject.id"
         >
           <div class="card">
-            <div class="card-header">About Subjects</div>
+            <div class="card-header glass text-white">About Subjects</div>
             <div class="card-body">
               <p>
                 <span class="badge bg-info">Subject:</span> {{ subject.name }}
@@ -43,7 +43,7 @@
 
     <router-link
       :to="{ name: 'AddSubjects' }"
-      class="btn btn-success position-fixed"
+      class="btn glass text-white position-fixed"
       style="bottom: 20px; right: 20px; width: 200px"
       @click="addId"
       >Add Subjects <i class="fas fa-plus-circle"></i
