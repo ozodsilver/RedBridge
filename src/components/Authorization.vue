@@ -13,7 +13,7 @@
             <label for="chk" aria-hidden="true" class="pt-3">Login</label>
             <input
               type="text"
-              placeholder="Email"
+              placeholder="Login"
               required=""
               v-model="email"
             />
@@ -49,8 +49,12 @@
 <script setup>
 import Axios from "axios";
 import { ref, onMounted } from "vue";
+import Toast from 'primevue/toast';
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import { useToast } from 'primevue/usetoast';
+const toast = useToast();
+
 import base from "../reusables/getInfos.js";
 let store = useStore();
 let router = useRouter();
@@ -82,11 +86,12 @@ let Request = () => {
         localStorage.setItem("jwt", el.data);
         router.push('/Dashboard/');
       } else {
+        
       }
     })
     .catch((err) => {
       loade.value = false;
-      alert("xato login yoki parol" + err.message);
+      toast.add({ severity: 'info', summary: 'Info', detail: err, life: 3000 });
     })
     .finally(() => {
       loade.value = false;
@@ -195,7 +200,7 @@ button:hover {
   border-radius: 60% / 10%;
   transform: translateY(-150px);
   box-shadow: 0 0 4px rgba(184, 212, 209, 0.493);
-  transition: 0.8s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .login label {
   color: #573b8a;

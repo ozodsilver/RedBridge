@@ -23,17 +23,19 @@
 
   <div class="col-6">
           <input
+          :autocomplete="off"
             type="text"
             class="form-control-lg border outline-none w-100 "
             placeholder="Firstname"
             v-model="firstName"
             required
-            autocomplete="off"
+   
           />
         </div>
 
         <div class="col-6">
           <input
+          :autocomplete="off"
             type="text"
             class="form-control-lg border outline-none w-100"
             placeholder="Lastname"
@@ -44,6 +46,7 @@
 
         <div class="col-6">
           <input
+          autocomplete="off"
             type="text"
             class="form-control-lg border outline-none w-100 mt-4"
             placeholder="Fathername"
@@ -54,6 +57,7 @@
 
         <div class="col-6">
           <input
+          autocomplete="off"
             type="text"
             class="form-control-lg border outline-none mt-4 w-100"
             placeholder="Username"
@@ -65,6 +69,7 @@
 
         <div class="col-12">
           <input
+          autocomplete="off"
             type="password"
             class="form-control-lg border outline-none mt-4 w-100"
             placeholder="password"
@@ -77,7 +82,7 @@
         
         <button
         type="submit"
-          class="btn text-white bg-gradient w-25 float-end"
+          class="btn rounded-lg p-3 text-white bg-gradient w-25 float-end"
       
           ref="send"
         >
@@ -102,15 +107,22 @@
 
 
   <div class="relative">
-<img src="@/assets/teachers/pngwing.com.png" class="w-[400px] block mx-auto relative top-[80px]" alt="">    
+<img src="@/assets/teachers/pngwing.com.png" class="w-[400px] block mx-auto relative opacity-70 top-[80px]" alt="">    
 
   </div>
+
+  <Toast></Toast>
 </template>
 
 <script setup>
 import axios from "axios";
 import { ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
+
 import base from "../../../reusables/getInfos";
 
 let user = ref();
@@ -145,16 +157,14 @@ let PostTeachers = async () => {
   );
 
   if (response.data) {
-    show.value = true;
+
     firstName.value = "";
     lastName.value = "";
     fatherName.value = "";
     userName.value = "";
     password.value = "";
 
-    setTimeout(() => {
-      show.value = false;
-    }, 3000);
+    toast.add({ severity: 'success', detail: 'Successfully added', life: 3000 });
   }
 
   console.log(response);

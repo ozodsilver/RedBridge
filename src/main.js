@@ -5,6 +5,7 @@ import store from "./store/store.js";
 import base from "./reusables/getInfos.js";
 import naive from 'naive-ui'
 import '@/assets/style.css'
+import '@/styles/main.scss';
 import Navigation from "./components/MiniComponents/Navigation.vue";
 
 import VueDatePicker from '@vuepic/vue-datepicker';
@@ -16,7 +17,7 @@ import 'primeicons/primeicons.css';
 
 // prime toats component library
 import ToastService from 'primevue/toastservice';
-
+import "primevue/resources/themes/lara-light-indigo/theme.css";
 window.base = base;
 const app = createApp(App);
 

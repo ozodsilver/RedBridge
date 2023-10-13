@@ -5,7 +5,7 @@
        
         <span class="p-input-icon-left absolute ">
    
-    <input v-model="homeInput" placeholder="Search by username" class="rounded w-[250px] p-2 transition-all shadow outline-none  focus:scale-105  "   />
+    <input v-model="homeInput" placeholder="Search by username" class="rounded w-[300px] p-2.5 transition-all shadow outline-none  focus:scale-105  "   />
 </span>
       </div>
  <p class="lead text-dark p-2 text-[12px] badge bg-white  ">Teachers</p>
@@ -21,7 +21,7 @@
 
  
       <div class="row">
-        <div class="col-6" v-for="(teacher, index) in findInfo" :key="teacher.id">
+        <div class="col-6" v-for="(teacher, index) in findInfo" :key="index">
           <div
             class="card mt-4 border border-top-0 border-light"
             v-if="teachers.length >= 1"
@@ -41,7 +41,7 @@
                 Father name:
                 <span class="fs-6 text-dark">{{ teacher.fatherName }}</span>
               </h6>
-              <div class="d-flex align-items-center gap-2">
+              <div class="d-flex align-items-center  gap-2">
                 <lord-icon
                   src="https://cdn.lordicon.com/ajkxzzfb.json"
                   trigger="hover"
@@ -51,18 +51,12 @@
                 </lord-icon>
                 Username:
                 {{ teacher.userName }}
+
+
+                {{ teacher.id }}
+              <i class="far fa-trash-can text-lg cursor-pointer absolute bottom-5 right-5"  @click="openModal(teacher.userName, index)"></i>
               </div>
 
-              <lord-icon
-                src="https://cdn.lordicon.com/tntmaygd.json"
-                trigger="hover"
-                style="width: 30px; height: 30px; cursor: pointer"
-                class="float-end"
-                colors="primary:#e83a30,secondary:#16c79e"
-                @click="deleteTeacher(teacher.userName, index)"
-          
-              >
-              </lord-icon>
             </div>
           </div>
         </div>
@@ -96,11 +90,32 @@
     </router-link>
 
 
+    <Dialog v-model:visible="visible" modal header="Caution" :style="{ width: '50vw' }">
+    <p>
+      do you really want to delete this teacher?
 
-    
+      
+    </p>
+<div class="flex items-center justify-end gap-10">
 
+  
+
+    <button class="w-[140px] h-[48px] rounded-full bg-red-400 text-white mt-8" @click="visible = false">
+No
+    </button>
+
+    <button class="w-[140px] h-[48px] rounded-full bg-teal-500 text-white mt-8" @click="deleteTeacher()">
+Yes
+    </button>
+
+</div>
+
+</Dialog>
 
   </div>
+
+  <Toast></Toast>
+
 </template>
 
 <script>
@@ -108,10 +123,21 @@ import axios from "axios";
 import Nav from "../components/MiniComponents/Navigation.vue";
 import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
+import Dialog from 'primevue/dialog';
+import Button from 'primevue/button';
+import Toast from 'primevue/toast';
+
+
+import { useToast } from 'primevue/usetoast';
+
+
 import base from "../reusables/getInfos";
 export default {
   components: {
     Nav,
+    Dialog,
+    Button,
+    Toast
   },
 
   data() {
@@ -124,23 +150,40 @@ export default {
     let teachers = ref([]);
     let infos = ref([]);
     let homeInput = ref("");
-
+const visible = ref(false)
     const contentLoaded = ref(true)
 
-    let deleteTeacher = async (userName, teacherId) => {
-      let removedEl = teachers.value.findIndex((x, idx) => idx == teacherId);
+    const toast = useToast();
 
-      console.log(removedEl);
+    const userName = ref()
+    const index = ref()
+    function openModal(username, idx){
 
-      teachers.value.splice(removedEl, 1);
+visible.value =  true
+userName.value = username
+index.value = idx
 
-      let res = await axios.delete(`${base}Teachers?userName=${userName}`, {
+}
+
+
+    let deleteTeacher =  () => {
+
+      teachers.value.splice(index.value, 1);
+
+       axios.delete(`${base}Teachers?userName=${userName.value}`, {
         headers: {
           "Content-Type": "application/json-patch+json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
-      });
+      }).then(res =>{
+      toast.add({ severity: 'success',  detail: userName.value +  ' has been deleted', life: 4000 });
+      visible.value = false
+
+   
+      })
     };
+
+
 
     onMounted(async () => {
       let teacher = await axios.get(`${base}Teachers`);
@@ -174,7 +217,7 @@ export default {
       });
     });
 
-    return { users, deleteTeacher, teachers, store, findInfo, homeInput, contentLoaded };
+    return { users, deleteTeacher, teachers, store, findInfo, homeInput, contentLoaded,visible,openModal, };
   },
 };
 </script>
