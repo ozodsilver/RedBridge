@@ -19,8 +19,7 @@
                 v-model="lastName"
               />
 
-
-              <input
+            <input
                 type="text"
                 class="form-control-lg w-100 mt-4 outline-none"
                 placeholder="father Name"
@@ -36,8 +35,6 @@
                   d-flex
                   align-items-center
                   gap-3
-            
-                 
                   float-start
                 "
                 @click="back"
@@ -65,7 +62,6 @@
         justify-content-center
         align-items-center
         m-auto
-        
         p-4
       "
       v-if="loader"

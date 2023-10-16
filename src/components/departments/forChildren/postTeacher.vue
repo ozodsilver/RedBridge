@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-5">
     <button
             class="
               btn btn-dark
@@ -105,11 +105,6 @@
   </div>
 
 
-
-  <div class="relative">
-<img src="@/assets/teachers/pngwing.com.png" class="w-[400px] block mx-auto relative opacity-70 top-[80px]" alt="">    
-
-  </div>
 
   <Toast></Toast>
 </template>

@@ -44,6 +44,8 @@
       </div>
     </div>
   </div>
+
+  <Toast></Toast>
 </template>
 
 <script setup>
@@ -85,11 +87,14 @@ let Request = () => {
         store.state.isAuthenticated = true;
         localStorage.setItem("jwt", el.data);
         router.push('/Dashboard/');
-      } else {
-        
+      } else if(el.status == 204){
+        toast.add({ severity: 'error', summary: 'Info', detail: 'Incorrect login or password', life: 4000 });
+
       }
+
     })
     .catch((err) => {
+      console.log(err);
       loade.value = false;
       toast.add({ severity: 'info', summary: 'Info', detail: err, life: 3000 });
     })

@@ -8,7 +8,7 @@
     <input v-model="homeInput" placeholder="Search by username" class="rounded w-[250px] p-2 transition-all shadow outline-none  focus:scale-105  "   />
 </span>
       </div>
- <p class="lead text-dark p-2 text-[12px] badge bg-white  ">Teachers</p>
+ <p class="lead text-dark p-2 text-[12px] badge bg-white  ">Grades</p>
          <!-- <p class="lead  p-2 badge m-0"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p> -->
     </nav>
   

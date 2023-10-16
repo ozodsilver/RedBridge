@@ -23,16 +23,13 @@ import { ref, onMounted, onUpdated } from "vue";
 body {
   font-family: "Quicksand", sans-serif;
   cursor: url("./assets/double-click.png") 4 12, auto;
-  background: rgba(9, 89, 109, 0.048);
+  background: #F8F9FA;
 }
 
 *{
   box-sizing: border-box !important ;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
 
 .fade-enter-active {
   transition: all 0.5s linear;
@@ -48,27 +45,20 @@ body {
 }
 
 .router-link-exact-active {
-  background: #495076;
-  border-radius: 15px !important;
+  background: #ffffff !important;
+  box-shadow: 7px 7px 7px rgb(245, 242, 242);
+  border-radius: 12px !important;
   color: rgb(34, 163, 135) !important;
-
   text-align: center;
-  // overflow: hidden;
-  // box-shadow: inset 0 0 30px #454c5aa2, inset 10px 5px #495076;
-  // border: inset 1px #61636e62;
-transition: all 1s !important;
-  &:before{
-    content: '';
-position: absolute;
-transition: all 1s !important;
-width: 35px;
-height: 25px;
-background-color: #F3F7F8;
-right: -35px;
-transform: rotate(40deg);
-
-  }
+  font-weight: bold;
 }
+
+.router-link-exact-active .inner{
+background-color: #82D616;
+color: white;
+font-size: 12px;
+}
+
 
 @media (max-width: 800px) {
   #App {
@@ -89,13 +79,8 @@ transform: rotate(40deg);
 
 
 .glass {
-  background: rgba(75, 83, 120,0.4);
-  background: radial-gradient(
-    circle,
-    rgba(75, 83, 120, 0.8) 0%,
-    rgba(50, 55, 83, 0.9556197478991597) 100%
-  );
-
+  background: rgb(231,232,232);
+background: linear-gradient(185deg, rgba(231,232,232,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 .p-toast{
@@ -121,6 +106,27 @@ background-color: rgba(57, 168, 107, 0.651) !important;
     overflow: hidden;
     position: relative;
     right: 20px;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");

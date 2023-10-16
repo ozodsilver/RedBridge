@@ -1,18 +1,38 @@
 <template>
-  <div id="home" > 
-    <nav class="m-auto glass  align-items-center py-2  px-5" style="width: 100%;  justify-content: space-between; display: flex;">
-      <div class="flex items-center shadow relative top-4">
-       
-        <span class="p-input-icon-left absolute ">
-   
-    <input v-model="homeInput" placeholder="Search by username" class="rounded w-[300px] p-2.5 transition-all shadow outline-none  focus:scale-105  "   />
-</span>
-      </div>
- <p class="lead text-dark p-2 text-[12px] badge bg-white  ">Teachers</p>
-         <!-- <p class="lead  p-2 badge m-0"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p> -->
+  <div id="home" class="relative " > 
+    <div class="relative">
+      <nav class="mx-auto mt-8   flex justify-between align-items-center h-[100px]     px-5" style="width: 100%">
+<div>
+  <p class="text-teal-700">Pages / Teachers</p>
+        <p- class="font-extrabold">Teachers</p->
+
+</div>
+     
+  <div class="flex items-center">
+    
+    <div class="relative">
+      <i class="fa fa-search text-gray-300 absolute right-4 top-3"></i>
+      <input v-model="homeInput" placeholder="Search by username" class="rounded-lg  border bg-white w-[300px] p-2 transition-all  outline-none  focus:scale-105   "   />
+    </div>
+
+<router-link to = '/'
+class="justify-content-center d-flex text-white bg-transparent gap-1 items-center text-start  w-100 shadow-none px-2"
+style="outline: none; border: none;"
+
+>
+<i
+class="fa fa-user text-sm text-teal-700 font-extrabold"
+
+></i>
+<span class="text-dark text-sm text-teal-900"> Sign out</span>
+</router-link>
+  </div>
+
+
     </nav>
+    </div>
   
-    <div class="row mt-6" v-if="!contentLoaded" >
+    <div class="row mt-9 mb-5" v-if="!contentLoaded" >
 
 
 <div class="col-12" >
@@ -23,10 +43,10 @@
       <div class="row">
         <div class="col-6" v-for="(teacher, index) in findInfo" :key="index">
           <div
-            class="card mt-4 border border-top-0 border-light"
+            class="card mt-4 border border-top-0 shadow-sm border-light"
             v-if="teachers.length >= 1"
           >
-            <div class="card-header glass text-white ">
+            <div class="card-header glass text-teal-700 ">
               About Teacher
             </div>
             <div class="card-body">
@@ -53,8 +73,8 @@
                 {{ teacher.userName }}
 
 
-                {{ teacher.id }}
-              <i class="far fa-trash-can text-lg cursor-pointer absolute bottom-5 right-5"  @click="openModal(teacher.userName, index)"></i>
+            
+              <i class="far fa-trash-can text-lg text-red-400 cursor-pointer absolute bottom-5 right-5"  @click="openModal(teacher.userName, index)"></i>
               </div>
 
             </div>
@@ -68,13 +88,6 @@
 
     </div>
 
-    <div role="status" class="absolute left-[50%] top-[50%] translate-x-[-50%]" v-if="contentLoaded">
-    <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-    </svg>
-    <span class="sr-only">Loading...</span>
-</div>
 
     <router-link
       to="/addTeachers"
@@ -96,7 +109,7 @@
 
       
     </p>
-<div class="flex items-center justify-end gap-10">
+<div class="flex items-center justify-end gap-3">
 
   
 
@@ -104,7 +117,7 @@
 No
     </button>
 
-    <button class="w-[140px] h-[48px] rounded-full bg-teal-500 text-white mt-8" @click="deleteTeacher()">
+    <button class="w-[140px] h-[48px] rounded-full bg-[#82D616] text-white mt-8" @click="deleteTeacher()">
 Yes
     </button>
 
@@ -115,6 +128,17 @@ Yes
   </div>
 
   <Toast></Toast>
+
+
+
+  <div role="status" class="absolute left-[50%] top-[50%] " style="transform: translate(-50%, -50%);" v-if="contentLoaded">
+    <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+    </svg>
+    <span class="sr-only">Loading...</span>
+</div>
+
 
 </template>
 
@@ -225,9 +249,9 @@ index.value = idx
 <style lang="scss">
 .card {
   transition: 0.1s linear;
-  border-left: 4px solid #495076 !important;
-  border-right: 4px solid #495076 !important;
-  border-bottom: 1px solid #495076 !important;
+  border-left: 4px solid #f0f0f0 !important;
+  border-right: 4px solid #ececec !important;
+  border-bottom: 1px solid #e0e0e0 !important;
   .card-header {
     border-top-left-radius: 4px !important;
     border-top-right-radius: 4px !important;
