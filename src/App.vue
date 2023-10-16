@@ -46,15 +46,31 @@ body {
 
 .router-link-exact-active {
   background: #ffffff !important;
-  box-shadow: 7px 7px 7px rgb(245, 242, 242);
-  border-radius: 12px !important;
-  color: rgb(34, 163, 135) !important;
+  box-shadow: -7px 7px 7px rgb(245, 242, 242);
+  border-radius: 12px;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  color: #9492EE !important;
+  position: relative;
   text-align: center;
   font-weight: bold;
+
+  overflow: hidden !important;
+  &:before{
+  content: '';
+  transition: 0.5s;
+  position: absolute;
+  width: 30%;
+  right: -75px;
+  transform: rotate(20deg);
+  border-radius: 20px;
+  height: 140%;
+  background: #9492EE;
+  }
 }
 
 .router-link-exact-active .inner{
-background-color: #82D616;
+background-color: #9492EE;
 color: white;
 font-size: 12px;
 }

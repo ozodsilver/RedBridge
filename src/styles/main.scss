@@ -10,3 +10,48 @@
 .p-toast .p-toast-message .p-toast-message-content .p-toast-detail {
     margin: 0 0 0 0;
 }
+
+
+.shape1{
+    width: 233px;
+    height: 232px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+    background: radial-gradient(154.93% 155.11% at -7.04% 7.46%, #FFF 0%, #9492EE 20.1%, #FFF 100%);
+
+mix-blend-mode: darken;
+box-shadow: 0px 0px 27px 0px #FFF inset;
+backdrop-filter: blur(58px);
+
+}
+
+
+.shape2{
+    width: 144px;
+    height: 144px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+    background: radial-gradient(154.93% 155.11% at -7.04% 7.46%, #FFF 0%, #426efd 71.1%, #FFF 100%);
+mix-blend-mode: darken;
+box-shadow: 0px 0px 27px 0px #FFF inset;
+backdrop-filter: blur(38px);
+
+}
+
+.shape3{
+    width: 100px;
+    height: 100px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+    background: radial-gradient(154.93% 155.11% at -7.04% 7.46%, #FFF 0%, #426efd 11.1%, #FFF 100%);
+mix-blend-mode: darken;
+box-shadow: 0px 0px 27px 0px #FFF inset;
+backdrop-filter: blur(38px);
+
+}
+
+
+
+.glass{
+backdrop-filter: 20px;
+}

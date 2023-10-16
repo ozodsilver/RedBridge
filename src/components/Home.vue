@@ -1,6 +1,6 @@
 <template>
   <div id="home" class="relative " > 
-    <div class="relative">
+    <div class="relative g-0 p-0 m-0">
       <nav class="mx-auto mt-8   flex justify-between align-items-center h-[100px]     px-5" style="width: 100%">
 <div>
   <p class="text-teal-700">Pages / Teachers</p>
@@ -32,7 +32,7 @@ class="fa fa-user text-sm text-teal-700 font-extrabold"
     </nav>
     </div>
   
-    <div class="row mt-9 mb-5" v-if="!contentLoaded" >
+  <div class="row g-0 mt-9 mb-5" v-if="!contentLoaded" >
 
 
 <div class="col-12" >

@@ -1,6 +1,6 @@
 <template>
-  <div style="max-height: 500px; width: 100%; margin: auto; overflow: auto; "  class="px-3 mt-2" >
-    <div class="sidebar_header pt-2 d-flex gap-2 align-items-center">
+  <div style=" width: 100%; margin: auto; overflow: auto; border-right: 1px solid rgb(247, 243, 243); "  class="px-3 mt-2   " >
+    <div class="sidebar_header pt-2 d-flex gap-2 align-items-center backdrop-blur-md">
       <img
         src="@/assets/logo.svg"
         alt=""

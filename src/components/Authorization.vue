@@ -2,8 +2,8 @@
   <div id="Auth">
 
 
-    <div id="login">
-      <div class="main">
+    <div id="login" >
+      <div class="main backdrop-blur-md">
         <input type="checkbox" id="chk" aria-hidden="true" />
 
         <div class="signup"></div>
@@ -40,8 +40,13 @@
           <h4 class="text-center mt-3 animation" @click="info">
             <span id="dilkhush">Red Bridge</span> Admin Panel
           </h4>
+
+         
         </div>
       </div>
+
+      <div class="shape1 top-[57%] opacity-60 left-[33%] rounded-full absolute  z-50"></div>
+      <div class="shape2 top-[22%] opacity-50 right-[34%] rounded-full absolute  z-50"></div>
     </div>
   </div>
 
@@ -201,7 +206,8 @@ button:hover {
 }
 .login {
   height: 500px;
-  background: #faf9ff;
+  background: rgb(255, 255, 255);
+
   border-radius: 60% / 10%;
   transform: translateY(-150px);
   box-shadow: 0 0 4px rgba(184, 212, 209, 0.493);
@@ -244,5 +250,10 @@ button:hover {
   background-repeat: no-repeat;
   background-position: center 15px;
 }
+
+.glass{
+backdrop-filter: 20px;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
 </style>
