@@ -1,16 +1,35 @@
 <template>
   <div>
-    <nav class="m-auto glass  align-items-center py-2  px-5" style="width: 100%;  justify-content: space-between; display: flex;">
-      <div class="flex items-center shadow relative top-4">
-       
-        <span class="p-input-icon-left absolute ">
-   
-    <input v-model="homeInput" placeholder="Search by username" class="rounded w-[250px] p-2 transition-all shadow outline-none  focus:scale-105  "   />
-</span>
-      </div>
- <p class="lead text-dark p-2 text-[12px] badge bg-white  ">Grades</p>
-         <!-- <p class="lead  p-2 badge m-0"> {{ props.name }} {{ $route.name == 'classes' ? 'Student performance': ''}}</p> -->
+    <div class=" g-0 p-0 m-0">
+      <nav class="mx-auto mt-8 sticky top-0  flex justify-between align-items-center h-[100px]     px-5" style="width: 100%; z-index: 111111111111;">
+<div class="flex gap-10 items-center">
+ <div>
+  <p class="text-teal-700">Pages / Grades</p>
+        <p class="font-extrabold">Grades</p>
+ </div>
+
+        <router-link
+      to="/addGrades"
+      class="btn bg-[#9492EE] bg-gradient p-1 hover:bg-[#9492EE] text-white  bottom-0 flex items-center justify-center gap-4"
+      style="bottom: 20px; right: 20px; width: 200px; height: 40px; z-index: 333333333333;"
+      >Add Grades <i class="fas fa-plus-circle text-white text-[20px]  transition-all  "></i
+    ></router-link>
+
+</div>
+     
+  <div class="flex items-center">
+    
+    <div class="relative">
+      <i class="fa fa-search text-gray-300 absolute right-4 top-3"></i>
+      <input v-model="homeInput" placeholder="Search by Gradename" class="rounded-lg  border bg-white w-[300px] p-2 transition-all  outline-none  focus:scale-105   "   />
+    </div>
+
+
+  </div>
+
+
     </nav>
+    </div>
   
 
     <h1 class="text-center mt-5" v-if="empty">The Grades section is empty</h1>
@@ -26,39 +45,39 @@
     <div class="container px-5 mb-2" v-else-if="!loade">
      
       <div class="row">
-        <div class="col-6" v-for="(info, index) in infos" :key="info.id">
+        <div class="col-6" v-for="(info, index) in findInfo" :key="info.id">
           <div class="card mt-5 shadow-lg ">
-            <div class="card-header glass ">
-              <span class="badge bg-white text-dark fs-6 shadow">Class</span> &nbsp;
-              <span class="fs-6 text-white"> {{ info.name }}  </span>
+            <div class="card-header glass text-teal-700  ">
+              <span class="badge  text-teal-700  fs-6 font-extrabold ">Class</span> &nbsp;
+              <span class="fs-6 font-extralight"> {{ info.name }}  </span>
             </div>
             <div class="card-body py-5">
               <div class="d-flex align-items-center gap-1 w-100">
                <div class="w-100 d-flex gap-1">
                 <router-link
                   :to="{ name: 'ForSubjects', params: { id: info.id } }"
-                  class="btn w-50 btn-outline-secondary"
+                  class="btn w-50 flex items-center justify-center btn-outline-secondary hover:bg-[#9492EE] transition-all hover:text-white hover:scale-105"
                   >Subjects</router-link
                 >
 
 
                 <router-link
                   :to="{ name: 'ForStudents', params: { id: info.id } }"
-                  class="btn w-50 btn-outline-secondary"
+                  class="btn w-50 flex items-center justify-center h-[40px] btn-outline-secondary hover:bg-[#9492EE] transition-all hover:text-white hover:scale-105"
                   >Students</router-link
                 >
                </div>
                 <btn
                   
                   class="
-                    btn btn-danger
+                    btn bg-red-400 text-white text-base
                     d-flex
                     bg-gradient
                     justify-content-center
                     align-items-center
                   "
                   @click="deleteGrades(info.id, index)"
-                  style="width: 50px; height: 35px"
+                  style="width: 40px; height: 40px"
                   ><i class="far fa-trash-alt"></i
                 ></btn>
               </div>
@@ -68,19 +87,16 @@
       </div>
     </div>
 
-    <router-link
-      to="/addGrades"
-      class="btn glass  text-white position-fixed"
-      style="bottom: 20px; right: 20px; width: 200px; border-top: 2px dotted #DE576E;  border-left: 2px dotted #DE576E; border-right: 2px dotted #DE576E; z-index: 333333333333;"
-      >Add Grades <i class="fas fa-plus-circle text-white text-[25px] absolute top-[5px] transition-all right-6 "></i
-    ></router-link>
+
   </div>
+
+
 </template>
 
 <script setup>
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import Nav from "../MiniComponents/Navigation.vue";
 import base from '../../reusables/getInfos'
 
@@ -89,6 +105,7 @@ let loade = ref(true);
 let empty = ref(false)
 let grades = ref("Grades");
 let infos = ref([]);
+const homeInput = ref('')
 
 onMounted(async () => {
   await axios
@@ -140,6 +157,15 @@ let deleteGrades = (id, index)=>{
   infos.value.splice(index,1)
 
 }
+
+
+let findInfo = computed(() => {
+      
+      return infos.value.filter((list) => {
+        return list.name.toUpperCase().includes(homeInput.value.toUpperCase());
+      });
+    });
+
 </script>
 
 <style lang="scss" scoped>

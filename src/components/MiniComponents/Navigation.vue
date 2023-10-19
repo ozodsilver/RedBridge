@@ -20,7 +20,7 @@
             id="link1"
           >
             <div class=" flex gap-3 items-center px-2">
-              <i class="far fa-address-card text-xs p-2.5  px-[12px] rounded-lg block_shadow inner  "></i>
+              <i class="far fa-address-card text-xs p-2.5 py-[11px]   px-[12px] rounded-lg block_shadow inner  "></i>
             <span class="text-sm">Performance</span>
             </div>
             </router-link
@@ -35,7 +35,7 @@
           >
 
           <div class=" flex gap-3 items-center px-2">
-              <i class="fas fa-users text-xs p-2.5 px-[12px] rounded-lg block_shadow inner  "></i>
+              <i class="fas fa-users text-xs p-2.5  py-[11px] px-[12px] rounded-lg block_shadow inner  "></i>
             <span class="text-sm">Teachers</span>
             </div>
 
@@ -53,7 +53,7 @@
 
 
             <div class=" flex gap-3 items-center px-2">
-              <i class="fas fa-chalkboard-user text-xs p-2.5 px-[12px] rounded-lg block_shadow inner  "></i>
+              <i class="fas fa-chalkboard-user text-xs p-2.5 py-[11px]  px-[12px] rounded-lg block_shadow inner  "></i>
             <span class="text-sm">Grades</span>
             </div>
             
@@ -67,7 +67,7 @@
             class="mt-4 flex  text-start bg-transparent rounded-xl   w-full py-2  align-items-center exact"
             >
             <div class=" flex gap-3 items-center px-2">
-              <i class="fas fa-user-group text-xs p-2.5 px-[12px] rounded-lg block_shadow inner  "></i>
+              <i class="fas fa-user-group text-xs p-2.5 py-[11px]  px-[12px] rounded-lg block_shadow inner  "></i>
             <span class="text-sm">Parents</span>
             </div>
             
@@ -78,11 +78,25 @@
             class="mt-4 flex  text-start bg-transparent rounded-xl   w-full py-2  align-items-center exact"
             >
             <div class=" flex gap-3 items-center px-2">
-              <i class="fas fa-user-group text-xs p-2.5 px-[12px] rounded-lg block_shadow inner  "></i>
+              <i class="fas fa-user-group text-xs p-2.5 py-[11px]  px-[12px] rounded-lg block_shadow inner  "></i>
             <span class="text-sm">History</span>
             </div>
             
           </router-link>
+
+
+          <router-link to = '/'
+class="justify-content-start d-flex  text-white bg-transparent gap-3 items-center text-start absolute bottom-3 left-0  w-100 shadow-sm p-3 rounded-lg px-3"
+style="outline: none; border: none;"
+
+>
+<i
+class="fas fa-arrow-right-from-bracket text-sm text-teal-700 font-extrabold"
+
+></i>
+<span class="text-dark text-sm text-teal-900"> Sign out</span>
+</router-link>
+          
     </div>
 
   

@@ -2,7 +2,7 @@
   <div class="px-5 relative " style="z-index: 11111111;">
     <button
             class="
-              btn btn-dark
+               p-2 px-3 shadow
               d-flex
               align-items-center
               gap-3
@@ -12,7 +12,7 @@
             "
             @click="backOneStep()"
           >
-            <i class="fas fa-backspace fa-2x"></i> back
+            <i class="fas fa-backspace text-lg text-slate-500"></i> back
           </button>
     <div class="container py-3 px-5 ">
     
@@ -189,7 +189,7 @@ let PostTeachers = async () => {
 
 .btn {
   transition: 0.1s;
-  background: #495076;
+  background: #6f7fdd;
 }
 
 

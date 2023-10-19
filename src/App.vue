@@ -6,7 +6,7 @@ import { ref, onMounted, onUpdated } from "vue";
 <template>
   <div id="App">
     <router-view v-slot="{ Component }">
-      <transition name="fade">
+      <transition name="fade" mode="in-out">
         <component :is="Component" />
       </transition>
     </router-view>
@@ -48,25 +48,13 @@ body {
   background: #ffffff !important;
   box-shadow: -7px 7px 7px rgb(245, 242, 242);
   border-radius: 12px;
-  border-top-right-radius: 0px !important;
-  border-bottom-right-radius: 0px !important;
   color: #9492EE !important;
   position: relative;
   text-align: center;
   font-weight: bold;
 
   overflow: hidden !important;
-  &:before{
-  content: '';
-  transition: 0.5s;
-  position: absolute;
-  width: 30%;
-  right: -75px;
-  transform: rotate(20deg);
-  border-radius: 20px;
-  height: 140%;
-  background: #9492EE;
-  }
+
 }
 
 .router-link-exact-active .inner{

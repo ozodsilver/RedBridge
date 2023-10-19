@@ -5,7 +5,7 @@
   <div>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
     <div class="container p-4">
-      <h2 class="pt-3 text-2xl text-dark">Students</h2>
+      <h2 class="pt-3 text-2xl text-teal-700 mt-4">Students</h2>
       <div class="row">
         <div class="col-12 mt-4">
           <table
@@ -47,7 +47,7 @@
                     
                     </div>
                     <VueDatePicker v-model="student.activeDate" placeholder="Start Typing ..." text-input auto-apply  format = 'MM.dd.YYY' :enable-time-picker="false" />
-                    <button @click="updateTime(student.id, student.activeDate)" class=" glass rounded-lg ml-1  w-25">
+                    <button @click="updateTime(student.id, student.activeDate)" class=" bg-[#9492EE] rounded-lg ml-1  w-25">
                       send
                     </button>
                   </div>
@@ -58,7 +58,7 @@
                   <i
                     class="fas fa-trash-alt p-2 bg-light text-danger rounded-2 shadow"
                     style="cursor: pointer"
-                    @click="deleteStudents(student.id, index)"
+                    @click="openModal(student.id, index)"
                   ></i>
                 </td>
               </tr>
@@ -67,18 +67,35 @@
         </div>
       </div>
     </div>
+
+
+    <Dialog v-model:visible="visible" modal :style="{ width: '50vw' }">
+            <p>
+           delete this student
+            </p>
+
+            <div class="flex items-center justify-end gap-3">
+<button class="w-[140px] h-[42px] rounded-full bg-red-400 text-white" @click="visible = false">Cancel</button>
+<button class="w-[140px] h-[42px] rounded-full bg-teal-500 text-white" @click="deleteStudents">Delete</button>
+            </div>
+
+        </Dialog>
+
+
   </div>
 
   <router-link
     :to="{name:'AddStudents'}"
-    class="btn btn-success position-fixed"
+    class="btn bg-[#9492EE] text-white hover:bg-[#9492EE] position-fixed"
     @click="store.state.id = id"
     style="bottom: 20px; right: 20px; width: 200px"
     >Add Students <i class="fas fa-plus-circle"></i
   ></router-link>
 
 
+<Toast>
 
+</Toast>
 
 </template>
 <script setup>
@@ -87,9 +104,10 @@ import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 import Toast from 'primevue/toast';
-
+import Dialog from 'primevue/dialog';
 import base from "../../../reusables/getInfos.js";
 
+const visible = ref(false);
 
 import { useToast } from 'primevue/usetoast';
 
@@ -123,16 +141,32 @@ onMounted(async () => {
   });
 });
 
-let deleteStudents = async (id, index) => {
-  students.value.splice(index, 1);
+const studentId = ref(null)
+const idx = ref(null)
 
-  let response = await axios.delete(`${base}Students?guid=${id}`, {
+const openModal = (id, index)=>{
+  visible.value = true
+studentId.value = id;
+idx.value = index
+
+}
+
+let deleteStudents = async () => {
+
+  students.value.splice(idx, 1);
+
+ axios.delete(`${base}Students?guid=${studentId.value}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-  });
-  console.log(response);
+  }).then(res =>{
+    visible.value = false
+    toast.add({ severity: 'success', summary: 'Success', detail: res.statusText, life: 3000 });
+  }).catch(err =>{
+    toast.add({ severity: 'error', summary: 'error', detail: err, life: 3000 });
+  })
+
 };
 
 let backOneStep = ()=>{
@@ -140,6 +174,10 @@ let backOneStep = ()=>{
 }
 
 let updateTime = async (studentId,activeDate) => {
+
+
+  
+
 
   try {
     axios
@@ -150,9 +188,9 @@ let updateTime = async (studentId,activeDate) => {
         },
       })
       .then((res) => {
-        toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', life: 30000 });
+        toast.add({ severity: 'success', detail: res.statusText, life: 3000 });
       }).finally((e)=>{
-console.log('e');
+
       });
   } catch (error) {
     console.log(error);

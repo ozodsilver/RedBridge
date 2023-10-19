@@ -1,11 +1,8 @@
 <template>
 
-
-
-
   <div class="px-[30px]" v-if="!noContent">
-    <button class="btn glass text-white gap-3 flex items-center justify-center p-2.5 px-5 rounded-lg  my-4" @click="this.$router.go(-1)">
-      <i class="far fa-circle-left"></i> back
+    <button class="btn  text-dark gap-3 flex shadow-none items-center justify-center p-2.5 px-5 rounded-lg  my-4" @click="this.$router.go(-1)">
+      <i class="far fa-circle-left text-lg"></i> back
     </button>
 
     <table class="table table-striped table-hover mt-4">
@@ -69,10 +66,16 @@
               </span>
             </span>
 
-            <n-modal v-model:show="showModal">
+     
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <n-modal v-model:show="showModal">
               <n-card style="width: 600px" title="Information" :bordered="false" size="huge" role="dialog"
                 aria-modal="true">
-                <Chart :size="{ width: 500, height: 400 }" :data="data" :margin="margin" :direction="direction" >
+                <Chart :size="{ width: 500, height: 400 }" :data="data"  :margin="margin" :direction="direction"  >
                   <template #widgets>
                     <Tooltip borderColor="#48CAE4" :config="{
                       homeWork: { color: '#9f7aea' },
@@ -82,19 +85,17 @@
 
                   <template #layers>
                     <Grid strokeDasharray="2,2" />
-                    <Area :dataKeys="['name', 'pl']" type="monotone" :areaStyle="{ fill: 'url(#grad)' }" />
+                    <Area :dataKeys="['name']" type="monotone" :areaStyle="{ fill: 'url(#grad)' }" />
                     <Line :dataKeys="['date', 'score', 'homeWork',]"  type="monotone"  :lineStyle="{
           stroke: '#9f7aea'
         }" />
                   </template>
 
+              
                 </Chart>
               </n-card>
             </n-modal>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
   </div>
 
   <div v-else>
@@ -112,6 +113,7 @@
     </svg>
     <span class="sr-only">Loading...</span>
 </div>
+
 </template>
 
 <script setup>
@@ -133,6 +135,7 @@ const contentLoaded = ref(true)
 const noContent = ref(false)
 
 const data = ref()
+const compiedData = ref([])
 
 let toggleModal = (scores) => {
   showModal.value = true;

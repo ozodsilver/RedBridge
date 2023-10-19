@@ -3,7 +3,7 @@
     <!-- <h1>{{this.$route.params.id}}</h1> -->
     <div class="container px-5 mb-2 pt-0">
       <i
-        class="fas fa-chevron-circle-left fa-2x mt-5"
+        class="fas fa-chevron-circle-left text-2xl text-slate-500 mt-5"
         @click="router.push({ name: 'Grades' })"
         style="cursor:pointer"
       ></i>
@@ -16,10 +16,10 @@
           :key="subject.id"
         >
           <div class="card">
-            <div class="card-header glass text-white">About Subjects</div>
+            <div class="card-header glass text-teal-700">About Subjects</div>
             <div class="card-body">
               <p>
-                <span class="badge bg-info">Subject:</span> {{ subject.name }}
+                <span class="badge bg-[#9492EE]">Subject:</span> {{ subject.name }}
               </p>
               <button
                 class="
@@ -30,7 +30,7 @@
                   align-items-center
                   float-end
                 "
-                style="width: 50px"
+                style="width: 40px; height: 40px;"
                 @click="deleteSubject(subject.id, index)"
               >
                 <i class="fas fa-trash"></i>
@@ -43,7 +43,7 @@
 
     <router-link
       :to="{ name: 'AddSubjects' }"
-      class="btn glass text-white position-fixed"
+      class="btn bg-[#9492EE] text-white position-fixed hover:bg-[#9492EE]"
       style="bottom: 20px; right: 20px; width: 200px"
       @click="addId"
       >Add Subjects <i class="fas fa-plus-circle"></i
@@ -56,6 +56,10 @@
       v-if="loade"
     ></div>
   </div>
+
+  <Toast>
+
+  </Toast>
 </template>
 <script setup>
 import axios from "axios";
@@ -63,6 +67,11 @@ import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 import base from '../../../reusables/getInfos'
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
+
 let router = useRouter();
 let route = useRoute();
 let id = route.params.id;
@@ -97,8 +106,8 @@ if(subjects.value.length == 0){
 
 });
 
-let deleteSubject = async (id, index) => {
-  let response = await axios.delete(
+let deleteSubject =  (id, index) => {
+  axios.delete(
     `${base}Subjects?Id=${id}`,
     {
       headers: {
@@ -106,8 +115,14 @@ let deleteSubject = async (id, index) => {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
     }
-  );
-  console.log(response);
+  ).then(res =>{
+  if(res.status !== 200){
+    toast.add({ severity: 'success', summary: 'Success', detail: res.statusText, life: 3000 });
+  }
+  }).catch(err =>{
+    toast.add({ severity: 'error', summary: 'Error', detail: err, life: 3000 });
+  });
+
 
   subjects.value.splice(index, 1);
 };

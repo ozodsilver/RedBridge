@@ -3,11 +3,12 @@
 
 <button
               class="
-                btn btn-dark
+                btn 
                 d-flex
                 align-items-center
                 gap-3
-               glass
+               shadow-none
+               text-xl text-slate-600
            m-4
               "
           @click="back"
@@ -18,12 +19,12 @@
   <transition name="fade">
     <div>
       <div class="container px-5 py-2">
-        <h1 class="mt-1 mb-3 text-2xl">Add Subjects</h1>
+        <h1 class="mt-4 mb-3 text-2xl text-teal-700">Add Subjects</h1>
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 mt-2">
             <input
               type="text"
-              class="form-control-lg w-100 outline-none"
+              class="form-control-lg w-100 outline-none shadow"
               placeholder="Subject Name"
               v-model="subjectName"
             />
@@ -31,7 +32,7 @@
 
 
           <div class="col-12 overflow-auto">
-          <div v-for="subject in subjects" :key="subject.id" class="mx-0 mt-3">
+          <div v-for="subject in subjects" :key="subject.id" class="mx-0 mt-6">
             <input
               type="radio"
               class="btn-check d-block"
@@ -45,7 +46,7 @@
               class="
                 btn
                 w-100
-                btn-dark
+                btn-success
                 text-white
                 border
                 shadow
@@ -64,9 +65,10 @@
           <div class="col-12">
   
             <button
-              class="btn glass text-white mt-2 w-25 float-end"
+              class="btn   bg-[#9492EE] mt-4 w-25 float-end hover:bg-[#9492EE]"
               @click="PostSubject"
               :disabled="disabled"
+              :class="[!disabled ? 'bg-[#9492EE] text-white ' : 'bg-[#9492EE] ']"
             >
           
               Add subject <i class="fas fa-plus"></i>
