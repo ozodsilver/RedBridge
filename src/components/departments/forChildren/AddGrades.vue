@@ -3,7 +3,7 @@
     <i class="fas fa-backspace"></i>
     back
   </button>
-  <transition name="fade">
+
     <div>
       <div class="container px-24">
         <h1 class="mt-5 text-2xl text-teal-700">Add Grades</h1>
@@ -52,7 +52,7 @@
 
           <div class="col-12 mt-8">
             <button
-              class="btn rounded-lg shadow w-25 float-end"
+              class="btn rounded-lg shadow w-25 float-end hover:bg-purple-900"
               :disabled="disabled"
               :class="[!disabled ? 'bg-[#9492EE] text-white' : 'bg-[#9492EE] ']"
               @click="PostGrade"
@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-  </transition>
+
 
   <div
     class="badge d-flex gap-3 justify-content-center align-items-center m-auto w-50 p-4"
@@ -72,12 +72,22 @@
     <h2>Grades Success addedd</h2>
     <i class="fas fa-check-double"></i>
   </div>
+
+<Toast>
+
+</Toast>
+
 </template>
   
   <script setup>
 import axios from "axios";
 import { ref, onMounted, watchEffect } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
+
 import base from "../../../reusables/getInfos";
 let teachers = ref([]);
 let picked = ref(null);
@@ -120,6 +130,12 @@ let PostGrade = async () => {
   }
 
   console.log(response);
+
+  if(response.status == 200){
+    toast.add({ severity: 'success', summary: 'Success Message', detail: response.statusText, life: 3000 });
+  }else{
+    toast.add({ severity: 'error', summary: 'Error', detail: response.statusText, life: 3000 });
+  }
 };
 
 let back = () => {

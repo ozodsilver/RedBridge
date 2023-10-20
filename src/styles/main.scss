@@ -55,3 +55,24 @@ backdrop-filter: blur(38px);
 .glass{
 backdrop-filter: 20px;
 }
+
+
+.card {
+    transition: 0.1s linear;
+    border-left: 4px solid #f0f0f0 !important;
+    border-right: 4px solid #ececec !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    .card-header {
+      border-top-left-radius: 4px !important;
+      border-top-right-radius: 4px !important;
+    }
+  
+    &:hover {
+      transform: scale(1.01) translateY(8px) translateZ(-220px);
+      perspective: 800px;
+      position: relative;
+      z-index: 333;
+      box-shadow: 10px -10px 5px rgb(204, 206, 205);
+    }
+  }
+

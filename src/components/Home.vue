@@ -1,10 +1,25 @@
 <template>
   <div id="home" class="relative " > 
-    <div class="relative g-0 p-0 m-0">
+    <div class=" g-0 p-0 m-0 sticky top-0 z-[11111111] backdrop-blur-md backdrop-brightness-95" >
       <nav class="mx-auto mt-8   flex justify-between align-items-center h-[100px]     px-5" style="width: 100%">
+<div class="flex items-center gap-16">
 <div>
+
   <p class="text-teal-700">Pages / Teachers</p>
         <p class="font-extrabold">Teachers</p>
+</div>
+
+<router-link
+      to="/addTeachers"
+      class=" bg-gradient d-flex align-items-center gap-3 "
+    style="bottom: 20px; right: 20px; width: 200px; "
+      >
+     <i class="fas fa-circle-plus fa-2x text-[#9492EE]"></i>
+     Add Teachers
+    </router-link>
+
+    
+
 
 </div>
      
@@ -23,7 +38,7 @@
     </div>
   
 
-<div class="col-12" >
+<div class="col-12 mb-6" >
   <div class="container px-5" >
 
  
@@ -155,19 +170,7 @@
 
 
 
-    <router-link
-      to="/addTeachers"
-      class="position-fixed bg-gradient d-flex align-items-center gap-3 "
-    style="bottom: 20px; right: 20px; width: 200px; z-index: 111111111111;"
-      >Add Teachers
-      <lord-icon
-        src="https://cdn.lordicon.com/xzksbhzh.json"
-        trigger="hover"
-        style="width: 50px; height: 50px"
-      >
-      </lord-icon>
-    </router-link>
-
+ 
 
     <Dialog v-model:visible="visible" modal header="Caution" :style="{ width: '50vw' }">
     <p>
@@ -304,7 +307,7 @@ axios.get(`${base}Teachers`).then(res =>{
 
 
     let findInfo = computed(() => {
-      console.log(teachers.value);
+ 
       return teachers.value.filter((list) => {
         return list.userName.toUpperCase().includes(homeInput.value.toUpperCase());
       });
@@ -316,23 +319,7 @@ axios.get(`${base}Teachers`).then(res =>{
 </script>
 
 <style lang="scss">
-.card {
-  transition: 0.1s linear;
-  border-left: 4px solid #f0f0f0 !important;
-  border-right: 4px solid #ececec !important;
-  border-bottom: 1px solid #e0e0e0 !important;
-  .card-header {
-    border-top-left-radius: 4px !important;
-    border-top-right-radius: 4px !important;
-  }
 
-  &:hover {
-    transform: scale(1.01) translateX(-8px) translateY(4px);
-    position: relative;
-    z-index: 333;
-    box-shadow: 10px -10px 5px rgb(204, 206, 205);
-  }
-}
 
 .bounce-enter-active {
   animation: bounce-in 0.5s;
