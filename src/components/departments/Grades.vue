@@ -8,12 +8,16 @@
         <p class="font-extrabold">Grades</p>
  </div>
 
-        <router-link
+ <router-link
       to="/addGrades"
-      class="btn bg-[#9492EE] bg-gradient p-1 hover:bg-[#9492EE] text-white  bottom-0 flex items-center justify-center gap-4"
-      style="bottom: 20px; right: 20px; width: 200px; height: 40px; z-index: 333333333333;"
-      >Add Grades <i class="fas fa-plus-circle text-white text-[20px]  transition-all  "></i
-    ></router-link>
+      class=" bg-gradient d-flex align-items-center "
+    style="bottom: 20px; right: 20px; width: 200px; "
+      >
+     <i class="fas fa-circle-plus text-[35px] text-[#9492EE] relative z-[4444444]"></i>
+     <div class="w-[180px] hover:bg-[#9492EE] h-[28px] bg-white rounded-lg text-[12px] flex items-center justify-center relative left-[-20px] top-[1px] ">
+      Add Grades
+     </div>
+    </router-link>
 
 </div>
      
@@ -70,13 +74,13 @@
                 <btn
                   
                   class="
-                    btn bg-red-400 text-white text-base
+                    btn bg-red-400 text-white hover:bg-red-500 text-base
                     d-flex
                     bg-gradient
                     justify-content-center
                     align-items-center
                   "
-                  @click="deleteGrades(info.id, index)"
+                  @click="openModal(info.id, index)"
                   style="width: 40px; height: 40px"
                   ><i class="far fa-trash-alt"></i
                 ></btn>
@@ -89,14 +93,40 @@
 
 
   </div>
+  <Dialog v-model:visible="visible" modal header="Attention" :style="{ width: '50vw' }">
+    <p>
+      this class will be destroyed
+    </p>
 
+    <div class="flex items-center justify-end gap-3">
 
+  
+
+<button class="w-[140px] h-[48px] rounded-full bg-red-400 text-white mt-8" @click="visible = false">
+No
+</button>
+
+<button class="w-[140px] h-[48px] rounded-full bg-[#82D616] text-white mt-8" @click="deleteGrades">
+Yes
+</button>
+
+</div>
+</Dialog>
+
+<Toast>
+  
+</Toast>
 </template>
 
 <script setup>
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { ref, onMounted, computed } from "vue";
+import Dialog from 'primevue/dialog';
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
 import Nav from "../MiniComponents/Navigation.vue";
 import base from '../../reusables/getInfos'
 
@@ -106,6 +136,7 @@ let empty = ref(false)
 let grades = ref("Grades");
 let infos = ref([]);
 const homeInput = ref('')
+const visible = ref(false)
 
 onMounted(async () => {
   await axios
@@ -145,16 +176,31 @@ return -1
    }
 });
 
-let deleteGrades = (id, index)=>{
-  axios.delete(`${base}Grades?id=${id}`, 
+const gradeId = ref(null)
+const idx = ref(null)
+const openModal = (id, index)=>{
+  visible.value = true
+  gradeId.value = id
+  idx.value = index
+}
+
+let deleteGrades = ()=>{
+  axios.delete(`${base}Grades?id=${gradeId.value}`, 
   {
     headers:{
       'Content-type':'application.json',
       Authorization:`Bearer ${localStorage.getItem('jwt')}`
     }
+  }).then(res =>{
+if(res.status == 200){
+  toast.add({ severity: 'success', summary: 'Success', detail: res.statusText, life: 3000 });
+  infos.value.splice(idx.value,1)
+  visible.value = false
+}
+
   })
 
-  infos.value.splice(index,1)
+
 
 }
 

@@ -15,6 +15,7 @@
                   autocomplete="off"
                   :value="user.id"
                   v-model="picked"
+                  @click="getUserId(user.id)"
                 />
                 <label
                   class="btn w-100 btn-dark text-white border shadow bg-gradient m-0"
@@ -25,52 +26,7 @@
                 </label>
 
                 <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                  v-show="showModal"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                          caution
-                          <i class="fas fa-triangle-exclamation text-amber-300"></i>
-                        </h5>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-mdb-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                      <div class="modal-body">
-                        Are you sure you want to attach this student to this
-                        parent?
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn bg-red-700 text-white hover:bg-red-800"
-                          data-mdb-dismiss="modal"
-                        >
-                          no
-                        </button>
-                        <button
-                          type="button"
-                          class="btn bg-green-500 text-white hover:bg-green-600"
-                          data-mdb-dismiss="modal"
-                          @click="addStudent(picked)"
-                        >
-                          yes
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+           
               </div>
             </div>
           </div>
@@ -83,8 +39,8 @@
           </div>
 
           <button
-            class="btn btn-success w-25 mt-6 glass text-white  float-end"
-            @click="replaceModal()"
+            class="btn bg-[#9492EE] hover:bg-[#9492EE]  w-25 mt-6  text-dark  float-end"
+            @click="addStudent()"
             disabled
             ref="butn"
             data-mdb-toggle="modal"
@@ -114,6 +70,7 @@
 import axios from "axios";
 import { ref, reactive, onMounted, watch } from "vue";
 import { useStore } from "vuex";
+import { useRouter, useRoute } from "vue-router";
 import base from "../../../reusables/getInfos.js";
 let store = useStore();
 let users = ref([]);
@@ -124,6 +81,7 @@ let fill = ref(false);
 let butn = ref();
 let sedeCheck = ref(false)
 const noInfos = ref(false)
+const route = useRoute()
 
 
 onMounted(() => {
@@ -162,19 +120,15 @@ watch(picked, (newQuestion, oldQuestion) => {
   }
 });
 
-let replaceModal = () => {
- 
-    showModal.value = true;
-  
-  
-
-  console.log(picked.value);
-};
+const uid = ref(null)
+const getUserId = (userId)=>{
+  uid.value = userId
+}
 
 let addStudent = (id) => {
   axios
     .patch(
-      `${base}Parents/addStudent?id=${store.state.parentId}&studentId=${id}`,
+      `${base}Parents/addStudent?id=${uid.value}&studentId=${route.params.id}`,
       {},
       {
         headers: {

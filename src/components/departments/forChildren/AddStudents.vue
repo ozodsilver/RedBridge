@@ -5,11 +5,14 @@
           <h1 class="mt-5 text-2xl">Add Students</h1>
           <div class="row mt-6">
             <div class="col-12">
-              <input
+          <form @submit.prevent="PostStudent">
+
+            <input
                 type="text"
                 class="form-control-lg w-100 outline-none"
                 placeholder="First Name"
                 v-model="firstName"
+                required
               />
 
               <input
@@ -17,6 +20,7 @@
                 class="form-control-lg w-100 mt-4 outline-none"
                 placeholder="last Name"
                 v-model="lastName"
+                required
               />
 
             <input
@@ -24,30 +28,27 @@
                 class="form-control-lg w-100 mt-4 outline-none"
                 placeholder="father Name"
                 v-model="fatherName"
+                required
               />
+
+
+              <div class="col-12 mt-4">
+          
+             
             </div>
-  
-  
-            <div class="col-12 mt-4">
+
               <button
-                class="
-                  btn glass text-white
-                  d-flex
-                  align-items-center
-                  gap-3
-                  float-start
-                "
-                @click="back"
-              >
-                <i class="fas fa-backspace fa-2x"></i> back
-              </button>
-              <button
-                class="btn glass text-white w-25 float-end"
-                @click="PostStudent"
+                class="btn bg-[#9492EE] text-white mt-4 hover:bg-[#9492EE] w-25 float-end"
+              
               >
                 Add Student <i class="fas fa-plus"></i>
               </button>
+
+          </form>
             </div>
+  
+  
+         
           </div>
         </div>
       </div>
@@ -69,12 +70,24 @@
       <h2>Subjects Success addedd</h2>
       <i class="fas fa-check-double"></i>
     </div>
+
+    <Toast>
+
+    </Toast>
   </template>
         
         <script setup>
   import axios from "axios";
   import { ref, onMounted, } from "vue";
   import { useRouter } from "vue-router";
+  
+import Toast from 'primevue/toast';
+
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
+
+
   import {useStore} from 'vuex'
  import base from '../../../reusables/getInfos'
   let students = ref([]);
@@ -130,13 +143,10 @@
     fatherName.value = ''
   
     if (response.status == 200) {
-      setTimeout(() => {
-        loader.value = true;
-      }, 10);
-  
-      setTimeout(() => {
-        loader.value = false;
-      }, 2000);
+      toast.add({ severity: 'success', detail: response.statusText, life: 3000 });
+    }else{
+      toast.add({ severity: 'error', summary: 'Error', detail: response.statusText, life: 3000 });
+
     }
   
     console.log(response);

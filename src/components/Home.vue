@@ -11,11 +11,13 @@
 
 <router-link
       to="/addTeachers"
-      class=" bg-gradient d-flex align-items-center gap-3 "
+      class=" bg-gradient d-flex align-items-center "
     style="bottom: 20px; right: 20px; width: 200px; "
       >
-     <i class="fas fa-circle-plus fa-2x text-[#9492EE]"></i>
-     Add Teachers
+     <i class="fas fa-circle-plus text-[35px] text-[#9492EE] relative z-[4444444]"></i>
+     <div class="w-[180px] hover:bg-[#9492EE] h-[28px] bg-white rounded-lg text-[12px] flex items-center justify-center relative left-[-20px] top-[1px] ">
+      Add Teachers
+     </div>
     </router-link>
 
     
@@ -158,19 +160,10 @@
       
         </div>
 
-
-
-
       </div>
     </div>
 </div>
 
-
-
-
-
-
- 
 
     <Dialog v-model:visible="visible" modal header="Caution" :style="{ width: '50vw' }">
     <p>
@@ -214,7 +207,7 @@ import Skeleton from 'primevue/skeleton';
 import { useToast } from 'primevue/usetoast';
 
 
-import base from "../reusables/getInfos";
+  import base from "../reusables/getInfos";
 export default {
   components: {
     Nav,

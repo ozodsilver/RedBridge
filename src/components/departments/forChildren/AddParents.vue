@@ -2,7 +2,7 @@
   <div>
     <div class="container px-5">
       <div class="row">
-        <h1 class="text-secondary mt-5 text-2xl my-2">Add Parents</h1>
+        <h1 class="text-secondary my-5 text-2xl ">Add Parents</h1>
 
         <form @submit.prevent="createUser">
           <div class="row">
@@ -82,15 +82,18 @@ let createUser = () => {
       }
     )
     .then((el) => {
-      toast.add({   detail: 'Parent successfully added', life: 30000 });
 
-     userName.value = ''
-     password.value = ''
+      if(el.status == 200){
+
+        toast.add({ summary:'success',  detail: 'Parent successfully added', life: 3000 });
+  userName.value = ''
+  password.value = ''
+      }
 
    
     })
     .catch((err) => {
-      console.log(err);
+      // toast.add({ severity:'error',  detail:err, life: 3000 });
     });
 };
 

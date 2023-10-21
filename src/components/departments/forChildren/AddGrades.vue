@@ -4,11 +4,11 @@
     back
   </button>
 
-    <div>
+    <div >
       <div class="container px-24">
         <h1 class="mt-5 text-2xl text-teal-700">Add Grades</h1>
         <div class="row mt-4">
-          <div class="col-12">
+          <div class="col-12 pb-4">
             <div class="relative">
               <input
                 type="text"
@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <div class="col-12 mt-8">
+        <div class="col-12 mt-8 mb-4">
             <button
               class="btn rounded-lg shadow w-25 float-end hover:bg-purple-900"
               :disabled="disabled"

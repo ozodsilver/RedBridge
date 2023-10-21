@@ -20,7 +20,7 @@
 
     </nav>
   
-    <div class="container px-5">
+    <div class="container px-5 pb-4">
       <div class="row mt-8">
         <div class="col-4  bg-transparent" v-for="info in findInfo" :key="info.id">
           

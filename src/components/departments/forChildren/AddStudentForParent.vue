@@ -1,14 +1,15 @@
 <template>
   <div>
     <div class="container px-5">
-      <h2 class="my-5 text-2xl">Grades</h2>
+      <h2 class="my-5 text-2xl text-teal-700">Grades</h2>
       <div class="row mt-5">
         <div class="col-4 mt-3" v-for="student in Students" :key="student.id">
           <div class="card">
-            <div class="card-header text-lg uppercase">grade name: <span class="badge bg-success float-end">{{ student.name }}</span></div>
+            <div class="card-header text-lg capitalize">grade name: <span class="badge bg-[#9492EE] float-end">{{ student.name }}</span></div>
             <div class="card-body">
              
-            <router-link :to="{name:'SelectStudent', params:{id:student.id}}"  @click="GradeId(student.id)">students belonging to this class</router-link>
+            <router-link :to="{name:'SelectStudent', params:{id:student.id}}"  @click="GradeId(student.id)
+" class="text-blue-600 text-center block">Students belonging to this class</router-link>
             </div>
           </div>
         </div>

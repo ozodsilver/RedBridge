@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
-    <div class="container px-5 mb-2 pt-0">
+    <div class="container px-5 mb-2 pt-0" v-if="emptyBlock">
+   <div class="flex items-center justify-between">
+    <div>
       <i
         class="fas fa-chevron-circle-left text-2xl text-slate-500 mt-5"
         @click="router.push({ name: 'Grades' })"
@@ -9,6 +11,18 @@
       ></i>
 
       <h2 class="my-4 text-secondary">Subjects</h2>
+    </div>
+
+      <router-link
+      :to="{ name: 'AddSubjects' }"
+      class="btn bg-[#9492EE] text-white h-[40px]  hover:bg-[#9492EE]"
+      style=" width: 200px"
+      @click="addId"
+      >Add Subjects <i class="fas fa-plus-circle"></i
+    ></router-link> 
+   </div>
+
+
       <div class="row">
         <div
           class="col-6 mt-3"
@@ -41,13 +55,16 @@
       </div>
     </div>
 
-    <router-link
-      :to="{ name: 'AddSubjects' }"
-      class="btn bg-[#9492EE] text-white position-fixed hover:bg-[#9492EE]"
-      style="bottom: 20px; right: 20px; width: 200px"
-      @click="addId"
-      >Add Subjects <i class="fas fa-plus-circle"></i
-    ></router-link>
+<div v-else  class="w-full h-screen flex items-center justify-center">
+  <n-result status="error" title="Error" description="No Students" >
+    <template #footer>
+      <router-link to="/Grades">
+Back to Grades
+      </router-link>
+    </template>
+  </n-result>
+</div>
+  
 
     <div
       class="spinner-border text-primary position-absolute"
@@ -77,6 +94,7 @@ let route = useRoute();
 let id = route.params.id;
 let subjects = ref([]);
 const store = useStore();
+const emptyBlock = ref(true)
 
 let addId = ()=>{
  store.state.id = id
@@ -102,6 +120,7 @@ onMounted(async () => {
 
 if(subjects.value.length == 0){
   loade.value = false
+  emptyBlock.value = false
 }
 
 });

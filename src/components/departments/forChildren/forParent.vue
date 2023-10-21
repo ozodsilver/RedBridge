@@ -1,9 +1,9 @@
 <template>
   <div>
    
-    <div class="container px-5">
+    <div class="container px-5" v-if="showContent">
       <div class="d-flex justify-content-between w-100 align-items-center">
-        <button class="btn glass text-white m-0" @click="backOneStep">
+        <button class="btn bg-[#9492EE] text-white hover:text-dark m-0" @click="backOneStep">
           back <i class="fa fa-angle-left"></i>
         </button>
         <h2 class="my-5 text-end">children belonging to this person</h2>
@@ -50,9 +50,16 @@
       </div>
     </div>
 
+    <n-result class="mt-[200px]" status="error" title="Error" description="This is list empty" v-else>
+    <template #footer>
+     
+    </template>
+  </n-result>
+
     <router-link
+ 
       to="/AddStudentForParent"
-      class="btn glass text-white position-fixed"
+      class="btn bg-[#9492EE] hover:bg-[#9492EE] text-white position-fixed"
       style="bottom: 20px; right: 20px; width: 280px"
       >Add student for this parent <i class="fas fa-plus-circle"></i
     ></router-link>
@@ -70,6 +77,7 @@ let store = useStore();
 let Student = reactive([]);
 let load = ref(true)
 let router = useRouter()
+const showContent = ref(true)
 
 
 onMounted(() => {
@@ -81,6 +89,13 @@ onMounted(() => {
       load.value = false
     }
       console.log(el.data);
+      if(el.data.length == 0){
+        showContent.value = false
+      }else{
+        showContent.value = true
+
+      }
+
       el.data.forEach((res) => {
         Student.push(res);
         load.value = false
