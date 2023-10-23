@@ -10,7 +10,7 @@
     style="bottom: 20px; right: 20px; width: 200px; "
       >
      <i class="fas fa-circle-plus text-[35px] text-[#9492EE] relative z-[4444444]"></i>
-     <div class="w-[180px]  h-[28px] bg-white rounded-lg text-[12px] flex items-center justify-center relative left-[-20px] top-[1px] ">
+     <div class="w-[180px]  h-[28px] bg-white shadow-lg rounded-lg text-[12px] flex items-center justify-center relative left-[-30px] top-[1px] ">
       Add Parents
      </div>
     </router-link>
@@ -29,7 +29,7 @@
     <div class="flex justify-end items-end">
       <input
           type="text"
-          class="form-control rounded-tr-none rounded-br-none p-2 w-[200px]  mt-5 border-0"
+          class="form-control shadow rounded-tr-none rounded-br-none p-2 w-[200px]  mt-5 border-0"
           id="search"
           data-key="search"
           placeholder="Search by name"

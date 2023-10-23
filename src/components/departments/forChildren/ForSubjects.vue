@@ -1,8 +1,7 @@
 <template>
   <div>
-    <!-- <h1>{{this.$route.params.id}}</h1> -->
-    <div class="container px-5 mb-2 pt-0" v-if="emptyBlock">
-   <div class="flex items-center justify-between">
+
+    <div class="flex items-center justify-between px-4">
     <div>
       <i
         class="fas fa-chevron-circle-left text-2xl text-slate-500 mt-5"
@@ -21,6 +20,9 @@
       >Add Subjects <i class="fas fa-plus-circle"></i
     ></router-link> 
    </div>
+    <!-- <h1>{{this.$route.params.id}}</h1> -->
+    <div class="container px-5 mb-2 pt-0" v-if="emptyBlock">
+ 
 
 
       <div class="row">

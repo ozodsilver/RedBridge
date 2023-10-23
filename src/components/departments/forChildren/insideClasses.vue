@@ -20,7 +20,7 @@
           </td>
 
           <td v-for="subject in subjects" :key="subject.id">
-            <span @click="toggleModal(scores.find(
+            <button :disabled="scores.length == 0" @click="toggleModal(scores.find(
               (el) => el.subjectId == subject.id && el.studentId == student.id
             ))" class="p-3 rounded position-relative text-white" :class="{
   'bg-danger':
@@ -54,17 +54,14 @@
                 )?.totalScore
               }}
 
-              <span class="badge bg-info position-absolute" style="top: 0" v-if="scores.find(
-                    (el) => el.subjectId == subject.id && el.studentId == student.id
-                  )?.procentage >= 0
-                  ">
+              <button class="badge bg-info position-absolute" style="top: 0" >
                 {{
                   scores.find(
                     (el) => el.subjectId == subject.id && el.studentId == student.id
                   )?.procentage + "%"
                 }}
-              </span>
-            </span>
+              </button>
+            </button>
 
      
           </td>
