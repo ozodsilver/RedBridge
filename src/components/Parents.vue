@@ -18,7 +18,7 @@
     </div>
 
     <div v-show="show">
-      <div class="spinner spinner-border text-danger m-auto d-block mt-5"></div>
+      <div class="spinner spinner-border text-danger m-auto d-block mt-5 absolute top-[50%] left-[50%] transform-[translate(-50%,-50%)]" ></div>
     </div>
 
     <div class="row g-0">
@@ -43,7 +43,7 @@
 
       <div class="row">
    
-        <div class="col-4 mt-3" v-for="(info,  index) in findInfo" :key="index">
+        <div class="col-3 mt-3" v-for="(info,  index) in findInfo" :key="index">
 
           <n-result
     
@@ -61,7 +61,7 @@
     <div class="items-center flex justify-center gap-2 mb-4 mt-3">
       <router-link
             :to="{ name: 'forParent', params: { id: info.id } }"
-            class="btn bg-[#9492EE] shadow-3 w-75 hover:bg-[#9492EE]   text-white "
+            class="btn bg-[#9492EE]  overflow-hidden w-75  shadow-3  hover:bg-[#9492EE]   text-white "
            
             data-mdb-ripple-color="secondary"
             @click="addUserName(info.userName, info.id)"
@@ -97,7 +97,7 @@
             </p>
 
             <div class="flex items-center justify-end gap-3 mt-6">
-<button class="w-[140px] h-[40px] rounded-full bg-red-400 text-white" @click="visible = false">
+<button class="w-[140px] h-[40px] rounded-full bg-red-400 text-white " @click="visible = false">
 No
 </button>
 
@@ -190,7 +190,11 @@ const openModal = (id, index)=>{
 
 const deleteParent = (id)=>{
 
-  axios.delete(`${base}Parents?id=${parentId.value}`).then(res =>{
+  axios.delete(`${base}Parents?id=${parentId.value}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(res =>{
     console.log(res);
     if(res.status == 200){
       infos.splice(idx.value,1)
@@ -208,4 +212,27 @@ a {
   transition: 0.4s;
 
 }
+
+
+:deep .n-result .n-result-header .n-result-header__title {
+font-size: 18px;
+font-weight: bold;
+
+
+
+}
+:deep .n-result .n-result-header .n-result-header__description {
+   font-size: 12px;
+
+}
+
+.but{
+  display: -webkit-box !important; 
+line-clamp: 1 !important;
+max-width: 100px !important;
+box-orient: vertical !important;
+overflow: hidden !important;
+}
+
+
 </style>

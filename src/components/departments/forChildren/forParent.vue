@@ -73,6 +73,12 @@ import base from "../../../reusables/getInfos.js";
 import { useStore } from "vuex";
 import {useRouter} from 'vue-router'
 
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
+
+
 let store = useStore();
 let Student = reactive([]);
 let load = ref(true)
