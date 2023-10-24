@@ -58,7 +58,8 @@
 
     <router-link
  
-      to="/AddStudentForParent"
+      :to="{name:'AddStudentForParent', params:{id:route.params.id}}"
+
       class="btn bg-[#9492EE] hover:bg-[#9492EE] text-white position-fixed"
       style="bottom: 20px; right: 20px; width: 280px"
       >Add student for this parent <i class="fas fa-plus-circle"></i
@@ -71,7 +72,7 @@ import axios from "axios";
 import { ref, onMounted, reactive } from "vue";
 import base from "../../../reusables/getInfos.js";
 import { useStore } from "vuex";
-import {useRouter} from 'vue-router'
+import {useRouter,useRoute} from 'vue-router'
 
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
@@ -83,6 +84,7 @@ let store = useStore();
 let Student = reactive([]);
 let load = ref(true)
 let router = useRouter()
+const route = useRoute()
 const showContent = ref(true)
 
 

@@ -106,7 +106,7 @@ noInfos.value = true
       el.data.forEach((res) => {
         users.value.push(res);
       });
-      loading.value = false
+
     })
     .catch((error) => {
       console.log(error);
@@ -118,6 +118,9 @@ watch(picked, (newQuestion, oldQuestion) => {
   if (newQuestion) {
     butn.value.removeAttribute("disabled", "");
   }
+
+
+  console.log(picked.value);
 });
 
 const uid = ref(null)
@@ -125,10 +128,10 @@ const getUserId = (userId)=>{
   uid.value = userId
 }
 
-let addStudent = (id) => {
+let addStudent = () => {
   axios
     .patch(
-      `${base}Parents/addStudent?id=${uid.value}&studentId=${route.params.id}`,
+      `${base}Parents/addStudent?id=${picked.value}&studentId=${route.params.id}`,
       {},
       {
         headers: {

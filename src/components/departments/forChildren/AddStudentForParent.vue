@@ -8,7 +8,7 @@
             <div class="card-header text-lg capitalize">grade name: <span class="badge bg-[#9492EE] float-end">{{ student.name }}</span></div>
             <div class="card-body">
              
-            <router-link :to="{name:'SelectStudent', params:{id:student.id}}"  @click="GradeId(student.id)
+            <router-link :to="{name:'SelectStudent', params:{id:route.params.id}}"  @click="GradeId(student.id)
 " class="text-blue-600 text-center block">Students belonging to this class</router-link>
             </div>
           </div>
@@ -32,7 +32,9 @@ import {useStore} from 'vuex'
 let Students = reactive([]);
 let store = useStore()
 let loade = ref(true)
+import { useRoute } from "vue-router";
 
+const route = useRoute()
 
 
 onMounted(() => {

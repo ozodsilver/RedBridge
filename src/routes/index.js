@@ -148,7 +148,7 @@ const routes = [
       },
     
       {
-        path: "/AddStudentForParent",
+        path: "/AddStudentForParent/:id",
         name: "AddStudentForParent",
         component: AddStudentForParent,
       },
