@@ -131,7 +131,7 @@ const getUserId = (userId)=>{
 let addStudent = () => {
   axios
     .patch(
-      `${base}Parents/addStudent?id=${picked.value}&studentId=${route.params.id}`,
+      `${base}Parents/addStudent?id=${route.params.id}&studentId=${picked.value}`,
       {},
       {
         headers: {
