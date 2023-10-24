@@ -14,12 +14,12 @@
 
 
       <h3 class="m-0 pt-5 text-secondary text-2xl" v-if="!empty">Classes</h3>
-      <div class="row">
-        <div class="col-4" v-for="(info, index) in infos" :key="info.id">
+      <div class="row g-0 p-0">
+        <div class="col-4" v-for="(info, index) in infos" :key="index">
           <router-link :to="{ name: 'insideHistory', params: { id: info.id } }" class="card mt-5 shadow-lg ">
             <div class="card-header bg-secondary bg-gradient">
               <span class="badge bg-secondary fs-6 shadow">Class</span> &nbsp;
-              <span class="fs-6 text-white"> {{ info.name }} </span>
+              <span class="fs-6 text-white"> {{ info.name }}  </span>
             </div>
           </router-link>
         </div>

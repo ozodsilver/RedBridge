@@ -64,6 +64,11 @@
 </div>
 
   </div>
+
+
+  <Toast>
+    
+  </Toast>
 </template>
 
 <script setup>
@@ -71,6 +76,12 @@ import axios from "axios";
 import { ref, reactive, onMounted, watch } from "vue";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
+
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
+
 import base from "../../../reusables/getInfos.js";
 let store = useStore();
 let users = ref([]);
@@ -141,17 +152,13 @@ let addStudent = () => {
       }
     )
     .then((el) => {
-      console.log(el);
-       setTimeout(() => {
-         sedeCheck.value = true
-       }, 10);
+   
+      toast.add({ severity: 'success', summary: 'Success', detail: el.statusText, life: 3000 });
 
-       setTimeout(() => {
-         sedeCheck.value = false
-       }, 2000);
     })
     .catch((errMsg) => {
       console.log(errMsg);
+      toast.add({ severity: 'error', summary: 'Error', detail: errMsg, life: 3000 });
     });
 };
 </script>

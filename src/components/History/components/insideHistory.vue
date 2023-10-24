@@ -2,7 +2,7 @@
     <div>
        
 
-        <div class="row mt-5">
+        <div class="row g-0 mt-5">
 <div class="col-4"  v-for="info in infos " :key="info.id">
 
     <VueDatePicker :model-value="selectedDate" @update:model-value="handleDate" @change="navigateToSelectedDate" :min-date = 'new Date()' >

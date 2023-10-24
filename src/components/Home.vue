@@ -46,96 +46,54 @@
  
       <div class="row">
 
-        <div class="col-6" v-for="(teacher, index) in findInfo" :key="index" >
-          <div v-if="!contentLoaded">
-            <div
-            class="card mt-4 border border-top-0 shadow-sm border-light"
-            v-if="teachers.length >= 1"
-          >
-          <Skeleton width="100%" height="30px">
-            <div class="card-header glass text-teal-700 ">
-              About Teacher
-            </div>
-          </Skeleton>
-            <div class="card-body">
-              <Skeleton width="30%" height="30px">
-              <h6 class="card-title text-muted">
-                First name:
-                <span class="fs-6 text-dark">{{ teacher.firstName }}</span>
-              </h6>
-              </Skeleton> 
-
-              <Skeleton width="30%" height="30px" class="mt-2">
-              <h6 class="card-title text-muted">
-                Last name:<span class="fs-6 text-dark">{{ teacher.lastName }} </span>
-              </h6>
-              </Skeleton>
-              <Skeleton width="30%" height="30px" class="mt-2">
-              <h6 class="card-title text-muted">
-                Father name:
-                <span class="fs-6 text-dark">{{ teacher.fatherName }}</span>
-              </h6>
-              </Skeleton> 
-
-              <Skeleton width="100%" height="30px" class="mt-2">
-              <div class="d-flex align-items-center  gap-2">
-                <lord-icon
-                  src="https://cdn.lordicon.com/ajkxzzfb.json"
-                  trigger="hover"
-                  colors="primary:#495076,secondary:#495076"
-                  style="width: 30px; height: 30px"
-                >
-                </lord-icon>
-                Username:
-               <span class="font-extrabold"> {{ teacher.userName }} </span>
-
-
-            
-              <i class="far fa-trash-can text-lg text-red-400 cursor-pointer absolute bottom-5 right-5"  @click="openModal(teacher.userName, index)"></i>
-              </div>
-              </Skeleton> 
-
-            </div>
-          </div>
-          </div>
-         
-        </div>
+      
 
 
 
         <div class="col-6" v-for="(teacher, index) in findInfo" :key="teacher.id" >
-          <div v-if="contentLoaded">
+   
             <div
             class="card mt-4 border border-top-0 shadow-sm border-light"
             v-if="teachers.length >= 1"
           >
       
             <div class="card-header glass text-teal-700 ">
+            <span  v-if="contentLoaded">
               About Teacher
+            </span>
+            <Skeleton width="10rem" height="30px" class="mb-2" v-if="!contentLoaded"></Skeleton>
             </div>
+
+          
    
             <div class="card-body">
             
-              <h6 class="card-title text-muted">
+              <h6 class="card-title text-muted" v-if="contentLoaded">
                 First name:
                 <span class="fs-6 text-dark">{{ teacher.firstName }}</span>
               </h6>
+
+              <Skeleton width="10rem" height="30px" class="mb-2" v-if="!contentLoaded"></Skeleton>
           
 
              
-              <h6 class="card-title text-muted">
+              <h6 class="card-title text-muted" v-if="contentLoaded">
                 Last name:<span class="fs-6 text-dark">{{ teacher.lastName }} </span>
               </h6>
+
+              <Skeleton width="10rem" height="30px" class="mb-2" v-if="!contentLoaded"></Skeleton>
           
           
-              <h6 class="card-title text-muted">
+              <h6 class="card-title text-muted" v-if="contentLoaded">
                 Father name:
                 <span class="fs-6 text-dark">{{ teacher.fatherName }}</span>
               </h6>
         
+              <Skeleton width="10rem" height="30px" class="mb-2" v-if="!contentLoaded"></Skeleton>
 
             
               <div class="d-flex align-items-center  gap-2">
+               <div v-if="contentLoaded">
                 <lord-icon
                   src="https://cdn.lordicon.com/ajkxzzfb.json"
                   trigger="hover"
@@ -151,12 +109,16 @@
 
               <i class="far fa-trash-can text-lg text-white cursor-pointer "  ></i>
             </div>
+               </div>
+
+
+               <Skeleton width="100%" height="30px" class="mb-2" v-if="!contentLoaded"></Skeleton>
               </div>
        
 
             </div>
           </div>
-          </div> 
+    
       
         </div>
 

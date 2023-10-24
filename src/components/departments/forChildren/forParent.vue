@@ -3,7 +3,7 @@
    
     <div class="container px-5" v-if="showContent">
       <div class="d-flex justify-content-between w-100 align-items-center">
-        <button class="btn bg-[#9492EE] text-white hover:text-dark m-0" @click="backOneStep">
+        <button class="btn bg-[#9492EE] hover:bg-[#9492EE] text-white hover:text-dark m-0" @click="backOneStep">
           back <i class="fa fa-angle-left"></i>
         </button>
         <h2 class="my-5 text-end">children belonging to this person</h2>
@@ -65,6 +65,10 @@
       >Add student for this parent <i class="fas fa-plus-circle"></i
     ></router-link>
   </div>
+
+  <Toast>
+
+  </Toast>
 </template>
 
 <script setup>
@@ -92,7 +96,7 @@ onMounted(() => {
   axios
     .get(`${base}Parents/getStudents?userName=${store.state.userName}`)
     .then((el) => {
-      console.log(el.data);
+      console.log(el.data.length);
       if(el.data.length == 0){
       load.value = false
     }
@@ -127,6 +131,10 @@ let deleteStudent = (sid, index) => {
     )
     .then((el) => {
       console.log(el);
+      toast.add({ severity: 'success', summary: 'Success', detail: el.statusText, life: 3000 });
+    }).catch(err =>{
+      toast.add({ severity: 'error', summary: 'Error', detail: err, life: 3000 });
+    
     });
 };
 

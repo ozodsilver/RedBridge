@@ -8,7 +8,7 @@
     <table class="table table-striped table-hover mt-4">
       <tr class="fw-bolder">
         <th scope="col">#</th>
-        <th scope="col" v-for="subject in subjects" :key="subject.id" class="text-dark capitalize">
+        <th scope="col" v-for="subject in subjects" :key="subject.id" class="text-dark pl-6 capitalize">
           {{ subject.name }}
         </th>
       </tr>
