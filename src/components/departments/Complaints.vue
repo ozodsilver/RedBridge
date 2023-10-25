@@ -1,10 +1,10 @@
 <template>
     <div class="w-full h-screen pt-2 flex items-center justify-center overflow-auto">
 
-<div class="w-[80%]  h-full border flex flex-col-reverse overflow-auto gap-2 flex-start" >
+<div class="w-[80%]  h-full border flex flex-col-reverse overflow-auto gap-2 flex-start"  ref="listEl">
  
 
-    <div class=" h-[400px] border flex items-end justify-center rounded-xl gap-1 " v-for="(info, index) in infos" :key="index">
+    <div class=" h-[400px] border flex items-end justify-center rounded-xl gap-1 " v-for="(user, index) in userList" :key="index">
    <!-- teacher avatar -->
    <div class="w-[50px] h-[50px]">
 <img src="@/assets/teachers/avatar.png" alt="" class="w-full ">
@@ -13,7 +13,7 @@
 <!-- main container -->
 <div class="w-[400px] h-[400px] relative bg-slate-200">
 <div class="card-header flex items-center w-full h-[50px] border-b">
-<h1 class="text-lg pl-3">Teacher {{info}}</h1>
+<h1 class="text-lg pl-3">Teacher {{user}}</h1>
 </div>
 
 <div class="flex items-center  w-full justify-between">
@@ -55,27 +55,52 @@
 import base from '../../reusables/getInfos';
 import axios from 'axios';
 import {ref, onMounted} from 'vue';
-
+import { useInfiniteScroll } from '@vueuse/core'
 
 const infos = ref([])
+const listEl = ref(null)
 
 const pageCount = ref(0)
 
-onMounted(()=>{
+// onMounted(()=>{
 
-    axios.get(`${base}Admin/Complaint?page=${pageCount.value}`, 
-      {
+//     axios.get(`${base}Admin/Complaint?page=${pageCount.value}`, 
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+//         },
+//     }).then(res =>{
+//     console.log(res)
+//     infos.value = res.data.smSes
+//     })
+
+// })
+
+
+
+const getUsers = async (skip)=>{
+const users =  await axios.get(`${base}Admin/Complaint?page=${skip}`, {
+    
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
-    }).then(res =>{
-    console.log(res)
-    infos.value = res.data.smSes
-    })
+});
 
-})
+return users.data.smSes
+}
 
+const userList = ref(await getUsers(0))
+
+const getUsersOnScroll = async ()=>{
+const newUsers = await getUsers(( Math.ceil(userList.value.length/20 - 1)))
+
+userList.value.push(...newUsers)
+
+}
+
+useInfiniteScroll(listEl, async ()=> {  await getUsersOnScroll()}, {distance:10})
 
 </script>
 
