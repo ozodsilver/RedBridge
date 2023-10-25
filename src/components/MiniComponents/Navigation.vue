@@ -84,6 +84,17 @@
             
           </router-link>
 
+          <router-link
+            to="/Complaints"
+            class="mt-4 flex  text-start bg-transparent rounded-xl   w-full py-2  align-items-center exact"
+            >
+            <div class=" flex gap-3 items-center px-2">
+              <i class="far fa-comments text-xs p-2.5 py-[11px]  px-[12px] rounded-lg block_shadow inner  "></i>
+            <span class="text-sm">Complaints</span>
+            </div>
+            
+          </router-link>
+
 
           <router-link to = '/'
 class="justify-content-start d-flex  text-white bg-transparent gap-3 items-center text-start absolute bottom-3 left-0  w-100 shadow-sm p-3 rounded-lg px-3"

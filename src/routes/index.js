@@ -66,6 +66,14 @@ const routes = [
         name: "history",
         component: ()=> import('../components/History/History.vue'),
       },
+
+      {
+        path: "/Complaints",
+        name: "complaints",
+        component: ()=> import('../components/departments/Complaints.vue'),
+      },
+
+
     
       {
         path: "/History/:id",
