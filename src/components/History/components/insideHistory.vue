@@ -5,17 +5,12 @@
         <div class="row g-0 mt-5">
 <div class="col-4"  v-for="info in infos " :key="info.id">
 
-    <VueDatePicker :model-value="selectedDate" @update:model-value="handleDate" @change="navigateToSelectedDate" :min-date = 'new Date()' >
-        <template #trigger>
-            <button class="mt-10 p-3 bg-primary d-flex justify-content-center align-items-center">
+  <button class="mt-10 p-3 bg-primary d-flex justify-content-center align-items-center">
        
        {{ info.name }} 
          <!-- <router-link :to="{ name: 'ForSubjects', params: { id: info.id } }"
                  class="btn w-50 btn-outline-secondary">Subjects</router-link> -->
        </button>
-        </template>
-    </VueDatePicker>
-  
 </div>
         </div>
 

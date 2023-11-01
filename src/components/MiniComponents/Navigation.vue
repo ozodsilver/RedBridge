@@ -78,7 +78,7 @@
             class="mt-4 flex  text-start bg-transparent rounded-xl   w-full py-2  align-items-center exact"
             >
             <div class=" flex gap-3 items-center px-2">
-              <i class="fas fa-user-group text-xs p-2.5 py-[11px]  px-[12px] rounded-lg block_shadow inner  "></i>
+              <i class="fas fa-rotate-left text-xs p-2.5 py-[11px]  px-[12px] rounded-lg block_shadow inner  "></i>
             <span class="text-sm">History</span>
             </div>
             
