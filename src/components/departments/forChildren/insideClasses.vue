@@ -147,8 +147,13 @@ let toggleModal = (scores) => {
 
 onMounted(async () => {
   let student = await axios.get(
-    `${base}Admin/Journal/ClassInfo?id=${route.params.id}`
-  );
+    `${base}Admin/Journal/ClassInfo?id=${route.params.id}`,  {
+    
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+});
   console.log(student.data.students.length);
   if(student.data.students.length == 0){
       noContent.value = true
@@ -163,8 +168,13 @@ onMounted(async () => {
   contentLoaded.value = false
 
   let sub = await axios.get(
-    `${base}Admin/Journal/ClassInfo?id=${route.params.id}`
-  );
+    `${base}Admin/Journal/ClassInfo?id=${route.params.id}`, {
+    
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+});
   console.log(sub.data);
 
   sub.data.subjects.forEach((subj) => {
@@ -176,8 +186,13 @@ onMounted(async () => {
     subjects.value.forEach(async (p) => {
       let score = await axios.get(
         `${base}Admin/Journal/GetScore?studentId=${x.id
-        }&subjectId=${p.id}`
-      );
+        }&subjectId=${p.id}`,  {
+    
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+});
 
       scores.value.push(score.data);
     });

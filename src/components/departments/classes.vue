@@ -66,7 +66,13 @@ const homeInput = ref('')
 const loading = ref(true)
 
 onMounted(async () => {
-  let result = await axios.get(`${base}Admin/Journal/Classes`);
+  let result = await axios.get(`${base}Admin/Journal/Classes`,  {
+    
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+});
   console.log(result.data);
   infos.value.push(...result.data);
   loading.value = false

@@ -4,14 +4,14 @@
 <div class="w-[80%]  h-full  flex flex-col overflow-auto gap-2  flex-start"  ref="listEl">
  
 
-    <div class=" py-4  relative  flex items-end justify-center rounded-xl gap-1 " v-for="(user, index) in userList" :key="index" >
+    <div class=" py-4  relative  flex items-end justify-center rounded-xl gap-1  " v-for="(user, index) in userList" :key="index" >
    <!-- teacher avatar -->
    <div>
 <img :src='`https://rb.algorithmic.uz/api/Files/${user.teacherImageId}`' alt="" class="w-full w-[80px] h-[80px]  rounded-full p-2 bg-purple-50 border ">
 </div>
 <!-- {{ user }} -->
 <!-- main container -->
-<div class="w-[600px] h-[500px] relative bg-  shadow-sm rounded-xl p-4 ">
+<div class="w-[600px] h-[500px] relative mt-10 shadow-sm rounded-xl p-4 ">
 <div class="card-header flex items-center w-full h-[50px] border-b">
 <h1 class="text-lg pl-3">Teacher <span class="p-1 px-3 bg-purple-500 text-white text-base rounded bg-gradient-to-t">{{user.teacherFirstName}}</span></h1>
 </div>
@@ -44,6 +44,8 @@
 
 <img src="@/assets/teachers/smss.png" alt="" class="w-[100px] absolute bottom-[-50px] left-3">
 </div>
+
+
 
     </div>
 
