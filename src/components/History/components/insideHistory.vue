@@ -1,28 +1,39 @@
 <template>
-    <div>
-       
+  <div>
 
-        <div class="row g-0 mt-5">
-<div class="col-4"  v-for="info in infos " :key="info.id">
+    <n-result
+    v-if="infos.length == 0 "
+    status="warning"
+    title="Warning"
+    description="no information found"
+    class="absolute top-1/4 left-2/4"
+  >
+ 
+  </n-result>
 
-  <button class="mt-10 p-3 bg-primary d-flex justify-content-center align-items-center">
-       
-       {{ info.name }} 
-         <!-- <router-link :to="{ name: 'ForSubjects', params: { id: info.id } }"
+<div class="container border" v-else>
+  <div class="row  mt-5">
+      <div class="col-4" v-for="info in infos " :key="info.id">
+
+        <button class="mt-10 w-full p-4 text-lg gap-4 bg-purple-700 text-white rounded-lg d-flex justify-content-center align-items-center">
+          <i class="fas fa-passport"></i>
+          {{ info.name }}
+          <!-- <router-link :to="{ name: 'ForSubjects', params: { id: info.id } }"
                  class="btn w-50 btn-outline-secondary">Subjects</router-link> -->
-       </button>
-</div>
-        </div>
-
-       
+        </button>
+      </div>
     </div>
+
+</div>
+
+  </div>
 </template>
 
 <script setup>
 import Navigation from '../../MiniComponents/Navigation.vue';
-import {onMounted, ref} from 'vue'
+import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import {useRoute,useRouter} from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const infos = ref([])
 
@@ -46,8 +57,8 @@ onMounted(async () => {
       }
     )
     .then((res) => {
-       console.log(res.data);
-       infos.value.push(...res.data)
+      console.log(res.data);
+      infos.value.push(...res.data)
     });
 
 
@@ -59,7 +70,7 @@ onMounted(async () => {
 const handleDate = (modelData) => {
   selectedDate.value = modelData;
   // do something else with the data
-  router.push({'name':'historyTable', params:{id:id}, query:{value:new Date(selectedDate.value).toJSON( )}})
+  router.push({ 'name': 'historyTable', params: { id: id }, query: { value: new Date(selectedDate.value).toJSON() } })
 }
 
 

@@ -7,7 +7,7 @@
     <div class=" py-4  relative  flex items-end justify-center rounded-xl gap-1  " v-for="(user, index) in userList" :key="index" >
    <!-- teacher avatar -->
    <div>
-<img :src='`https://rb.algorithmic.uz/api/Files/${user.teacherImageId}`' alt="" class="w-full w-[80px] h-[80px]  rounded-full p-2 bg-purple-50 border ">
+<img :src='`https://rb.algorithmic.uz/api/Files/${user.teacherImageId}`' alt="" class="w-[80px] object-cover h-[80px]  rounded-full p-2 bg-purple-50 border ">
 </div>
 <!-- {{ user }} -->
 <!-- main container -->
@@ -32,7 +32,7 @@
 
 <img src="@/assets/teachers/sms.png" alt="" class="w-[40px] absolute right-10 rotate-[20deg]">
 
-<div class="w-[80%] max-h-[200px] overflow-auto mx-auto mt-4 path bg-green-500 bg-gradient text-white   p-4 ">
+<div class="w-[80%] max-h-[200px] overflow-auto mx-auto mt-4 path bg-slate-200 bg-gradient text-dark   p-4 ">
     
 <span>{{ user.message }}</span>
 </div>
@@ -42,7 +42,7 @@
     <span class="text-slate-400">{{ new Date(user.date).toLocaleDateString() }} &nbsp;  |  &nbsp;  <span class="far fa-clock text-purple-700"> </span>      {{ new Date(user.date).toLocaleTimeString() }}</span>
 </div>
 
-<img src="@/assets/teachers/smss.png" alt="" class="w-[100px] absolute bottom-[-50px] left-3">
+
 </div>
 
 

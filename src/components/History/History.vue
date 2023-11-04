@@ -7,15 +7,13 @@
       <div class="spinner-border text-info" role="status"></div>
     </div>
 
-
-
-
-    <div class="container px-5" v-else-if="!loade">
+    <div  v-else-if="!loade">
 
 
       <h3 class="m-0 pt-5 text-secondary text-2xl" v-if="!empty">Classes</h3>
-      <div class="row g-0 p-0">
-        <div class="col-4" v-for="(info, index) in infos" :key="index">
+      
+      <div class="row g-0 ">
+        <div class="col-4 mt-3 " v-for="(info, index) in infos" :key="index">
           <router-link :to="{ name: 'insideHistory', params: { id: info.id } }" class="card mt-5 shadow-lg ">
             <div class="card-header bg-secondary bg-gradient">
               <span class="badge bg-secondary fs-6 shadow">Class</span> &nbsp;
