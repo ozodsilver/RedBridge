@@ -2,7 +2,19 @@
 
 <Toast />
 
-  <div>
+<div v-if="students.length == 0">
+  <n-result
+    status="warning"
+    title="Warning"
+    description="No found information"
+    class="absolute left-2/4 top-2/4"
+  >
+   
+  </n-result>
+</div>
+
+
+  <div v-else>
     <!-- <h1>{{this.$route.params.id}}</h1> -->
     <div class="container p-4">
       <h2 class="pt-3 text-2xl text-teal-700 mt-4">Students</h2>
