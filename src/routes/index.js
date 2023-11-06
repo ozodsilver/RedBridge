@@ -86,6 +86,20 @@ const routes = [
         name: "historyTable",
         component: historyTable,
       },
+
+      {
+        path: "/subjectsHistory/:id",
+        name: "historySubjects",
+        component:  ()=> import('../components/History/components/insideHistorySubjects.vue'),
+      },
+
+      {
+        path: "/historyDate/:id",
+        name: "historyDate",
+        component:  ()=> import('../components/History/components/historyDate.vue'),
+      },
+
+
     
     
       {

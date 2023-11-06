@@ -15,12 +15,12 @@
   <div class="row  mt-5">
       <div class="col-4" v-for="info in infos " :key="info.id">
 
-        <button class="mt-10 w-full p-4 text-lg gap-4 bg-purple-700 text-white rounded-lg d-flex justify-content-center align-items-center">
+        <router-link :to="{name:'historyDate', params:{id:info.id}}" class="mt-10 w-full p-4 text-lg gap-4 bg-purple-700 text-white rounded-lg d-flex justify-content-center align-items-center">
           <i class="fas fa-passport"></i>
           {{ info.name }}
           <!-- <router-link :to="{ name: 'ForSubjects', params: { id: info.id } }"
                  class="btn w-50 btn-outline-secondary">Subjects</router-link> -->
-        </button>
+        </router-link>
       </div>
     </div>
 
