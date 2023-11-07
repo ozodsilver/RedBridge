@@ -1,12 +1,40 @@
 <template>
     <div>
   
-<DataTable :value="products" tableStyle="min-width: 50rem">
-    <Column field="code" header="Code"></Column>
-    <Column field="name" header="Name"></Column>
-    <Column field="category" header="Category"></Column>
-    <Column field="quantity" header="Quantity"></Column>
-</DataTable>
+        <n-table :bordered="false" :single-line="false">
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Student name</th>
+        <th>Attendance</th>
+        <th>D/Z</th>
+        <th>Point</th>
+        <th>discipline</th>
+      </tr>
+
+      
+    </thead>
+    <tbody>
+      <tr v-for="(student, index) in students" :key="student.id">
+        <td>{{ index }}</td>
+        <td>
+         
+     {{ student.student.firstName }}
+     {{ student.student.lastName }}
+        
+        </td>
+        <td> 
+        
+        
+        </td>
+        <td>{{ student }}</td>
+        <td>Damn it! I can't remember those words.</td>
+        <td>  <span class="p-2 text-white bg-green-400 rounded-lg">{{ student.point }} %</span> </td>
+      </tr>
+     
+      
+    </tbody>
+  </n-table>
     </div>
 </template>
 
@@ -15,26 +43,48 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
-import {ref, onMounted} from 'vue'
+import {ref, onMounted, computed} from 'vue'
 import axios from 'axios';
 
 import {useRoute} from 'vue-router';
+import { get } from '@vueuse/core';
 const route = useRoute()
 
+const students = ref([])
 const subjects = ref([])
 
-onMounted(()=>{
+const result = ref([])
 
-    axios.get(`https://rb.algorithmic.uz/api/DailyProccess/history/${route.query.id}?date=${route.query.date}&zoneInfo=UTC%2B5`,  {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        },
-      }).then(res =>{
-console.log(res.data);
-})
 
-})
+onMounted(async () => {
+  try {
+    const response = await axios.get(`https://rb.algorithmic.uz/api/DailyProccess/${route.query.id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    });
+
+    students.value = response.data.students;
+    students.value.forEach((el,idx) =>{
+    console.log(el.student.id);
+
+    axios.get(`https://rb.algorithmic.uz/api/Discipline/${route.params.id}/${el.student.id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    }).then(res =>{
+    console.log(res.data);
+    students.value[idx].point = res.data
+    })
+    
+    })
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 
 </script>
 
