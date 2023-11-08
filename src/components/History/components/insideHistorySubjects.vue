@@ -1,7 +1,7 @@
 <template>
     <div>
   
-        <n-table :bordered="false" :single-line="false">
+        <n-table :bordered="false" :single-line="false" class="mt-4">
     <thead>
       <tr>
         <th>№</th>
@@ -27,7 +27,7 @@
         
         
         </td>
-        <td>{{ student }}</td>
+        <td>{{ student.homeWork ? 'not' : student.homeWork }}</td>
         <td>Damn it! I can't remember those words.</td>
         <td>  <span class="p-2 text-white bg-green-400 rounded-lg">{{ student.point }} %</span> </td>
       </tr>
