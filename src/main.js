@@ -8,6 +8,9 @@ import '@/assets/style.css'
 import '@/styles/main.scss';
 import Navigation from "./components/MiniComponents/Navigation.vue";
 
+// tooltip
+import Tooltip from 'primevue/tooltip';
+
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 
@@ -21,13 +24,13 @@ import "primevue/resources/themes/lara-light-indigo/theme.css";
 window.base = base;
 const app = createApp(App);
 
-import Tooltip from 'primevue/tooltip';
+
 
 app.directive('tooltip', Tooltip);
 
 app.component('VueDatePicker', VueDatePicker);
 app.component('Navigation', Navigation)
-
+app.directive('tooltip', Tooltip);
 app.use(router);
 app.use(store);
 
