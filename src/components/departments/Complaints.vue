@@ -13,19 +13,19 @@
 <!-- main container -->
 <div class="w-[600px] h-[500px] relative mt-10 shadow-sm rounded-xl p-4 ">
 <div class="card-header flex items-center w-full h-[50px] border-b">
-<h1 class="text-lg pl-3">Teacher <span class="p-1 px-3 bg-purple-500 text-white text-base rounded bg-gradient-to-t">{{user.teacherFirstName}}</span></h1>
+<h1 class="text-lg pl-3">Teacher <span class="p-1 px-3 bg-green-600 bg-gradient text-white text-base rounded bg-gradient-to-t">{{user.teacherFirstName}}</span></h1>
 </div>
 
 <div class="flex items-center mt-4  w-full justify-around text-sm ">
 
     <div class=" h-[50px] text-black font-semibold   rounded-lg flex text-xs text-dark items-center justify-center ">
-       <span class="block"> student  : &nbsp; </span> <span class="bg-purple-500 p-1 text-white rounded">{{ user.studentFirstName }} </span>
+       <span class="block"> student  : &nbsp; </span> <span class="bg-green-600 bg-gradient p-1 text-white rounded">{{ user.studentFirstName }} </span>
     </div>
     <div class=" h-[50px]  flex rounded-lg  text-dark items-center justify-center">
-        <span class="block text-xs font-semibold"> grade : &nbsp; </span> <span class="bg-purple-500 p-1 text-xs text-white rounded">{{ user.grade }} </span>  
+        <span class="block text-xs font-semibold"> grade : &nbsp; </span> <span class="bg-green-600 bg-gradient p-1 text-xs text-white rounded">{{ user.grade }} </span>  
     </div>
     <div class="w-[100px] h-[50px]  flex rounded-lg  text-dark items-center justify-center">
-        <span class="block text-xs font-semibold"> subject : &nbsp; </span> <span class="bg-purple-500 p-1 text-xs text-white rounded">{{ user.subject }} </span>    
+        <span class="block text-xs font-semibold"> subject : &nbsp; </span> <span class="bg-green-600 bg-gradient p-1 text-xs text-white rounded">{{ user.subject }} </span>    
     </div>
 
 </div>
@@ -39,7 +39,7 @@
 
 
 <div class="flex justify-end px-3 absolute right-4 bottom-5">
-    <span class="text-slate-400">{{ new Date(user.date).toLocaleDateString() }} &nbsp;  |  &nbsp;  <span class="far fa-clock text-purple-700"> </span>      {{ new Date(user.date).toLocaleTimeString() }}</span>
+    <span class="text-slate-400">{{ new Date(user.date).toLocaleDateString() }} &nbsp;  |  &nbsp;  <span class="far fa-clock text-green-700"> </span>      {{ new Date(user.date).getHours() }}: {{ new Date(user.date).getMinutes() }}</span>
 </div>
 
 

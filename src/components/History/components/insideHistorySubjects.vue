@@ -3,11 +3,11 @@
   
         <n-table :bordered="false" :single-line="false" class="mt-4">
     <thead>
-      <tr>
+      <tr class="text-center">
         <th>№</th>
         <th>Student name</th>
         <th>Attendance</th>
-        <th>D/Z</th>
+        <th>Home work</th>
         <th>Point</th>
         <th>discipline</th>
       </tr>
@@ -15,8 +15,8 @@
       
     </thead>
     <tbody>
-      <tr v-for="(student, index) in students" :key="student.id">
-        <td>{{ index }}</td>
+      <tr v-for="(student, index) in students" :key="student.id" class="text-center">
+        <td>{{ ++index }}</td>
         <td>
          
      {{ student.student.firstName }}
@@ -29,7 +29,7 @@
         </td>
         <td class="text-center">
 
-          <span class="p-2 rounded-lg bg-green-500 text-white block text-center" v-if="student.homeWork">{{ student.homeWork }}</span>
+          <span class="p-2 rounded-lg bg-green-400 text-white block text-center" v-if="student.homeWork">{{ student.homeWork }}</span>
           <span class="p-2 rounded-lg bg-red-300 text-white  text-center flex flex-col " v-else> <span class="fas fa-ban fa-2x text-white"></span>   <span  class="text-xs">no grade</span> </span>
         
 
