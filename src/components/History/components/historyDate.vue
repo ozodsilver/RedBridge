@@ -97,4 +97,12 @@ onMounted(() => {
 :global(.p-datatable .p-datatable-footer) {
     background: transparent !important;
 }
+
+
+
+
+:deep .dark\:hover\:text-white:hover {
+    --tw-text-opacity: 1;
+    color: black !important;
+}
 </style>
