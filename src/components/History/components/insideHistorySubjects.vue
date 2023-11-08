@@ -27,7 +27,13 @@
         
         
         </td>
-        <td>{{ student.homeWork ? 'not' : student.homeWork }}</td>
+        <td class="text-center">
+
+          <span class="p-2 rounded-lg bg-green-500 text-white block text-center" v-if="student.homeWork">{{ student.homeWork }}</span>
+          <span class="p-2 rounded-lg bg-red-300 text-white block text-center" v-else> <span class="fas fa-ban fa-2x text-white"></span> </span>
+          <span  class="text-xs">no grade</span>
+
+        </td>
         <td>Damn it! I can't remember those words.</td>
         <td>  <span class="p-2 text-white bg-green-400 rounded-lg">{{ student.point }} %</span> </td>
       </tr>
