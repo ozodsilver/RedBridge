@@ -34,7 +34,7 @@
             there is
           </span>
   <span class="p-2 bg-primary bg-gradient rounded-lg text-white"  v-if="student?.attendance?.isHere == false && student?.attendance?.reason == 0">
-    attend for unexcused reasons
+    Absend for unexcused reasons
           </span>
   <span class="p-2 bg-primary bg-gradient rounded-lg text-white"  v-if="student?.attendance?.isHere == false && student?.attendance?.reason == 1">
     present for valid reasons

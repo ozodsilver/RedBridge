@@ -30,7 +30,7 @@ const routes = [
   {
     path: "/",
     name: "auth",
-    component: Authorization,
+    component: ()=> import('../components/Authorization.vue'),
    
   },
   {

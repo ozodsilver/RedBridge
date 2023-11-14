@@ -69,29 +69,7 @@
       </tbody>
     </table>
 
-    <n-modal v-model:show="showModal">
-              <n-card style="width: 600px" title="Information" :bordered="false" size="huge" role="dialog"
-                aria-modal="true">
-                <Chart :size="{ width: 500, height: 400 }" :data="data"  :margin="margin" :direction="direction"  >
-                  <template #widgets>
-                    <Tooltip borderColor="#48CAE4" :config="{
-                      homeWork: { color: '#9f7aea' },
-                      score: { hide: false },
-                    }" />
-                  </template>
 
-                  <template #layers>
-                    <Grid strokeDasharray="2,2" />
-                    <Area :dataKeys="['name']" type="monotone" :areaStyle="{ fill: 'url(#grad)' }" />
-                    <Line :dataKeys="['date', 'score', 'homeWork',]"  type="monotone"  :lineStyle="{
-          stroke: '#9f7aea'
-        }" />
-                  </template>
-
-              
-                </Chart>
-              </n-card>
-            </n-modal>
 
   </div>
 
@@ -111,15 +89,30 @@
     <span class="sr-only">Loading...</span>
 </div>
 
+
+<n-modal v-model:show="showModal" @hide = 'closeModal' preset="card"  >
+              <n-card style="width: 99vw; height: 90vh;" title="Information"  role="dialog"
+                aria-modal="true">
+         
+
+                <Chart type="line" :data="chartData" :options="chartOptions"  />
+
+
+              </n-card>
+
+         
+            </n-modal>
+
 </template>
 
 <script setup>
 import axios from "axios";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import store from "../../../store/store.js";
 import base from "../../../reusables/getInfos.js";
-import { Chart, Grid, Line, Tooltip } from 'vue3-charts'
+import Chart from 'primevue/chart';
+
 
 let students = ref([]);
 let subjects = ref([]);
@@ -134,16 +127,113 @@ const noContent = ref(false)
 const data = ref()
 const compiedData = ref([])
 
+const dates = ref([])
+const dataset1 = ref([])
+const dataset2 = ref([])
+
 let toggleModal = (scores) => {
   showModal.value = true;
+
   store.state.info = scores
   console.log(scores.charts);
   data.value = scores.charts
-  data.value.forEach(el => {
-    el.date = (new Date(el.date)).toISOString()
+
+  
+  scores.charts.forEach(el =>{
+  dates.value.push(((new Date(el.date)).toLocaleDateString() + ' ' +  (new Date(el.date)).toLocaleTimeString() ) )
   })
 
+
+  scores.charts.forEach(el =>{
+    dataset1.value.push(el.score)
+  })
+
+  scores.charts.forEach(el =>{
+    dataset2.value.push(el.homeWork)
+  })
+
+
+
 }
+
+
+
+onMounted(() => {
+watchEffect(()=>{
+  chartData.value = setChartData();
+    chartOptions.value = setChartOptions();
+})
+});
+
+const chartData = ref();
+const chartOptions = ref();
+        
+const setChartData = () => {
+    const documentStyle = getComputedStyle(document.documentElement);
+
+    return {
+        labels: dates.value,
+        datasets: [
+            {
+                label: 'Score',
+                data: dataset1.value,
+                fill: false,
+                borderColor: documentStyle.getPropertyValue('--blue-500'),
+                tension: 0.5
+            },
+            {
+                label: 'Homework',
+                data:dataset2.value,
+                fill: false,
+                borderColor: documentStyle.getPropertyValue('--pink-500'),
+                tension: 0.5
+            }
+        ]
+    };
+};
+const setChartOptions = () => {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+    return {
+        maintainAspectRatio: false,
+        aspectRatio: 0.6,
+        plugins: {
+            legend: {
+                labels: {
+                    color: textColor
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: textColorSecondary
+                },
+                grid: {
+                    color: surfaceBorder
+                }
+            },
+            y: {
+                ticks: {
+                    color: textColorSecondary
+                },
+                grid: {
+                    color: surfaceBorder
+                }
+            }
+        }
+    };
+}
+
+
+
+
+
+
+
 
 onMounted(async () => {
   let student = await axios.get(
@@ -199,30 +289,30 @@ onMounted(async () => {
   });
 });
 
-
-
-
-
-const direction = ref('horizontal')
-const margin = ref({
-  left: 0,
-  top: 20,
-  right: 20,
-  bottom: 0
-})
-
-const axis = ref({
-  primary: {
-    type: 'band'
-  },
-  secondary: {
-    domain: ['dataMin', 'dataMax + 100'],
-    type: 'linear',
-    ticks: 8
-  }
-})
+const closeModal = (event)=>{
+if(event == false)
+dates.value = []
+dataset1.value = []
+dataset2.value = []
+}
 
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+:deep .p-chart {
+width: 300vw;
+height: 700px;
+overflow: auto !important;
+}
+
+canvas{
+overflow: auto !important;
+}
+
+:global(.n-card > .n-card__content) {
+    overflow: auto !important;
+}
+
+</style>

@@ -96,7 +96,8 @@
           </router-link>
 
 
-          <router-link :to = '{name:"auth"}'
+          <button 
+          @click="logOut"
 class="justify-content-start d-flex  text-white bg-transparent gap-3 items-center text-start absolute bottom-3 left-0  w-100 shadow-sm p-3 rounded-lg px-3"
 style="outline: none; border: none;"
 
@@ -106,7 +107,7 @@ class="fas fa-arrow-right-from-bracket text-sm text-teal-700 font-extrabold"
 
 ></i>
 <span class="text-dark text-sm text-teal-900"> Sign out</span>
-</router-link>
+</button>
           
     </div>
 

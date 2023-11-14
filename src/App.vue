@@ -6,9 +6,9 @@ import { ref, onMounted, onUpdated } from "vue";
 <template>
   <div id="App">
     <router-view v-slot="{ Component }">
-      <transition name="fade" mode="in-out">
+   
         <component :is="Component" />
-      </transition>
+
     </router-view>
   </div>
 
@@ -22,7 +22,7 @@ import { ref, onMounted, onUpdated } from "vue";
 <style lang="scss">
 body {
   font-family: "Quicksand", sans-serif;
-  cursor: url("./assets/double-click.png") 4 12, auto;
+
   background: #F8F9FA;
 }
 
