@@ -5,7 +5,8 @@
       <i class="far fa-circle-left text-lg"></i> back
     </button>
 
-    <table class="table table-striped table-hover mt-4">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover mt-4 ">
       <tr class="fw-bolder">
         <th scope="col">#</th>
         <th scope="col" v-for="subject in subjects" :key="subject.id" class="text-dark pl-6 capitalize">
@@ -22,7 +23,7 @@
           <td v-for="subject in subjects" :key="subject.id">
             <button :disabled="scores.length == 0" @click="toggleModal(scores.find(
               (el) => el.subjectId == subject.id && el.studentId == student.id
-            ))" class="p-3 rounded position-relative text-white" :class="{
+            ))" class="w-[50px] h-[50px] rounded position-relative text-white" :class="{
   'bg-danger':
     scores.find(
       (el) => el.subjectId == subject.id && el.studentId == student.id
@@ -68,6 +69,8 @@
         </tr>
       </tbody>
     </table>
+    </div>
+
 
 
 

@@ -21,10 +21,10 @@
       <div class="row">
         <div class="col-12 mt-4">
           <table
-            class="table align-middle table-striped table-hover table-dark rounded bg-gradient mb-0 bg-white"
+            class="table align-middle bg-dark table-dark   rounded bg-gradient mb-0 "
           >
             <thead class="bg-light rounded">
-              <tr class="rounded border-0">
+              <tr class="rounded border-0 ">
                 <th class="rounded-5">First Name</th>
                 <th class="rounded-5">Last Name</th>
                 <th class="rounded-5">Father Name</th>
@@ -33,8 +33,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-0 " v-for="(student, index) in students" :key="student.id">
-                <td class="rounded-5">
+              <tr class="border-0  " v-for="(student, index) in students" :key="student.id">
+                <td class="rounded-5 transition-all  hover:scale-105">
                   <div class="d-flex align-items-center">
                     <i class="fas fa-user-circle fa-2x text-secondary"></i>
                     <div class="ms-3">
@@ -42,15 +42,15 @@
                     </div>
                   </div>
                 </td>
-                <td class="rounded-5">
+                <td class="rounded-5 transition-all  hover:scale-105">
                   <p class="fw-normal mb-1">{{ student.lastName }}</p>
                 </td>
 
-                <td class="rounded-5">
+                <td class="rounded-5 transition-all  hover:scale-105">
                   <p class="fw-normal mb-1">{{ student.fatherName }}</p>
                 </td>
 
-                <td class="rounded-5">
+                <td class="rounded-5 transition-all  hover:scale-105">
                   <div class="d-flex position-relative">
                     <div
                       class="badge position-absolute h-25 bg-secondary"
@@ -66,7 +66,7 @@
                   
                 </td>
 
-                <td class="rounded-5 text-center">
+                <td class="rounded-5 text-center transition-all  hover:scale-105">
                   <i
                     class="fas fa-trash-alt p-2 bg-light text-danger rounded-2 shadow"
                     style="cursor: pointer"
