@@ -58,7 +58,7 @@
     </div>
 
 <div v-else  class="w-full h-screen flex items-center justify-center">
-  <n-result status="error" title="Error" description="No Students" >
+  <n-result status="warning" title="warning" description="Not found Subject" >
     <template #footer>
       <router-link to="/Grades">
 Back to Grades

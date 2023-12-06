@@ -1,5 +1,7 @@
 <template>
-  <div>
+
+
+  <div >
     <div class=" g-0 p-0 m-0 sticky top-0 z-[11111111111] backdrop-blur-md" >
       <nav class="mx-auto mt-8 sticky top-0  flex justify-between align-items-center h-[100px]     px-5" style="width: 100%; z-index: 111111111111;">
 <div class="flex gap-16 items-center">
