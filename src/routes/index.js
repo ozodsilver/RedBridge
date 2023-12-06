@@ -25,12 +25,20 @@ import historyTable from '../components/History/components/historyTable.vue'
 
 
 
+
 import store from "../store/store";
 const routes = [
   {
     path: "/",
     name: "auth",
     component: Authorization,
+   
+  },
+
+  {
+    path: "/reset",
+    name: "reset",
+    component: ()=>import('../components/ResetPassword.vue'),
    
   },
   {

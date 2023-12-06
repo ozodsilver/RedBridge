@@ -20,6 +20,17 @@
      </div>
     </router-link>
 
+
+    <router-link
+      to="/reset"
+      class=" bg-gradient d-flex align-items-center "
+    style="bottom: 20px; right: 20px; width: 200px; "
+      >
+     <i class="fas fa-arrow-rotate-right text-[35px] text-[#9492EE] relative z-[4444444]"></i>
+     <div class="w-[180px] hover:bg-[#9492EE] h-[28px] bg-white rounded-lg text-[12px] flex items-center justify-center relative left-[-20px] top-[1px] ">
+      Reset Password
+     </div>
+    </router-link>
     
 
 
