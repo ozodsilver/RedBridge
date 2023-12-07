@@ -28,7 +28,7 @@
                 class="form-control-lg w-100 mt-4 outline-none"
                 placeholder="father Name"
                 v-model="fatherName"
-                required
+                
               />
 
 

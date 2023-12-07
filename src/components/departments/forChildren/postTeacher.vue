@@ -40,7 +40,7 @@
             class="form-control-lg border outline-none w-100"
             placeholder="Lastname"
             v-model="lastName"
-            required
+            
           />
         </div>
 
