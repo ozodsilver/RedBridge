@@ -8,29 +8,45 @@
 Reset
             </button>
         </div>
+
+
+        <Toast />
 </template>
     
 <script setup>
     import {ref} from 'vue'
     import axios from 'axios'
 
+    import Toast from 'primevue/toast';
+    import { useToast } from 'primevue/usetoast';
+
+const toast = useToast();
 
     const oldPassword = ref('')
     const newPassword = ref('')
 
-    const resetPassword = () => {
-  axios.patch(
-    `https://rb.algorithmic.uz/api/Teachers/ResetPassword?userName=${oldPassword.value}&newPass=${newPassword.value}`,
+
+let resetPassword = async () => {
+  let response = await axios.patch(`https://rb.algorithmic.uz/api/Teachers/ResetPassword?userName=${oldPassword.value}&newPass=${newPassword.value}`,
+    {
+     
+    },
     {
       headers: {
+        "Content-Type": "application/json-patch+json",
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
-      withCredentials: true, // withCredentials ni true qilish
     }
-  ).then(res => {
-    console.log(res);
-  });
-}                                                                   
+  );
+
+  if (response.status == 200) {
+    toast.add({ severity: 'success', detail: 'Successfully changed', life: 3000 });
+    oldPassword.value = ''
+    newPassword.value = ''
+  }
+
+  console.log(response);
+};
 
 </script>
     

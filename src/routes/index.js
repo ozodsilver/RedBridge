@@ -35,12 +35,7 @@ const routes = [
    
   },
 
-  {
-    path: "/reset",
-    name: "reset",
-    component: ()=>import('../components/ResetPassword.vue'),
-   
-  },
+  
   {
     path: "/Dashboard",
     name: "dashboard",
@@ -154,6 +149,13 @@ const routes = [
         path: "/AddParents",
         name: "AddParents",
         component: AddParents,
+      },
+
+      {
+        path: "/reset",
+        name: "reset",
+        component: ()=>import('../components/departments/forChildren/ResetPassword.vue'),
+       
       },
     
       {
