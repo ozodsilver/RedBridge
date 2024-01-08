@@ -68,7 +68,7 @@ onMounted(() => {
  watchEffect(()=>{
   axios
     .get(
-      `https://rb.algorithmic.uz/api/Admin/Journal/History?subjectId=${route.params.id}&size=10&page=${first.value}`,
+      `${base}Admin/Journal/History?subjectId=${route.params.id}&size=10&page=${first.value}`,
       {
         headers: {
           "Content-Type": "application/json",

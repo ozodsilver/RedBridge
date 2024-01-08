@@ -142,7 +142,7 @@ onMounted(async () => {
 
 
     // dailyScore
-    axios.get(`https://rb.algorithmic.uz/api/Discipline/${route.params.id}/${el.student.id}`, {
+    axios.get(`${base}Discipline/${route.params.id}/${el.student.id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -153,7 +153,7 @@ onMounted(async () => {
     })
 
     // totalBalls
-    axios.get(`https://rb.algorithmic.uz/api/Students/SubjectScore/${route.params.id}/${el.student.id}`, {
+    axios.get(`${base}Students/SubjectScore/${route.params.id}/${el.student.id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -167,7 +167,7 @@ onMounted(async () => {
 
     // attendance
      // totalBalls
-     axios.get(`https://rb.algorithmic.uz/api/Students/SubjectAttendance/${route.params.id}/${el.student.id}`, {
+     axios.get(`${base}Students/SubjectAttendance/${route.params.id}/${el.student.id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,

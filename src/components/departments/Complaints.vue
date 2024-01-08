@@ -7,7 +7,7 @@
     <div class=" py-4  relative  flex items-end justify-center rounded-xl gap-1  " v-for="(user, index) in userList" :key="index" >
    <!-- teacher avatar -->
    <div>
-<img :src='`https://rb.algorithmic.uz/api/Files/${user.teacherImageId}`' alt="" class="w-[80px] object-cover h-[80px]  rounded-full p-2 bg-purple-50 border ">
+<img :src='`${base}Files/${user.teacherImageId}`' alt="" class="w-[80px] object-cover h-[80px]  rounded-full p-2 bg-purple-50 border ">
 </div>
 <!-- {{ user }} -->
 <!-- main container -->

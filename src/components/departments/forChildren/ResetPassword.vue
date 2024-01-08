@@ -27,7 +27,7 @@ const toast = useToast();
 
 
 let resetPassword = async () => {
-  let response = await axios.patch(`https://rb.algorithmic.uz/api/Teachers/ResetPassword?userName=${oldPassword.value}&newPass=${newPassword.value}`,
+  let response = await axios.patch(`${base}Teachers/ResetPassword?userName=${oldPassword.value}&newPass=${newPassword.value}`,
     {
      
     },

@@ -50,7 +50,7 @@
                   <p class="fw-normal mb-1">{{ student.fatherName }}</p>
                 </td>
 
-                <td class="rounded-5 transition-all  hover:scale-105">
+                <td class="rounded-5 transition-all">
                   <div class="d-flex position-relative">
                     <div
                       class="badge position-absolute h-25 bg-secondary"
@@ -234,4 +234,9 @@ let updateTime = async (studentId,activeDate) => {
 background: red !important;
 }
 
+
+:deep(.dp__input){
+  position: relative;
+  z-index: 0;
+}
 </style>
